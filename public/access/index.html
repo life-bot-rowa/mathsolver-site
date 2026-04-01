@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Access &mdash; MathSolver</title>
@@ -71,6 +71,8 @@
       .price-grid { grid-template-columns: 1fr; max-width: 360px; margin: 48px auto; }
     }
 </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5DLHQQDXLW"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-5DLHQQDXLW");</script>
 </head>
 <body>
 
@@ -93,7 +95,7 @@
   <div class="content-wrap">
     <div class="container" style="text-align:center;padding-top:20px">
       <p style="color:var(--gray-text);font-weight:300;margin-bottom:40px">To access MathSolver, install the Chrome extension from the Web Store.</p>
-      <a href="https://chromewebstore.google.com/detail/math-solver/pieobakkfhafplomcoiohhpikcofoghb" style="display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:var(--white);font-weight:600;font-size:1rem;padding:15px 32px;border-radius:50px;text-decoration:none" target="_blank" rel="noopener">&#128229; Open in Chrome Web Store</a>
+      <a href="https://chromewebstore.google.com/detail/math-solver/pieobakkfhafplomcoiohhpikcofoghb?utm_source=mathsolver.cloud&utm_medium=website&utm_campaign=main_site" style="display:inline-flex;align-items:center;gap:10px;background:var(--blue);color:var(--white);font-weight:600;font-size:1rem;padding:15px 32px;border-radius:50px;text-decoration:none" target="_blank" rel="noopener">&#128229; Open in Chrome Web Store</a>
     </div>
   </div>
 
@@ -124,6 +126,10 @@
   const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.15});
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 </script>
+
+
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<script src="https://ai-math-solver-3a62b.web.app/checkout.js"></script>
 
 </body>
 </html>
