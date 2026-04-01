@@ -2,24 +2,22 @@ name: Generate Articles
 
 on:
   schedule:
-    # Каждый день в 9:00 UTC (12:00 Batumi)
     - cron: '0 9 * * *'
   workflow_dispatch:
     inputs:
-      count:
-        description: 'Number of articles to generate'
+      articles_per_run:
+        description: 'How many articles to generate'
         required: false
-        default: '5'
+        default: '3'
 
 jobs:
   generate:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -29,22 +27,19 @@ jobs:
       - name: Install dependencies
         run: pip install openai openpyxl
 
-      - name: Copy content plan
-        run: |
-          # Content plan should be in repo root
-          ls -la mathsolver_content_plan_FULL.xlsx || echo "Content plan not found!"
-
       - name: Generate articles
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: |
-          COUNT=${{ github.event.inputs.count || '5' }}
-          python3 generate_articles.py --count $COUNT
+          ARTICLES_PER_RUN: ${{ github.event.inputs.articles_per_run || '3' }}
+        run: python generate_articles.py
 
       - name: Commit and push new articles
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git config --global user.name "MathSolver Bot"
           git config --global user.email "bot@mathsolver.cloud"
-          git add content/blog/ .generation_progress.json
-          git diff --staged --quiet || git commit -m "🤖 Auto-publish $(date '+%Y-%m-%d'): new articles"
+          git remote set-url origin https://life-bot-rowa:${{ secrets.GH_TOKEN }}@github.com/life-bot-rowa/mathsolver-site.git
+          git add .
+          git diff --staged --quiet || git commit -m "Auto-publish $(date +%Y-%m-%d): new articles"
           git push
