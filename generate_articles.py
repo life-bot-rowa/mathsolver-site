@@ -35,7 +35,7 @@ SITE_URL = "https://mathsolver.cloud"
 
 CONTENT_PLAN     = Path("mathsolver_content_plan_FULL.xlsx")
 PROGRESS_FILE    = Path(".generation_progress.json")
-OUTPUT_DIR       = Path("content/blog")
+OUTPUT_DIR       = Path("static/blog")
 LAYOUTS_DIR      = Path("layouts/blog")
 NEEDS_REVIEW_DIR = Path("_needs_review")
 
@@ -705,7 +705,9 @@ def run(count=ARTICLES_PER_RUN, phase=1):
 
             if score >= MIN_SCORE:
                 # Save to Hugo content
-                out_path = OUTPUT_DIR / f"{slug}.html"
+                out_dir = OUTPUT_DIR / slug
+                out_dir.mkdir(parents=True, exist_ok=True)
+                out_path = out_dir / "index.html"
                 out_path.write_text(html, encoding='utf-8')
 
                 progress["published"].append({
