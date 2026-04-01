@@ -549,7 +549,9 @@ def generate_article(client, article, related):
                 temperature=0.2,
                 max_tokens=6000,
             )
-            article_data = parse_json(r2.choices[0].message.content)
+            raw2 = r2.choices[0].message.content
+    raw2 = raw2.replace('\', '\\')  # escape backslashes for JSON
+    article_data = parse_json(raw2)
 
             # Step 3: Validate
             print("  [3/3] Quality check...")
