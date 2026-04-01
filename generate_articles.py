@@ -83,6 +83,35 @@ def load_content_plan():
             articles.append(dict(zip(headers, row)))
     return articles
 
+# ── SCREENSHOT MAPPING ───────────────────────────────────────────────────────
+
+SCREENSHOT_PREFIX = {
+    "Algebra":                  "ALG",
+    "Geometry":                 "GEO",
+    "Calculus":                 "CALC",
+    "Trigonometry":             "TRIG",
+    "Equation Solving":         "EQ",
+    "Statistics & Probability": "STAT",
+    "Arithmetic & Fractions":   "FRAC",
+    "Matrix & Linear Algebra":  "MAT",
+    "Physics & Formulas":       "PHYS",
+    "Word Problems & Homework": "WP",
+}
+
+def get_screenshot_html(cluster, example_num):
+    prefix = SCREENSHOT_PREFIX.get(cluster, "")
+    if not prefix:
+        return ""
+    img_id = f"{prefix}-00{example_num}"
+    img_path = f"/mathsolver_solution_images/{img_id}.png"
+    return f'''
+  <div class="ms-screenshot-wrap">
+    <img src="{img_path}" alt="MathSolver solving example {example_num} — {cluster}" 
+         width="400" height="300" loading="lazy"
+         onerror="this.parentElement.style.display='none'">
+    <p class="ms-screenshot-caption">MathSolver Chrome extension solving this problem step-by-step</p>
+  </div>'''
+
 # ── STEP 1: WRITE LONG ARTICLE (plain text) ───────────────────────────────────
 
 def prompt_write_article(keyword, title, cluster, related_links, pillar_url):
@@ -95,6 +124,7 @@ REQUIREMENTS:
 - Tone: Friendly and clear, like a helpful tutor explaining to a student
 - Start the article directly with the topic — NO generic intros like "In today's world..."
 - The keyword "{keyword}" must appear in the very first sentence
+- IMPORTANT: Write ALL formulas in plain text only. NO LaTeX, NO backslashes, NO \frac, NO \sum, NO \sqrt. Write fractions as "a/b", square roots as "sqrt(x)", summation as "sum of...".
 
 WRITE THESE SECTIONS IN ORDER:
 
@@ -280,6 +310,8 @@ def build_html(data, keyword, slug, cluster, url):
         return sol.replace("\n", "<br>")
     ex1_sol = format_solution(data.get("example1_solution",""))
     ex2_sol = format_solution(data.get("example2_solution",""))
+    screenshot1 = get_screenshot_html(cluster, 1)
+    screenshot2 = get_screenshot_html(cluster, 2)
     mistakes_raw = data.get("common_mistakes","")
     mistakes = "</p><p>".join([p.strip() for p in re.split(r'\n\n+', mistakes_raw) if p.strip()]) if mistakes_raw else ""
     real_world_raw = data.get("real_world","")
@@ -365,13 +397,16 @@ def build_html(data, keyword, slug, cluster, url):
     .ms-example .solution{{font-size:.95rem;line-height:1.85;color:var(--text)}}
     .sol-step{{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:4px}}
     .sol-step:last-child{{border-bottom:none}}
+    .ms-screenshot-wrap{{margin:20px 0;text-align:center}}
+    .ms-screenshot-wrap img{{max-width:400px;width:100%;height:auto;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.3);border:1px solid var(--border)}}
+    .ms-screenshot-caption{{font-size:13px;color:var(--gray);margin-top:8px;font-style:italic}}
     .ms-extra{{margin:32px 0}}
     .ms-extra h2{{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:16px}}
     .ms-extra p{{font-size:15px;line-height:1.8;color:var(--gray);margin-bottom:12px;text-align:left}}
     .ms-faq{{margin:36px 0}}
     .ms-faq h2{{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:20px}}
     .ms-faq-item{{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}}
-    .ms-faq-item summary{{background:var(--dark-2);padding:18px 22px;font-weight:700;font-size:15px;color:#fff;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px}}
+    .ms-faq-item summary{{background:var(--dark-2);padding:18px 22px;font-weight:700;font-size:15px;color:#fff;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;text-align:left}}
     .ms-faq-item summary::-webkit-details-marker{{display:none}}
     .ms-faq-a{{padding:18px 22px;font-size:15px;line-height:1.7;color:var(--gray);border-top:1px solid var(--border);text-align:left}}
     .ms-rating{{text-align:center;padding:28px;background:rgba(43,127,232,.07);border-radius:12px;margin:32px 0;border:1px solid var(--border)}}
@@ -469,11 +504,13 @@ def build_html(data, keyword, slug, cluster, url):
         <h3>Example 1</h3>
         <div class="problem">Problem: {data.get('example1_problem','')}</div>
         <div class="solution">{ex1_sol}</div>
+        {screenshot1}
       </div>
       <div class="ms-example">
         <h3>Example 2</h3>
         <div class="problem">Problem: {data.get('example2_problem','')}</div>
         <div class="solution">{ex2_sol}</div>
+        {screenshot2}
       </div>
     </div>
 
