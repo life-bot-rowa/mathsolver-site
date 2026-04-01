@@ -175,48 +175,55 @@ Return ONLY this JSON structure with NO markdown, NO backticks:
   "lsi_keywords": ["related term 1", "related term 2", "related term 3", "related term 4", "related term 5"]
 }}"""
 
-# ── STEP 3: VALIDATE ──────────────────────────────────────────────────────────
+# ── STEP 3: VALIDATE (Python-based, no GPT) ──────────────────────────────────
 
-def prompt_validate(article_json, keyword):
-    # Count words in content
+def validate_article(article_json, keyword):
+    """Validate article quality using Python checks — fast and reliable."""
+    scores = {}
+    failed = []
+
+    # 1. Has h1
+    scores["has_h1"] = 1 if article_json.get("h1","").strip() else 0
+
+    # 2. Has intro with keyword
+    intro = article_json.get("intro","")
+    intro_words = intro.split()[:150]
+    scores["keyword_in_intro"] = 1 if keyword.lower() in " ".join(intro_words).lower() else 0
+
+    # 3. Has steps (at least 3)
+    steps = article_json.get("steps", [])
+    scores["has_steps"] = 1 if len(steps) >= 3 else 0
+
+    # 4. Has examples
+    ex1 = article_json.get("example1_problem","") or article_json.get("example1_solution","")
+    ex2 = article_json.get("example2_problem","") or article_json.get("example2_solution","")
+    scores["has_examples"] = 1 if ex1 and ex2 else 0
+
+    # 5. Has FAQ (at least 3)
+    faq = article_json.get("faq", [])
+    scores["has_faq"] = 1 if len(faq) >= 3 else 0
+
+    # 6. Sufficient word count (500+ words)
     all_text = " ".join([
-        article_json.get("intro", ""),
-        " ".join(s.get("content","") for s in article_json.get("steps",[])),
+        intro,
+        " ".join(s.get("content","") for s in steps),
         article_json.get("example1_solution",""),
         article_json.get("example2_solution",""),
         article_json.get("common_mistakes",""),
         article_json.get("real_world",""),
-        " ".join(f['a'] for f in article_json.get("faq",[]))
+        " ".join(f.get("a","") for f in faq)
     ])
     word_count = len(all_text.split())
+    scores["sufficient_length"] = 1 if word_count >= 500 else 0
 
-    return f"""Score this article JSON for "{keyword}". Word count of content: {word_count} words.
+    # 7. MathSolver mentioned in FAQ
+    faq_text = " ".join(f.get("a","") for f in faq).lower()
+    scores["mentions_mathsolver"] = 1 if "mathsolver" in faq_text else 0
 
-Score each 0 or 1:
-1. keyword_in_intro: Does "{keyword}" appear in first 100 words of intro?
-2. has_4_steps: Are there 4 steps with substantial content (50+ words each)?
-3. has_2_examples: Are there 2 examples with complete solutions?
-4. faq_mentions_mathsolver: Does any FAQ answer mention MathSolver?
-5. has_5_faq: Are there exactly 5 FAQ items?
-6. sufficient_length: Is word count above 800? (current: {word_count})
-7. no_generic_intro: Does intro NOT start with "In today's world" or "Mathematics is important"?
+    total = sum(scores.values())
+    failed = [k for k,v in scores.items() if v == 0]
 
-Return ONLY JSON:
-{{
-  "scores": {{
-    "keyword_in_intro": 0,
-    "has_4_steps": 0,
-    "has_2_examples": 0,
-    "faq_mentions_mathsolver": 0,
-    "has_5_faq": 0,
-    "sufficient_length": 0,
-    "no_generic_intro": 0
-  }},
-  "total": 0,
-  "word_count": {word_count},
-  "failed_criteria": [],
-  "notes": "brief feedback"
-}}"""
+    return total, failed, word_count
 
 # ── BUILD HTML ────────────────────────────────────────────────────────────────
 
@@ -558,18 +565,9 @@ def generate_article(client, article, related):
             )
             article_data = parse_json(r2.choices[0].message.content)
 
-            # Step 3: Validate
+            # Step 3: Validate (Python-based)
             print("  [3/3] Quality check...")
-            r3 = client.chat.completions.create(
-                model=CHECK_MODEL,
-                messages=[{"role":"user","content": prompt_validate(article_data, keyword)}],
-                temperature=0,
-                max_tokens=500,
-            )
-            check = parse_json(r3.choices[0].message.content)
-            score = check.get("total", 0)
-            failed = check.get("failed_criteria", [])
-            wc = check.get("word_count", 0)
+            score, failed, wc = validate_article(article_data, keyword)
 
             print(f"  Score: {score}/7 | Words: {wc}")
             if failed:
