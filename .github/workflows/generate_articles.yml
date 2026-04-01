@@ -8,7 +8,7 @@ on:
       articles_per_run:
         description: 'How many articles to generate'
         required: false
-        default: '3'
+        default: '5'
 
 jobs:
   generate:
@@ -30,8 +30,23 @@ jobs:
       - name: Generate articles
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          ARTICLES_PER_RUN: ${{ github.event.inputs.articles_per_run || '3' }}
+          ARTICLES_PER_RUN: ${{ github.event.inputs.articles_per_run || '5' }}
         run: python generate_articles.py
+
+      - name: Build report
+        run: python send_report.py
+
+      - name: Send email report
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.GMAIL_USER }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: "MathSolver — Daily Article Report ${{ github.run_number }}"
+          to: 6205251@gmail.com
+          from: MathSolver Bot
+          body: file://daily_report.txt
 
       - name: Commit and push new articles
         env:
