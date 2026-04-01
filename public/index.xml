@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Math Solver</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content in Home on Math Solver</description>
+    <generator>Hugo</generator>
+    <language>en-US</language>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Access</title>
+      <link>http://localhost:1313/access/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/access/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Price</title>
+      <link>http://localhost:1313/price/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/price/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Privacy Notice</title>
+      <link>http://localhost:1313/privacy-policy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/privacy-policy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Refund Policy</title>
+      <link>http://localhost:1313/refund-policy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/refund-policy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Terms of Service</title>
+      <link>http://localhost:1313/terms-of-service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/terms-of-service/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

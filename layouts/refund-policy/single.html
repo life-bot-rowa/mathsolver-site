@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refund Policy &mdash; MathSolver</title>
+  <meta name="description" content="20-day money-back guarantee.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #2B7FE8; --blue-dark: #1a5fc4; --yellow: #FFB800;
+      --dark: #060D1F; --dark-2: #0D1B35; --dark-3: #112248;
+      --white: #ffffff; --gray-text: #8a97b0; --text: #d4dff5;
+      --radius: 16px; --radius-lg: 24px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    h1,h2,h3,h4 { font-family: 'Bricolage Grotesque', sans-serif; line-height: 1.15; }
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 40px; height: 72px; display: flex; align-items: center; justify-content: space-between; background: rgba(6,13,31,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(43,127,232,0.12); }
+    .logo { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .logo-icon { width: 34px; height: 34px; background: linear-gradient(135deg, var(--blue), var(--yellow)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a { color: var(--gray-text); text-decoration: none; font-size: 0.875rem; padding: 8px 14px; border-radius: 8px; transition: color 0.2s, background 0.2s; white-space: nowrap; }
+    nav a:hover, nav a.active { color: var(--white); background: rgba(255,255,255,0.06); }
+    .btn-contact { margin-left: 12px; background: var(--yellow) !important; color: var(--dark) !important; font-weight: 600 !important; padding: 9px 20px !important; border-radius: 50px !important; transition: transform 0.2s !important; }
+    .btn-contact:hover { transform: translateY(-1px) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+    .page-hero { padding: 140px 40px 80px; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(43,127,232,0.18) 0%, transparent 70%), var(--dark); border-bottom: 1px solid rgba(43,127,232,0.1); }
+    .section-label { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; }
+    .page-hero h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 800; color: var(--white); letter-spacing: -0.02em; margin-bottom: 16px; }
+    .page-hero p { font-size: 1.05rem; color: var(--gray-text); font-weight: 300; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 40px; }
+    .content-wrap { padding: 80px 0; }
+    .content-body h2 { font-size: 1.5rem; color: var(--white); margin: 40px 0 14px; padding-bottom: 10px; border-bottom: 1px solid rgba(43,127,232,0.15); }
+    .content-body p { font-size: 0.95rem; color: var(--text); line-height: 1.8; margin-bottom: 14px; font-weight: 300; }
+    .content-body strong { color: var(--white); font-weight: 600; }
+    .content-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .content-body li { font-size: 0.95rem; color: var(--text); line-height: 1.8; margin-bottom: 6px; font-weight: 300; }
+    .content-body a { color: var(--blue); text-decoration: none; }
+    .content-body a:hover { text-decoration: underline; }
+    .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin: 48px 0; }
+    .price-card { background: var(--dark-2); border: 1px solid rgba(43,127,232,0.15); border-radius: var(--radius-lg); padding: 36px 28px; text-align: center; transition: border-color 0.2s, transform 0.2s; position: relative; }
+    .price-card:hover { border-color: var(--blue); transform: translateY(-4px); }
+    .price-card.featured { border-color: var(--blue); background: linear-gradient(135deg, rgba(43,127,232,0.12), var(--dark-2)); }
+    .price-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--yellow); color: var(--dark); font-size: 0.7rem; font-weight: 700; padding: 4px 14px; border-radius: 50px; white-space: nowrap; }
+    .price-period { font-size: 0.8rem; color: var(--gray-text); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+    .price-amount { font-family: 'Bricolage Grotesque', sans-serif; font-size: 3rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 6px; }
+    .price-amount span { font-size: 1.2rem; color: var(--gray-text); font-weight: 400; }
+    .price-note { font-size: 0.8rem; color: var(--yellow); margin-bottom: 28px; min-height: 18px; }
+    .price-btn { display: inline-block; background: var(--blue); color: var(--white); font-weight: 600; font-size: 0.9rem; padding: 12px 28px; border-radius: 50px; text-decoration: none; transition: background 0.2s; }
+    .price-btn:hover { background: var(--blue-dark); }
+    .price-card.featured .price-btn { background: var(--yellow); color: var(--dark); }
+    footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 48px 0 32px; }
+    .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 28px; max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+    .footer-logo { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--white); text-decoration: none; }
+    .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
+    .footer-nav a { color: var(--gray-text); text-decoration: none; font-size: 0.875rem; padding: 6px 14px; border-radius: 8px; transition: color 0.2s; }
+    .footer-nav a:hover { color: var(--white); }
+    .footer-copy { text-align: center; color: rgba(255,255,255,0.25); font-size: 0.8rem; line-height: 1.8; }
+    @media (max-width: 900px) {
+      header { padding: 0 20px; }
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; position: fixed; top: 72px; left: 0; right: 0; background: rgba(6,13,31,0.98); padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); gap: 4px; }
+      nav.open a { padding: 12px 16px; font-size: 1rem; }
+      nav.open .btn-contact { margin-left: 0; }
+      .hamburger { display: flex; }
+      .container { padding: 0 20px; }
+      .page-hero { padding: 120px 20px 60px; }
+      .price-grid { grid-template-columns: 1fr; max-width: 360px; margin: 48px auto; }
+    }
+</style>
+</head>
+<body>
+
+  <header>
+    <a href="/" class="logo"><span class="logo-icon">&#8721;</span>MathSolver</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <nav id="main-nav"><a href="/">Home</a>
+      <a href="/privacy-policy/">Privacy notice</a>
+      <a href="/refund-policy/" class="active">Refund policy</a>
+      <a href="/price/">Price</a>
+      <a href="/terms-of-service/">Terms of Service</a>
+      <a href="/#contactus" class="btn-contact">Contact US</a></nav>
+  </header>
+
+  <div class="page-hero">
+    <span class="section-label">Legal</span>
+    <h1>Refund Policy</h1>
+    <p>We stand behind our product with a 20-day money-back guarantee.</p>
+  </div>
+  <div class="content-wrap"><div class="container"><div class="content-body">
+    <p>Your satisfaction is our priority. We offer a <strong>20-day money-back guarantee</strong> on all digital products purchased through our website. If for any reason you are not completely satisfied with your digital purchase, you may request a full refund within 20 days of the purchase date &mdash; no questions asked.</p>
+    <h2>How to Request a Refund</h2>
+    <ol>
+      <li><strong>Contact Us:</strong> Initiate your refund by contacting our customer support team at <a href="mailto:support@mathsolver.cloud">support@mathsolver.cloud</a>. Please include your order number and, optionally, the reason for requesting a refund, though you are not required to provide one.</li>
+      <li><strong>Processing Your Refund:</strong> Once we receive your refund request, we will process it in 7 days. The refund will be credited back to the original method of payment. Please note that the timing of the refund appearing on your statement can vary based on the policies of the payment provider.</li>
+    </ol>
+    <p>We are committed to ensuring that our customers have a positive experience. If you have any questions or require assistance, please contact our support team at <a href="mailto:support@mathsolver.cloud">support@mathsolver.cloud</a></p>
+  </div></div></div>
+
+
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="footer-logo">MathSolver</a>
+      <nav class="footer-nav">
+        <a href="/">Home</a>
+        <a href="/privacy-policy/">Privacy notice</a>
+        <a href="/refund-policy/">Refund policy</a>
+        <a href="/price/">Price</a>
+        <a href="/terms-of-service/">Terms of Service</a>
+      </nav>
+      <div class="footer-copy">Copyright &copy; 2024 &ldquo;MARGOAPPS&rdquo; LLC<br>Armenia, Yervand Kochar Street, 8 &mdash; Yerevan, 0070</div>
+    </div>
+  </footer>
+
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<script src="https://ai-math-solver-3a62b.web.app/checkout.js"></script>
+
+
+<script>
+  const h = document.getElementById('hamburger');
+  const n = document.getElementById('main-nav');
+  if(h) h.addEventListener('click', () => n.classList.toggle('open'));
+  document.addEventListener('click', e => { if(h && !h.contains(e.target) && !n.contains(e.target)) n.classList.remove('open'); });
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.15});
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+
+<!-- insert zone -->
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<script src="https://ai-math-solver-3a62b.web.app/checkout.js"></script>
+<!-- end of insert zone -->
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Notice &mdash; MathSolver</title>
+  <meta name="description" content="MathSolver privacy policy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #2B7FE8; --blue-dark: #1a5fc4; --yellow: #FFB800;
+      --dark: #060D1F; --dark-2: #0D1B35; --dark-3: #112248;
+      --white: #ffffff; --gray-text: #8a97b0; --text: #d4dff5;
+      --radius: 16px; --radius-lg: 24px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    h1,h2,h3,h4 { font-family: 'Bricolage Grotesque', sans-serif; line-height: 1.15; }
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 40px; height: 72px; display: flex; align-items: center; justify-content: space-between; background: rgba(6,13,31,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(43,127,232,0.12); }
+    .logo { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .logo-icon { width: 34px; height: 34px; background: linear-gradient(135deg, var(--blue), var(--yellow)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a { color: var(--gray-text); text-decoration: none; font-size: 0.875rem; padding: 8px 14px; border-radius: 8px; transition: color 0.2s, background 0.2s; white-space: nowrap; }
+    nav a:hover, nav a.active { color: var(--white); background: rgba(255,255,255,0.06); }
+    .btn-contact { margin-left: 12px; background: var(--yellow) !important; color: var(--dark) !important; font-weight: 600 !important; padding: 9px 20px !important; border-radius: 50px !important; transition: transform 0.2s !important; }
+    .btn-contact:hover { transform: translateY(-1px) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+    .page-hero { padding: 140px 40px 80px; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(43,127,232,0.18) 0%, transparent 70%), var(--dark); border-bottom: 1px solid rgba(43,127,232,0.1); }
+    .section-label { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; }
+    .page-hero h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 800; color: var(--white); letter-spacing: -0.02em; margin-bottom: 16px; }
+    .page-hero p { font-size: 1.05rem; color: var(--gray-text); font-weight: 300; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 40px; }
+    .content-wrap { padding: 80px 0; }
+    .content-body h2 { font-size: 1.5rem; color: var(--white); margin: 40px 0 14px; padding-bottom: 10px; border-bottom: 1px solid rgba(43,127,232,0.15); }
+    .content-body p { font-size: 0.95rem; color: var(--text); line-height: 1.8; margin-bottom: 14px; font-weight: 300; }
+    .content-body strong { color: var(--white); font-weight: 600; }
+    .content-body ol { padding-left: 20px; margin-bottom: 14px; }
+    .content-body li { font-size: 0.95rem; color: var(--text); line-height: 1.8; margin-bottom: 6px; font-weight: 300; }
+    .content-body a { color: var(--blue); text-decoration: none; }
+    .content-body a:hover { text-decoration: underline; }
+    .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin: 48px 0; }
+    .price-card { background: var(--dark-2); border: 1px solid rgba(43,127,232,0.15); border-radius: var(--radius-lg); padding: 36px 28px; text-align: center; transition: border-color 0.2s, transform 0.2s; position: relative; }
+    .price-card:hover { border-color: var(--blue); transform: translateY(-4px); }
+    .price-card.featured { border-color: var(--blue); background: linear-gradient(135deg, rgba(43,127,232,0.12), var(--dark-2)); }
+    .price-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--yellow); color: var(--dark); font-size: 0.7rem; font-weight: 700; padding: 4px 14px; border-radius: 50px; white-space: nowrap; }
+    .price-period { font-size: 0.8rem; color: var(--gray-text); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+    .price-amount { font-family: 'Bricolage Grotesque', sans-serif; font-size: 3rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 6px; }
+    .price-amount span { font-size: 1.2rem; color: var(--gray-text); font-weight: 400; }
+    .price-note { font-size: 0.8rem; color: var(--yellow); margin-bottom: 28px; min-height: 18px; }
+    .price-btn { display: inline-block; background: var(--blue); color: var(--white); font-weight: 600; font-size: 0.9rem; padding: 12px 28px; border-radius: 50px; text-decoration: none; transition: background 0.2s; }
+    .price-btn:hover { background: var(--blue-dark); }
+    .price-card.featured .price-btn { background: var(--yellow); color: var(--dark); }
+    footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 48px 0 32px; }
+    .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 28px; max-width: 1160px; margin: 0 auto; padding: 0 40px; }
+    .footer-logo { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--white); text-decoration: none; }
+    .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
+    .footer-nav a { color: var(--gray-text); text-decoration: none; font-size: 0.875rem; padding: 6px 14px; border-radius: 8px; transition: color 0.2s; }
+    .footer-nav a:hover { color: var(--white); }
+    .footer-copy { text-align: center; color: rgba(255,255,255,0.25); font-size: 0.8rem; line-height: 1.8; }
+    @media (max-width: 900px) {
+      header { padding: 0 20px; }
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; position: fixed; top: 72px; left: 0; right: 0; background: rgba(6,13,31,0.98); padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.08); gap: 4px; }
+      nav.open a { padding: 12px 16px; font-size: 1rem; }
+      nav.open .btn-contact { margin-left: 0; }
+      .hamburger { display: flex; }
+      .container { padding: 0 20px; }
+      .page-hero { padding: 120px 20px 60px; }
+      .price-grid { grid-template-columns: 1fr; max-width: 360px; margin: 48px auto; }
+    }
+</style>
+</head>
+<body>
+
+  <header>
+    <a href="/" class="logo"><span class="logo-icon">&#8721;</span>MathSolver</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <nav id="main-nav"><a href="/">Home</a>
+      <a href="/privacy-policy/" class="active">Privacy notice</a>
+      <a href="/refund-policy/">Refund policy</a>
+      <a href="/price/">Price</a>
+      <a href="/terms-of-service/">Terms of Service</a>
+      <a href="/#contactus" class="btn-contact">Contact US</a></nav>
+  </header>
+
+  <div class="page-hero">
+    <span class="section-label">Legal</span>
+    <h1>Privacy Notice</h1>
+    <p>How we collect, use, and protect your personal data.</p>
+  </div>
+  <div class="content-wrap"><div class="container"><div class="content-body">
+    <h2>1. General Provisions</h2>
+    <p>This personal data processing policy determines the procedure for processing personal data and measures to ensure the security of personal data undertaken by &ldquo;MARGOAPPS&rdquo; LLC (hereinafter referred to as the Operator).</p>
+    <p>1.1. The Operator sets as its primary goal and condition for its activities the observance of the rights and freedoms of a person and citizen when processing their personal data, including the protection of the rights to privacy, personal and family secrets.</p>
+    <p>1.2. This policy applies to all information that the Operator may receive about visitors to the website mathsolver.cloud</p>
+    <h2>2. Key Concepts Used in the Policy</h2>
+    <p>2.1. Automated processing of personal data &mdash; processing of personal data using computer technology.</p>
+    <p>2.2. Blocking of personal data &mdash; temporary cessation of processing of personal data.</p>
+    <p>2.3. Website &mdash; a set of graphic and informational materials ensuring their availability on the internet at the network address mathsolver.cloud</p>
+    <p>2.4. Information system of personal data &mdash; a set of personal data contained in databases and information technologies and technical means ensuring their processing.</p>
+    <p>2.5. Anonymization of personal data &mdash; actions resulting in the impossibility of determining the ownership of personal data to a specific User.</p>
+    <p>2.6. Processing of personal data &mdash; any action or a set of actions performed with personal data, including collection, recording, systematization, accumulation, storage, clarification, extraction, use, transfer, anonymization, blocking, deletion, destruction of personal data.</p>
+    <p>2.7. Operator &mdash; a legal entity that independently or jointly with other persons organizes and/or performs the processing of personal data.</p>
+    <p>2.8. Personal data &mdash; any information relating directly or indirectly to a specific or identifiable User of the website mathsolver.cloud</p>
+    <p>2.9. Personal data allowed for distribution &mdash; personal data to which an unlimited number of persons have been granted access by the subject of personal data.</p>
+    <p>2.10. User &mdash; any visitor to the website mathsolver.cloud</p>
+    <p>2.11. Provision of personal data &mdash; actions aimed at disclosing personal data to a specific person or a specific circle of persons.</p>
+    <p>2.12. Distribution of personal data &mdash; any actions aimed at disclosing personal data to an indefinite circle of persons.</p>
+    <p>2.13. Cross-border transfer of personal data &mdash; transfer of personal data to the territory of a foreign state.</p>
+    <p>2.14. Destruction of personal data &mdash; any actions resulting in the irreversible destruction of personal data.</p>
+    <h2>3. Basic Rights and Obligations of the Operator</h2>
+    <p>3.1. The Operator has the right to receive reliable information from the subject of personal data; continue processing personal data without consent if there are grounds specified in the Personal Data Law; independently determine necessary measures to ensure fulfillment of obligations.</p>
+    <p>3.2. The Operator is obliged to provide information regarding the processing of personal data upon request; organize processing in accordance with current legislation; respond to inquiries from subjects of personal data; take measures to protect personal data from unlawful access; fulfill other obligations provided for by the Personal Data Law.</p>
+    <h2>4. Basic Rights and Obligations of Personal Data Subjects</h2>
+    <p>4.1. Personal data subjects have the right to receive information regarding processing of their personal data; demand clarification, blocking or destruction of inaccurate data; withdraw consent to processing; appeal unlawful actions of the Operator in court.</p>
+    <p>4.2. Personal data subjects are obliged to provide the Operator with reliable data about themselves and inform the Operator about any changes.</p>
+    <p>4.3. Persons who provided false information bear responsibility in accordance with current legislation.</p>
+    <h2>5. Principles of Personal Data Processing</h2>
+    <p>5.1. Processing is carried out on a lawful and fair basis.</p>
+    <p>5.2. Processing is limited to achieving specific, pre-defined, and lawful goals.</p>
+    <p>5.3. It is not allowed to combine databases containing personal data for incompatible purposes.</p>
+    <p>5.4. Only personal data that meet the purposes of processing are subject to processing.</p>
+    <p>5.5. The content and volume of processed data correspond to the stated purposes.</p>
+    <p>5.6. Accuracy of personal data is ensured during processing.</p>
+    <p>5.7. Personal data is stored no longer than required by the purposes of processing.</p>
+    <h2>6. Purposes of Personal Data Processing</h2>
+    <p>The purpose of processing &mdash; informing the User by sending emails. Personal data: last name, first name, email address, phone numbers, city. Types of personal data processing: collection, recording, systematization, accumulation, storage, destruction, and anonymization of personal data.</p>
+    <h2>7. Conditions for Personal Data Processing</h2>
+    <p>7.1. Processing is carried out with the consent of the subject of personal data.</p>
+    <p>7.2&ndash;7.7. Processing may also be carried out to achieve goals provided for by international treaty or law, for the administration of justice, for the execution of a contract, to exercise the rights and legitimate interests of the operator, for publicly available personal data, or for personal data subject to mandatory disclosure in accordance with federal law.</p>
+    <h2>8. Procedure for Collecting, Storing, Transferring, and Other Types of Personal Data Processing</h2>
+    <p>8.1. The Operator ensures the safety of personal data and takes all possible measures to exclude access by unauthorized persons.</p>
+    <p>8.2. The User&rsquo;s personal data will never be transferred to third parties, except in cases related to the execution of current legislation or with the User&rsquo;s consent.</p>
+    <p>8.3. In case of inaccuracies, the User can update their personal data by sending a notification to <a href="mailto:support@mathsolver.cloud">support@mathsolver.cloud</a> marked &ldquo;Updating personal data.&rdquo;</p>
+    <p>8.4. The User can withdraw consent to processing at any time by sending a notification to <a href="mailto:support@mathsolver.cloud">support@mathsolver.cloud</a> marked &ldquo;Withdrawal of consent to personal data processing.&rdquo;</p>
+    <p>8.5. All information collected by third-party services is stored and processed by those persons in accordance with their own User Agreement and Privacy Policy. The Operator is not responsible for the actions of third parties.</p>
+    <p>8.6. Prohibitions established by the subject of personal data on transfer of personal data do not apply in cases of processing in state, public, and other public interests defined by law.</p>
+  </div></div></div>
+
+
+  <footer>
+    <div class="footer-inner">
+      <a href="/" class="footer-logo">MathSolver</a>
+      <nav class="footer-nav">
+        <a href="/">Home</a>
+        <a href="/privacy-policy/">Privacy notice</a>
+        <a href="/refund-policy/">Refund policy</a>
+        <a href="/price/">Price</a>
+        <a href="/terms-of-service/">Terms of Service</a>
+      </nav>
+      <div class="footer-copy">Copyright &copy; 2024 &ldquo;MARGOAPPS&rdquo; LLC<br>Armenia, Yervand Kochar Street, 8 &mdash; Yerevan, 0070</div>
+    </div>
+  </footer>
+
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<script src="https://ai-math-solver-3a62b.web.app/checkout.js"></script>
+
+
+<script>
+  const h = document.getElementById('hamburger');
+  const n = document.getElementById('main-nav');
+  if(h) h.addEventListener('click', () => n.classList.toggle('open'));
+  document.addEventListener('click', e => { if(h && !h.contains(e.target) && !n.contains(e.target)) n.classList.remove('open'); });
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.15});
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+
+
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<script src="https://ai-math-solver-3a62b.web.app/checkout.js"></script>
+
+</body>
+</html>
