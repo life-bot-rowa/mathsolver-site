@@ -181,7 +181,7 @@ Return ONLY this JSON structure with NO markdown, NO backticks:
   "meta_description": "under 160 chars, contains keyword, mentions MathSolver AI",
   "h1": "the main article headline containing '{keyword}'",
   "intro": "the full introduction text with paragraphs separated by \\n\\n (double newline). Keep all 3 paragraphs separated.",
-  "formula": "the key formula or definition from the formula section",
+  "formula": "ONE SHORT LINE only — the main formula, e.g. Y = a + bX or Mean = sum / n. Max 50 chars. No explanations.",
   "formula_label": "short label like 'Standard Formula'",
   "steps": [
     {{"title": "step title", "content": "the FULL step explanation — do not shorten, include all sentences"}},
