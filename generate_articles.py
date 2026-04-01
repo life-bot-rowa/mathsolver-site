@@ -98,12 +98,15 @@ SCREENSHOT_PREFIX = {
     "Word Problems & Homework": "WP",
 }
 
-def get_screenshot_html(cluster, example_num):
-    prefix = SCREENSHOT_PREFIX.get(cluster, "")
-    if not prefix:
-        return ""
-    img_id = f"{prefix}-00{example_num}"
-    img_path = f"/mathsolver_solution_images/{img_id}.png"
+def get_screenshot_html(cluster, example_num, screenshot_filename=None):
+    if screenshot_filename:
+        img_path = f"/mathsolver_solution_images/{screenshot_filename}"
+    else:
+        prefix = SCREENSHOT_PREFIX.get(cluster, "")
+        if not prefix:
+            return ""
+        img_id = f"{prefix}-00{example_num}"
+        img_path = f"/mathsolver_solution_images/{img_id}.png"
     return f'''
   <div class="ms-screenshot-wrap">
     <img src="{img_path}" alt="MathSolver solving example {example_num} — {cluster}" 
@@ -111,6 +114,41 @@ def get_screenshot_html(cluster, example_num):
          onerror="this.parentElement.style.display='none'">
     <p class="ms-screenshot-caption">MathSolver Chrome extension solving this problem step-by-step</p>
   </div>'''
+
+# ── LOAD EXAMPLES FROM XLSX ──────────────────────────────────────────────────
+
+EXAMPLES_FILE = Path("article_examples.xlsx")
+
+def load_article_examples():
+    """Load pre-generated examples from article_examples.xlsx"""
+    if not EXAMPLES_FILE.exists():
+        return {}
+    
+    wb = openpyxl.load_workbook(EXAMPLES_FILE)
+    ws = wb.active
+    examples = {}
+    
+    for row in ws.iter_rows(min_row=2, values_only=True):
+        if not row[0]:
+            continue
+        screenshot_id = row[0]  # e.g. STAT-A001
+        filename      = row[1]  # e.g. STAT-A001.png
+        slug          = row[2]  # e.g. mystatlab-homework-answers-statistics
+        example_num   = row[5]  # 1 or 2
+        problem       = row[6]  # the problem text
+        
+        if slug not in examples:
+            examples[slug] = {}
+        examples[slug][example_num] = {
+            "screenshot_id": screenshot_id,
+            "filename": filename,
+            "problem": problem
+        }
+    
+    return examples
+
+# Load examples once at startup
+ARTICLE_EXAMPLES = load_article_examples()
 
 # ── STEP 1: WRITE LONG ARTICLE (plain text) ───────────────────────────────────
 
@@ -310,8 +348,12 @@ def build_html(data, keyword, slug, cluster, url):
         return sol.replace("\n", "<br>")
     ex1_sol = format_solution(data.get("example1_solution",""))
     ex2_sol = format_solution(data.get("example2_solution",""))
-    screenshot1 = get_screenshot_html(cluster, 1)
-    screenshot2 = get_screenshot_html(cluster, 2)
+    # Get screenshot filenames from article_examples.xlsx
+    art_examples = ARTICLE_EXAMPLES.get(slug, {})
+    sc1_file = art_examples.get(1, {}).get("filename")
+    sc2_file = art_examples.get(2, {}).get("filename")
+    screenshot1 = get_screenshot_html(cluster, 1, sc1_file)
+    screenshot2 = get_screenshot_html(cluster, 2, sc2_file)
     mistakes_raw = data.get("common_mistakes","")
     mistakes = "</p><p>".join([p.strip() for p in re.split(r'\n\n+', mistakes_raw) if p.strip()]) if mistakes_raw else ""
     real_world_raw = data.get("real_world","")
@@ -593,9 +635,17 @@ def generate_article(client, article, related):
         try:
             # Step 1: Write long article
             print("  [1/3] Writing article with GPT-4o...")
+            # Get pre-defined examples for this article
+            art_examples = ARTICLE_EXAMPLES.get(slug, {})
+            ex1_data = art_examples.get(1, {})
+            ex2_data = art_examples.get(2, {})
+            ex1_problem = ex1_data.get("problem")
+            ex2_problem = ex2_data.get("problem")
+            if ex1_problem:
+                print(f"  → Using pre-defined examples: {ex1_data.get('screenshot_id')} + {ex2_data.get('screenshot_id')}")
             r1 = client.chat.completions.create(
                 model=GEN_MODEL,
-                messages=[{"role":"user","content": prompt_write_article(keyword, title, cluster, related_links, f"{SITE_URL}{pillar}")}],
+                messages=[{"role":"user","content": prompt_write_article(keyword, title, cluster, related_links, f"{SITE_URL}{pillar}", ex1_problem, ex2_problem)}],
                 temperature=0.7,
                 max_tokens=6000,
             )
