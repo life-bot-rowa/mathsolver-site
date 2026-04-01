@@ -62,11 +62,16 @@ def make_slug(keyword):
 
 def parse_json(raw):
     raw = raw.strip()
+    # Remove markdown code blocks
     raw = re.sub(r'^```json\s*', '', raw, flags=re.MULTILINE)
     raw = re.sub(r'\s*```\s*$', '', raw, flags=re.MULTILINE)
-    # Fix invalid backslash escapes in JSON (e.g. LaTeX: \frac, \sqrt)
-    raw = re.sub(r'\\(?!["\\/bfnrtu])', r'\\\\', raw)
-    return json.loads(raw)
+    raw = raw.strip()
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        # Fix invalid backslash escapes (LaTeX: \frac, \sqrt etc)
+        raw = re.sub(r'(?<!\\)\\(?!["\\/bfnrtu])', r'\\\\', raw)
+        return json.loads(raw)
 
 def load_content_plan():
     wb = openpyxl.load_workbook(CONTENT_PLAN)
@@ -551,9 +556,7 @@ def generate_article(client, article, related):
                 temperature=0.2,
                 max_tokens=6000,
             )
-            raw2 = r2.choices[0].message.content
-    raw2 = raw2.replace('\', '\\')  # escape backslashes for JSON
-    article_data = parse_json(raw2)
+            article_data = parse_json(r2.choices[0].message.content)
 
             # Step 3: Validate
             print("  [3/3] Quality check...")
