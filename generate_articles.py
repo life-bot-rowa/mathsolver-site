@@ -35,7 +35,7 @@ SITE_URL = "https://mathsolver.cloud"
 
 CONTENT_PLAN     = Path("mathsolver_content_plan_FULL.xlsx")
 PROGRESS_FILE    = Path(".generation_progress.json")
-OUTPUT_DIR       = Path("static/blog")
+OUTPUT_DIR       = Path("content/blog")
 LAYOUTS_DIR      = Path("layouts/blog")
 NEEDS_REVIEW_DIR = Path("_needs_review")
 
@@ -218,6 +218,21 @@ def build_html(article_data, keyword, slug, cluster, url, related_articles):
     pillar_url  = PILLAR_MAP.get(cluster, "/")
     pillar_name = cluster + " Solver"
     pub_date    = datetime.now().strftime("%B %Y")
+
+    # Fallbacks for empty fields
+    year = datetime.now().year
+    if not article_data.get("h1"):
+        article_data["h1"] = keyword.title() + " — Step-by-Step Guide"
+    if not article_data.get("meta_title"):
+        article_data["meta_title"] = keyword.title() + f" Guide ({year})"
+    if not article_data.get("meta_description"):
+        article_data["meta_description"] = f"Learn how to solve {keyword} step by step. Free AI math solver — take a screenshot and get instant solutions."
+    if not article_data.get("intro"):
+        article_data["intro"] = f"Understanding {keyword} is easier than you think. This guide walks you through everything step by step, with worked examples and clear explanations."
+    if not article_data.get("formula"):
+        article_data["formula"] = "See step-by-step solution below"
+    if not article_data.get("formula_label"):
+        article_data["formula_label"] = "Key Concept"
 
     # Steps HTML
     steps_html = ""
