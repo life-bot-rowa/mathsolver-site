@@ -269,11 +269,25 @@ def build_html(data, keyword, slug, cluster, url):
         a = item.get('a','').replace('"',"'")
         faq_schema += f'{{"@type":"Question","name":"{q}","acceptedAnswer":{{"@type":"Answer","text":"{a}"}}}},'
 
-    ex1_sol = data.get("example1_solution","").replace("\n","<br>")
-    ex2_sol = data.get("example2_solution","").replace("\n","<br>")
-    mistakes = data.get("common_mistakes","")
-    real_world = data.get("real_world","")
-    intro_html = intro.replace("\n\n","</p><p>")
+    def format_solution(sol):
+        if not sol:
+            return ""
+        # Split on Step N: pattern
+        steps = re.split(r'(?=Step \d+:)', sol)
+        parts = [s.strip() for s in steps if s.strip()]
+        if len(parts) > 1:
+            return "".join(f'<div class="sol-step">{p}</div>' for p in parts)
+        return sol.replace("\n", "<br>")
+    ex1_sol = format_solution(data.get("example1_solution",""))
+    ex2_sol = format_solution(data.get("example2_solution",""))
+    mistakes_raw = data.get("common_mistakes","")
+    mistakes = "</p><p>".join([p.strip() for p in re.split(r'\n\n+', mistakes_raw) if p.strip()]) if mistakes_raw else ""
+    real_world_raw = data.get("real_world","")
+    real_world = "</p><p>".join([p.strip() for p in re.split(r'\n\n+', real_world_raw) if p.strip()]) if real_world_raw else ""
+    
+    # Split intro into paragraphs properly
+    intro_parts = [p.strip() for p in re.split(r'\n\n+', intro) if p.strip()]
+    intro_html = "</p><p>".join(intro_parts)
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -302,7 +316,7 @@ def build_html(data, keyword, slug, cluster, url):
     *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
     :root{{--blue:#2B7FE8;--blue-dark:#1a5fc4;--yellow:#FFB800;--dark:#060D1F;--dark-2:#0D1B35;--dark-3:#112248;--white:#fff;--gray:#8a97b0;--text:#d4dff5;--border:rgba(43,127,232,.15);--r:16px}}
     html{{scroll-behavior:smooth}}
-    body{{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);line-height:1.75;overflow-x:hidden}}
+    body{{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);line-height:1.75;overflow-x:hidden;text-align:left}}
     h1,h2,h3,h4{{font-family:'Bricolage Grotesque',sans-serif;line-height:1.2}}
     a{{color:var(--blue);text-decoration:none}}
     a:hover{{text-decoration:underline}}
@@ -327,8 +341,8 @@ def build_html(data, keyword, slug, cluster, url):
     .ms-toc ol{{margin:0;padding-left:20px}}
     .ms-toc li{{margin-bottom:6px}}
     .ms-toc a{{color:var(--blue);font-size:14px;font-weight:500}}
-    .ms-intro{{font-size:17px;line-height:1.8;margin-bottom:32px}}
-    .ms-intro p{{margin-bottom:16px}}
+    .ms-intro{{font-size:17px;line-height:1.8;margin-bottom:32px;text-align:left}}
+    .ms-intro p{{margin-bottom:16px;text-align:left}}
     .ms-formula{{background:var(--dark-3);border-radius:12px;padding:28px 32px;margin:28px 0;text-align:center;border:1px solid var(--border)}}
     .ms-formula .formula{{font-size:clamp(1.1rem,2vw,1.6rem);color:#fff;font-family:'Courier New',monospace;font-weight:700}}
     .ms-formula .label{{font-size:12px;color:var(--yellow);text-transform:uppercase;letter-spacing:1px;margin-top:10px}}
@@ -336,8 +350,8 @@ def build_html(data, keyword, slug, cluster, url):
     .ms-steps h2{{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:20px}}
     .ms-step{{display:flex;gap:20px;margin-bottom:20px;padding:24px;background:var(--dark-2);border:1px solid var(--border);border-radius:12px}}
     .ms-step-num{{width:44px;height:44px;min-width:44px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;font-family:'Bricolage Grotesque',sans-serif}}
-    .ms-step-body h3{{font-size:16px;font-weight:700;color:#fff;margin:0 0 8px}}
-    .ms-step-body p{{font-size:15px;line-height:1.7;color:var(--gray);margin:0}}
+    .ms-step-body h3{{font-size:16px;font-weight:700;color:#fff;margin:0 0 8px;text-align:left}}
+    .ms-step-body p{{font-size:15px;line-height:1.7;color:var(--gray);margin:0;text-align:left}}
     .ms-cta{{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);border-radius:16px;padding:40px;text-align:center;margin:36px 0;color:#fff}}
     .ms-cta h3{{font-size:1.4rem;font-weight:800;margin:0 0 10px;color:#fff}}
     .ms-cta p{{opacity:.85;margin:0 0 20px;font-size:16px}}
@@ -349,19 +363,21 @@ def build_html(data, keyword, slug, cluster, url):
     .ms-example h3{{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:12px}}
     .ms-example .problem{{font-size:1rem;font-weight:600;color:var(--yellow);margin-bottom:14px}}
     .ms-example .solution{{font-size:.95rem;line-height:1.85;color:var(--text)}}
+    .sol-step{{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:4px}}
+    .sol-step:last-child{{border-bottom:none}}
     .ms-extra{{margin:32px 0}}
     .ms-extra h2{{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:16px}}
-    .ms-extra p{{font-size:15px;line-height:1.8;color:var(--gray);margin-bottom:12px}}
+    .ms-extra p{{font-size:15px;line-height:1.8;color:var(--gray);margin-bottom:12px;text-align:left}}
     .ms-faq{{margin:36px 0}}
     .ms-faq h2{{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:20px}}
     .ms-faq-item{{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}}
     .ms-faq-item summary{{background:var(--dark-2);padding:18px 22px;font-weight:700;font-size:15px;color:#fff;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px}}
     .ms-faq-item summary::-webkit-details-marker{{display:none}}
-    .ms-faq-a{{padding:18px 22px;font-size:15px;line-height:1.7;color:var(--gray);border-top:1px solid var(--border)}}
+    .ms-faq-a{{padding:18px 22px;font-size:15px;line-height:1.7;color:var(--gray);border-top:1px solid var(--border);text-align:left}}
     .ms-rating{{text-align:center;padding:28px;background:rgba(43,127,232,.07);border-radius:12px;margin:32px 0;border:1px solid var(--border)}}
     .ms-stars{{font-size:28px}}
     .ms-related{{background:var(--dark-2);border-radius:12px;padding:28px;margin:32px 0;border:1px solid var(--border)}}
-    .ms-related h3{{font-size:16px;font-weight:700;color:#fff;margin:0 0 16px}}
+    .ms-related h3{{font-size:16px;font-weight:700;color:#fff;margin:0 0 16px;text-align:left}}
     .ms-related ul{{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}}
     .ms-related a{{display:block;padding:10px 14px;background:var(--dark-3);border:1px solid var(--border);border-radius:8px;font-size:14px;font-weight:500;color:var(--blue);transition:.2s}}
     .ms-related a:hover{{border-color:var(--blue);text-decoration:none}}
@@ -391,11 +407,7 @@ def build_html(data, keyword, slug, cluster, url):
     <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
     <nav id="nav">
       <a href="/">Home</a>
-      <a href="/privacy-policy/">Privacy notice</a>
-      <a href="/refund-policy/">Refund policy</a>
-      <a href="/price/">Price</a>
-      <a href="/terms-of-service/">Terms of Service</a>
-      <a href="/#contactus" class="btn-nav">Contact US</a>
+      <a href="{CWS_URL}" target="_blank" rel="noopener" class="btn-nav">⚡ Add to Chrome — Free</a>
     </nav>
   </header>
 
@@ -515,8 +527,7 @@ def build_html(data, keyword, slug, cluster, url):
     </div>
   </footer>
 
-  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
-  <script src="https://ai-math-solver-3a62b.web.app/checkout.js"></script>
+  <!-- Paddle not needed on blog pages -->
   <script>
     const h=document.getElementById('ham'),n=document.getElementById('nav');
     if(h)h.addEventListener('click',()=>n.classList.toggle('open'));
