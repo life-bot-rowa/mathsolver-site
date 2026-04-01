@@ -1,15 +1,10 @@
 #!/usr/bin/env python3
 """
-MathSolver Article Generator
-Generates SEO articles from keyword list using GPT-4o
-with self-refinement quality check loop.
-
-Usage:
-  python3 generate_articles.py --count 5
-  python3 generate_articles.py --count 10 --phase 1
+MathSolver.cloud — Article Generator v4
+Two-step generation: long text first, then structure into JSON
 """
 
-import os, sys, json, time, re, argparse, subprocess
+import os, json, re, time, subprocess
 from pathlib import Path
 from datetime import datetime
 import openpyxl
@@ -17,29 +12,24 @@ import openpyxl
 try:
     from openai import OpenAI
 except ImportError:
-    print("Installing openai...")
-    subprocess.run([sys.executable, "-m", "pip", "install", "openai", "openpyxl"], check=True)
+    subprocess.run(["pip", "install", "openai", "openpyxl"], check=True)
     from openai import OpenAI
 
-# ── CONFIG ────────────────────────────────────────────────────────────────────
+# ── CONFIG ───────────────────────────────────────────────────────────────────
 
 OPENAI_API_KEY   = os.environ.get("OPENAI_API_KEY", "OPENAI_API_KEY")
 GEN_MODEL        = "gpt-4o"
 CHECK_MODEL      = "gpt-4o-mini"
-MIN_SCORE        = 8          # минимальный балл качества (из 10)
-MAX_RETRIES      = 3          # максимум попыток переделки
-ARTICLES_PER_RUN = 5          # статей за один запуск (можно менять)
+ARTICLES_PER_RUN = int(os.environ.get("ARTICLES_PER_RUN", "3"))
+MIN_SCORE        = 7
+MAX_RETRIES      = 3
 
-CWS_URL = "https://chromewebstore.google.com/detail/math-solver/pieobakkfhafplomcoiohhpikcofoghb?utm_source=mathsolver.cloud&utm_medium=article&utm_campaign=cta"
-SITE_URL = "https://mathsolver.cloud"
-
-CONTENT_PLAN     = Path("mathsolver_content_plan_FULL.xlsx")
-PROGRESS_FILE    = Path(".generation_progress.json")
-OUTPUT_DIR       = Path("static/blog")
-LAYOUTS_DIR      = Path("layouts/blog")
-NEEDS_REVIEW_DIR = Path("_needs_review")
-
-# ── CLUSTER → PILLAR URL MAP ───────────────────────────────────────────────
+SITE_URL    = "https://mathsolver.cloud"
+CWS_URL     = "https://chromewebstore.google.com/detail/math-solver/pieobakkfhafplomcoiohhpikcofoghb?utm_source=mathsolver.cloud&utm_medium=blog&utm_campaign=article"
+CONTENT_PLAN   = Path("mathsolver_content_plan_FULL.xlsx")
+OUTPUT_DIR     = Path("static/blog")
+NEEDS_REVIEW   = Path("_needs_review")
+PROGRESS_FILE  = Path(".generation_progress.json")
 
 PILLAR_MAP = {
     "Algebra":                  "/algebra-solver/",
@@ -48,735 +38,648 @@ PILLAR_MAP = {
     "Trigonometry":             "/trigonometry-solver/",
     "Equation Solving":         "/equation-solver/",
     "Statistics & Probability": "/statistics-solver/",
-    "Arithmetic & Fractions":   "/arithmetic-solver/",
+    "Arithmetic & Fractions":   "/fractions-calculator/",
     "Matrix & Linear Algebra":  "/matrix-solver/",
     "Physics & Formulas":       "/physics-solver/",
     "Word Problems & Homework": "/math-word-problem-solver/",
 }
 
-# ── LOAD CONTENT PLAN ─────────────────────────────────────────────────────────
-
-def load_content_plan():
-    wb = openpyxl.load_workbook(CONTENT_PLAN)
-    ws = wb.active
-    articles = []
-    headers = [c.value for c in list(ws.iter_rows(min_row=2, max_row=2))[0]]
-    for row in ws.iter_rows(min_row=3, values_only=True):
-        if not row[0]:
-            continue
-        art = dict(zip(headers, row))
-        articles.append(art)
-    return articles
+# ── HELPERS ───────────────────────────────────────────────────────────────────
 
 def load_progress():
     if PROGRESS_FILE.exists():
         return json.loads(PROGRESS_FILE.read_text())
     return {"published": [], "needs_review": []}
 
-def save_progress(progress):
-    PROGRESS_FILE.write_text(json.dumps(progress, indent=2))
-
-def get_published_by_cluster(progress, cluster):
-    """Возвращает список URL опубликованных статей в кластере"""
-    published = progress.get("published", [])
-    return [p for p in published if p.get("cluster") == cluster]
-
-# ── SLUG GENERATION ───────────────────────────────────────────────────────────
+def save_progress(p):
+    PROGRESS_FILE.write_text(json.dumps(p, indent=2))
 
 def make_slug(keyword):
     slug = keyword.lower().strip()
     slug = re.sub(r'[^a-z0-9\s-]', '', slug)
     slug = re.sub(r'\s+', '-', slug)
-    slug = re.sub(r'-+', '-', slug)
-    return slug.strip('-')
+    return re.sub(r'-+', '-', slug).strip('-')
 
-# ── PROMPTS ───────────────────────────────────────────────────────────────────
+def parse_json(raw):
+    raw = raw.strip()
+    raw = re.sub(r'^```json\s*', '', raw, flags=re.MULTILINE)
+    raw = re.sub(r'\s*```\s*$', '', raw, flags=re.MULTILINE)
+    return json.loads(raw)
 
-def build_generation_prompt(article, related_articles):
-    cluster = article.get("Cluster", "")
-    keyword = article.get("Primary Keyword", "")
-    title   = article.get("Article Title", "")
-    url     = article.get("URL", "")
-    pillar  = PILLAR_MAP.get(cluster, "/")
+def load_content_plan():
+    wb = openpyxl.load_workbook(CONTENT_PLAN)
+    ws = wb.active
+    headers = [c.value for c in list(ws.iter_rows(min_row=2, max_row=2))[0]]
+    articles = []
+    for row in ws.iter_rows(min_row=3, values_only=True):
+        if row[0]:
+            articles.append(dict(zip(headers, row)))
+    return articles
 
-    related_links = ""
-    for r in related_articles[:4]:
-        related_links += f'- [{r["title"]}]({SITE_URL}{r["url"]})\n'
+# ── STEP 1: WRITE LONG ARTICLE (plain text) ───────────────────────────────────
 
-    return f"""You are an expert SEO content writer for MathSolver.cloud — an AI-powered Chrome extension that solves math problems from screenshots.
+def prompt_write_article(keyword, title, cluster, related_links, pillar_url):
+    return f"""You are an expert math tutor and SEO writer for MathSolver.cloud.
 
-Write a complete SEO article with these exact specifications:
+Write a comprehensive, detailed article about "{keyword}".
 
-KEYWORD: {keyword}
-TITLE: {title}
-CLUSTER: {cluster}
-URL: {SITE_URL}{url}
+REQUIREMENTS:
+- Total length: MINIMUM 1,500 words (aim for 1,800-2,000 words)
+- Tone: Friendly and clear, like a helpful tutor explaining to a student
+- Start the article directly with the topic — NO generic intros like "In today's world..."
+- The keyword "{keyword}" must appear in the very first sentence
 
-AUDIENCE: Students, parents, and anyone who needs help with math (all ages)
-TONE: Friendly, clear, like a helpful tutor. Explain the problem first, then the solution. Simple language.
-LENGTH: 1500-2000 words. IMPORTANT: Each section must be detailed. Intro = 3 paragraphs. Each step = 3-4 sentences. Each example must show full solution with 4+ steps. Common mistakes section = 2 paragraphs. Real-world applications = 2 paragraphs.
+WRITE THESE SECTIONS IN ORDER:
 
-REQUIRED STRUCTURE (return as JSON):
+## Introduction (3 full paragraphs, ~200 words)
+Explain what {keyword} is, why students struggle with it, and what they'll learn. Keyword in first sentence.
+
+## Key Formula or Definition (1 paragraph)
+State the main formula or definition clearly.
+
+## Step-by-Step Guide (4 steps, each step = 1 full paragraph of 5-6 sentences)
+Step 1: [descriptive title]
+Step 2: [descriptive title]
+Step 3: [descriptive title]
+Step 4: [descriptive title]
+
+## Worked Example 1 (full detailed solution, ~150 words)
+Present a concrete math problem then solve it step by step showing all work.
+
+## Worked Example 2 (full detailed solution, ~150 words)
+A slightly harder problem, solved step by step.
+
+## Common Mistakes to Avoid (2 full paragraphs, ~150 words)
+Describe the most common errors students make and how to avoid them.
+
+## Real-World Applications (2 full paragraphs, ~150 words)
+Where is {keyword} used in real life? Give specific examples.
+
+## FAQ (5 questions with detailed answers, each answer 3-4 sentences)
+Q1: A question containing "{keyword}"
+Q2: A common student question about this topic
+Q3: How can AI help with {keyword}? (mention MathSolver Chrome extension — take a screenshot, get instant step-by-step solution)
+Q4: Another relevant question
+Q5: A practical question
+
+RELATED TOPICS TO MENTION:
+{related_links if related_links else "General math topics"}
+
+PILLAR PAGE: {pillar_url}
+Mention this page once naturally as "our complete {cluster} guide".
+
+Write the full article now. Use clear headers. Be thorough and detailed."""
+
+# ── STEP 2: STRUCTURE INTO JSON ───────────────────────────────────────────────
+
+def prompt_structure_json(article_text, keyword):
+    return f"""Convert this article into a structured JSON object. Extract and organize the content exactly as written — do NOT summarize or shorten anything.
+
+ARTICLE TEXT:
+{article_text[:8000]}
+
+Return ONLY this JSON structure with NO markdown, NO backticks:
 {{
-  "meta_title": "...(max 60 chars, contains keyword)...",
-  "meta_description": "...(max 160 chars, contains keyword)...",
-  "h1": "...(contains keyword)...",
-  "intro": "...(2-3 paragraphs, keyword in first 100 words, explain what the problem is and why it matters)...",
-  "formula": "...(the key formula or definition, one line)...",
-  "formula_label": "...(short label like 'Standard Formula')...",
+  "meta_title": "under 60 chars, contains '{keyword}', ends with year 2026",
+  "meta_description": "under 160 chars, contains keyword, mentions MathSolver AI",
+  "h1": "the main article headline containing '{keyword}'",
+  "intro": "the full introduction text — ALL paragraphs combined, do not shorten",
+  "formula": "the key formula or definition from the formula section",
+  "formula_label": "short label like 'Standard Formula'",
   "steps": [
-    {{"title": "...", "content": "...(2-3 sentences)..."}},
-    {{"title": "...", "content": "..."}},
-    {{"title": "...", "content": "..."}},
-    {{"title": "...", "content": "..."}}
+    {{"title": "step title", "content": "the FULL step explanation — do not shorten, include all sentences"}},
+    {{"title": "step title", "content": "the FULL step explanation"}},
+    {{"title": "step title", "content": "the FULL step explanation"}},
+    {{"title": "step title", "content": "the FULL step explanation"}}
   ],
-  "example1_problem": "...(a concrete math problem)...",
-  "example1_solution": "...(step by step solution)...",
-  "example2_problem": "...",
-  "example2_solution": "...",
+  "example1_problem": "the problem statement from Example 1",
+  "example1_solution": "the COMPLETE solution from Example 1 with all steps",
+  "example2_problem": "the problem statement from Example 2",
+  "example2_solution": "the COMPLETE solution from Example 2 with all steps",
+  "common_mistakes": "the FULL common mistakes section — do not shorten",
+  "real_world": "the FULL real-world applications section — do not shorten",
   "faq": [
-    {{"q": "...", "a": "...(2-3 sentences)..."}},
-    {{"q": "...", "a": "..."}},
-    {{"q": "...", "a": "..."}},
-    {{"q": "...", "a": "..."}},
-    {{"q": "...", "a": "..."}}
+    {{"q": "question 1", "a": "full answer"}},
+    {{"q": "question 2", "a": "full answer"}},
+    {{"q": "question 3 about AI/MathSolver", "a": "full answer mentioning MathSolver"}},
+    {{"q": "question 4", "a": "full answer"}},
+    {{"q": "question 5", "a": "full answer"}}
   ],
-  "toc_items": ["What is...", "Key Formula", "Step-by-Step", "Worked Examples", "Try MathSolver", "FAQ", "Related Topics"],
-  "read_time": "8 min read",
-  "grade_level": "Grades 6-12",
-  "lsi_keywords": ["...", "...", "...", "...", "..."]
-}}
+  "lsi_keywords": ["related term 1", "related term 2", "related term 3", "related term 4", "related term 5"]
+}}"""
 
-RULES:
-- Primary keyword "{keyword}" must appear in first 100 words of intro
-- H2/H3 headings must contain LSI keywords related to {keyword}
-- FAQ questions should be real questions people search for
-- One FAQ answer must mention MathSolver Chrome extension naturally
-- DO NOT use generic AI intros like "In today's world..." or "Mathematics is important..."
-- Start intro directly with the problem/concept
-- Return ONLY valid JSON, no markdown, no backticks
+# ── STEP 3: VALIDATE ──────────────────────────────────────────────────────────
 
-RELATED ARTICLES IN THIS CLUSTER (link to these naturally in the content where relevant):
-{related_links if related_links else "None yet — this is one of the first articles in this cluster"}
+def prompt_validate(article_json, keyword):
+    # Count words in content
+    all_text = " ".join([
+        article_json.get("intro", ""),
+        " ".join(s.get("content","") for s in article_json.get("steps",[])),
+        article_json.get("example1_solution",""),
+        article_json.get("example2_solution",""),
+        article_json.get("common_mistakes",""),
+        article_json.get("real_world",""),
+        " ".join(f['a'] for f in article_json.get("faq",[]))
+    ])
+    word_count = len(all_text.split())
 
-PILLAR PAGE FOR THIS CLUSTER: {SITE_URL}{pillar}
-(Mention and link to the pillar page once in the article)
-"""
+    return f"""Score this article JSON for "{keyword}". Word count of content: {word_count} words.
 
-def build_check_prompt(article_json, keyword):
-    return f"""You are an SEO quality auditor. Evaluate this article content for the keyword "{keyword}".
-
-CONTENT TO EVALUATE:
-{json.dumps(article_json, indent=2)[:3000]}
-
-Score each criterion 0 or 1:
-1. keyword_in_intro: Is "{keyword}" in the first 100 words of intro?
-2. meta_title_length: Is meta_title under 60 characters?
-3. meta_desc_length: Is meta_description under 160 characters?
-4. has_4_steps: Are there at least 4 steps?
+Score each 0 or 1:
+1. keyword_in_intro: Does "{keyword}" appear in first 100 words of intro?
+2. has_4_steps: Are there 4 steps with substantial content (50+ words each)?
+3. has_2_examples: Are there 2 examples with complete solutions?
+4. faq_mentions_mathsolver: Does any FAQ answer mention MathSolver?
 5. has_5_faq: Are there exactly 5 FAQ items?
-6. has_2_examples: Are there 2 worked examples with real math problems?
-7. no_generic_intro: Does intro NOT start with generic phrases like "In today's world", "Mathematics is"?
-8. faq_mentions_mathsolver: Does at least one FAQ mention MathSolver?
-9. has_lsi_keywords: Are there at least 5 LSI keywords?
-10. content_is_unique: Does the intro sound specific and not templated?
-11. sufficient_length: Is the total content (intro + steps + examples + faq) at least 800 words?
+6. sufficient_length: Is word count above 800? (current: {word_count})
+7. no_generic_intro: Does intro NOT start with "In today's world" or "Mathematics is important"?
 
-Return ONLY this JSON:
+Return ONLY JSON:
 {{
   "scores": {{
     "keyword_in_intro": 0,
-    "meta_title_length": 0,
-    "meta_desc_length": 0,
     "has_4_steps": 0,
-    "has_5_faq": 0,
     "has_2_examples": 0,
-    "no_generic_intro": 0,
     "faq_mentions_mathsolver": 0,
-    "has_lsi_keywords": 0,
-    "content_is_unique": 0,
-    "sufficient_length": 0
+    "has_5_faq": 0,
+    "sufficient_length": 0,
+    "no_generic_intro": 0
   }},
-  "total": 0,  // sum of all 11 scores above
-  "failed_criteria": ["list of criteria that scored 0"],
-  "improvement_notes": "specific instructions to fix the failed criteria"
+  "total": 0,
+  "word_count": {word_count},
+  "failed_criteria": [],
+  "notes": "brief feedback"
 }}"""
 
-def build_refinement_prompt(article_json, improvement_notes, keyword):
-    return f"""You previously wrote an article about "{keyword}" but it failed quality checks.
+# ── BUILD HTML ────────────────────────────────────────────────────────────────
 
-FAILED CRITERIA AND HOW TO FIX:
-{improvement_notes}
-
-CURRENT CONTENT:
-{json.dumps(article_json, indent=2)[:3000]}
-
-Fix ONLY the failed criteria. Return the complete improved article as valid JSON with the same structure.
-Return ONLY valid JSON, no markdown, no backticks."""
-
-# ── HTML TEMPLATE ─────────────────────────────────────────────────────────────
-
-def build_html(article_data, keyword, slug, cluster, url, related_articles):
+def build_html(data, keyword, slug, cluster, url):
     pillar_url  = PILLAR_MAP.get(cluster, "/")
-    pillar_name = cluster + " Solver"
     pub_date    = datetime.now().strftime("%B %Y")
-    year = datetime.now().year
-    if not article_data.get("h1"):
-        article_data["h1"] = keyword.title() + " — Step-by-Step Guide"
-    if not article_data.get("meta_title"):
-        article_data["meta_title"] = keyword.title() + f" Guide ({year})"
-    if not article_data.get("meta_description"):
-        article_data["meta_description"] = f"Learn how to solve {keyword} step by step with our free AI math solver."
-    if not article_data.get("intro"):
-        article_data["intro"] = f"Understanding {keyword} is easier than you think. This guide walks you through everything step by step."
-    if not article_data.get("formula"):
-        article_data["formula"] = "See step-by-step solution below"
-    if not article_data.get("formula_label"):
-        article_data["formula_label"] = "Key Concept"
+    year        = datetime.now().year
 
-    # Fallbacks for empty fields
-    year = datetime.now().year
-    if not article_data.get("h1"):
-        article_data["h1"] = keyword.title() + " — Step-by-Step Guide"
-    if not article_data.get("meta_title"):
-        article_data["meta_title"] = keyword.title() + f" Guide ({year})"
-    if not article_data.get("meta_description"):
-        article_data["meta_description"] = f"Learn how to solve {keyword} step by step. Free AI math solver — take a screenshot and get instant solutions."
-    if not article_data.get("intro"):
-        article_data["intro"] = f"Understanding {keyword} is easier than you think. This guide walks you through everything step by step, with worked examples and clear explanations."
-    if not article_data.get("formula"):
-        article_data["formula"] = "See step-by-step solution below"
-    if not article_data.get("formula_label"):
-        article_data["formula_label"] = "Key Concept"
+    # Fallbacks
+    h1    = data.get("h1") or keyword.title() + " — Step-by-Step Guide"
+    title = data.get("meta_title") or f"{keyword.title()} Guide ({year})"
+    desc  = data.get("meta_description") or f"Learn {keyword} step by step. Free AI math solver."
+    intro = data.get("intro") or f"Learn how to solve {keyword} with this complete guide."
+    formula       = data.get("formula") or "See step-by-step solution below"
+    formula_label = data.get("formula_label") or "Key Concept"
 
     # Steps HTML
     steps_html = ""
-    for i, step in enumerate(article_data.get("steps", []), 1):
+    for i, step in enumerate(data.get("steps", []), 1):
         steps_html += f"""
   <div class="ms-step">
     <div class="ms-step-num">{i}</div>
     <div class="ms-step-body">
-      <h3>{step['title']}</h3>
-      <p>{step['content']}</p>
+      <h3>{step.get('title','')}</h3>
+      <p>{step.get('content','')}</p>
     </div>
   </div>"""
 
     # FAQ HTML
     faq_html = ""
-    faq_schema_items = []
-    for i, item in enumerate(article_data.get("faq", [])):
-        is_open = "open" if i == 0 else ""
+    for i, item in enumerate(data.get("faq", [])):
+        open_attr = "open" if i == 0 else ""
         faq_html += f"""
-  <details class="ms-faq-item" {is_open}>
-    <summary class="ms-faq-q">❓ {item['q']}</summary>
-    <div class="ms-faq-a">{item['a']}</div>
+  <details class="ms-faq-item" {open_attr}>
+    <summary class="ms-faq-q">❓ {item.get('q','')}</summary>
+    <div class="ms-faq-a">{item.get('a','')}</div>
   </details>"""
-        faq_schema_items.append({
-            "@type": "Question",
-            "name": item['q'],
-            "acceptedAnswer": {"@type": "Answer", "text": item['a']}
-        })
 
-    # TOC HTML
-    toc_items = article_data.get("toc_items", [])
-    toc_anchors = ["#what-is", "#formula", "#steps", "#examples", "#solver", "#faq", "#related"]
-    toc_html = ""
-    for i, item in enumerate(toc_items[:7]):
-        anchor = toc_anchors[i] if i < len(toc_anchors) else f"#section-{i}"
-        toc_html += f'    <li><a href="{anchor}">{item}</a></li>\n'
+    # Schema
+    faq_schema = ""
+    for item in data.get("faq", []):
+        q = item.get('q','').replace('"',"'")
+        a = item.get('a','').replace('"',"'")
+        faq_schema += f'{{"@type":"Question","name":"{q}","acceptedAnswer":{{"@type":"Answer","text":"{a}"}}}},'
 
-    # Related articles HTML
-    related_html = ""
-    related_html += f'    <li><a href="{SITE_URL}{pillar_url}">{pillar_name}</a></li>\n'
-    for r in related_articles[:5]:
-        related_html += f'    <li><a href="{SITE_URL}{r["url"]}">{r["title"]}</a></li>\n'
-
-    # Schema JSON-LD
-    schema = {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "Article",
-                "headline": article_data.get("h1", ""),
-                "description": article_data.get("meta_description", ""),
-                "datePublished": datetime.now().isoformat(),
-                "dateModified": datetime.now().isoformat(),
-                "author": {"@type": "Organization", "name": "MathSolver Team"},
-                "publisher": {
-                    "@type": "Organization",
-                    "name": "MathSolver",
-                    "url": SITE_URL
-                }
-            },
-            {
-                "@type": "FAQPage",
-                "mainEntity": faq_schema_items
-            },
-            {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                    {"@type": "ListItem", "position": 1, "item": {"@id": SITE_URL, "name": "Home"}},
-                    {"@type": "ListItem", "position": 2, "item": {"@id": SITE_URL + pillar_url, "name": cluster}},
-                    {"@type": "ListItem", "position": 3, "item": {"@id": SITE_URL + url, "name": article_data.get("h1", "")}}
-                ]
-            }
-        ]
-    }
-
-    intro_paragraphs = article_data.get("intro", "").split("\n\n")
-    intro_html = "".join(f"<p>{p.strip()}</p>" for p in intro_paragraphs if p.strip())
+    ex1_sol = data.get("example1_solution","").replace("\n","<br>")
+    ex2_sol = data.get("example2_solution","").replace("\n","<br>")
+    mistakes = data.get("common_mistakes","")
+    real_world = data.get("real_world","")
+    intro_html = intro.replace("\n\n","</p><p>")
 
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{article_data.get('meta_title', '')}</title>
-  <meta name="description" content="{article_data.get('meta_description', '')}">
-  <link rel="canonical" href="{SITE_URL}{url}/">
-  <meta property="og:title" content="{article_data.get('meta_title', '')}">
-  <meta property="og:description" content="{article_data.get('meta_description', '')}">
-  <meta property="og:url" content="{SITE_URL}{url}/">
+  <title>{title}</title>
+  <meta name="description" content="{desc}">
+  <link rel="canonical" href="{SITE_URL}/blog/{slug}/">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{desc}">
+  <meta property="og:url" content="{SITE_URL}/blog/{slug}/">
   <meta property="og:type" content="article">
-  <script type="application/ld+json">{json.dumps(schema, indent=2)}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800;12..96,900&family=DM+Sans:opsz,wght@0,9..40,400;0,9..40,500&display=swap" rel="stylesheet">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5DLHQQDXLW"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}gtag("js",new Date());gtag("config","G-5DLHQQDXLW");</script>
+  <script type="application/ld+json">{{
+    "@context":"https://schema.org","@graph":[
+      {{"@type":"Article","headline":"{h1.replace('"',"'")}","description":"{desc.replace('"',"'")}","datePublished":"{datetime.now().strftime('%Y-%m-%d')}","author":{{"@type":"Organization","name":"MathSolver Team"}},"publisher":{{"@type":"Organization","name":"MathSolver","url":"{SITE_URL}"}}}},
+      {{"@type":"FAQPage","mainEntity":[{faq_schema.rstrip(',')}]}},
+      {{"@type":"BreadcrumbList","itemListElement":[{{"@type":"ListItem","position":1,"name":"Home","item":"{SITE_URL}"}},{{"@type":"ListItem","position":2,"name":"{cluster}","item":"{SITE_URL}{pillar_url}"}},{{"@type":"ListItem","position":3,"name":"{h1.replace('"',"'")}","item":"{SITE_URL}/blog/{slug}/"}}]}}
+    ]
+  }}</script>
   <style>
     *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
-    :root{{--blue:#2B7FE8;--blue-dark:#1a5fc4;--yellow:#FFB800;--dark:#060D1F;--dark-2:#0D1B35;--dark-3:#112248;--white:#fff;--gray-text:#8a97b0;--text:#d4dff5;--radius:16px;--radius-lg:24px;--ms-border:#e0e8f4;--ms-blue-light:#e8f1fd}}
+    :root{{--blue:#2B7FE8;--blue-dark:#1a5fc4;--yellow:#FFB800;--dark:#060D1F;--dark-2:#0D1B35;--dark-3:#112248;--white:#fff;--gray:#8a97b0;--text:#d4dff5;--border:rgba(43,127,232,.15);--r:16px}}
     html{{scroll-behavior:smooth}}
-    body{{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);line-height:1.6;overflow-x:hidden}}
-    h1,h2,h3,h4{{font-family:'Bricolage Grotesque',sans-serif;line-height:1.15}}
+    body{{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);line-height:1.75;overflow-x:hidden}}
+    h1,h2,h3,h4{{font-family:'Bricolage Grotesque',sans-serif;line-height:1.2}}
     a{{color:var(--blue);text-decoration:none}}
     a:hover{{text-decoration:underline}}
-    header{{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 40px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,13,31,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(43,127,232,0.12)}}
-    .logo{{font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;font-weight:800;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:10px}}
+    header{{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;padding:0 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,13,31,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(43,127,232,.1)}}
+    .logo{{font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;display:flex;align-items:center;gap:10px}}
     .logo-icon{{width:34px;height:34px;background:linear-gradient(135deg,var(--blue),var(--yellow));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px}}
     nav{{display:flex;align-items:center;gap:4px}}
-    nav a{{color:var(--gray-text);font-size:.875rem;padding:8px 14px;border-radius:8px;transition:color .2s,background .2s;white-space:nowrap;text-decoration:none}}
-    nav a:hover{{color:var(--white);background:rgba(255,255,255,.06)}}
-    .btn-contact{{margin-left:12px;background:var(--yellow)!important;color:var(--dark)!important;font-weight:600!important;padding:9px 20px!important;border-radius:50px!important}}
-    .hamburger{{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}}
-    .hamburger span{{display:block;width:24px;height:2px;background:var(--white);border-radius:2px}}
-    .article-wrap{{max-width:820px;margin:0 auto;padding:100px 40px 80px}}
-    .ms-breadcrumb{{font-size:13px;color:#888;margin-bottom:24px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}}
+    nav a{{color:var(--gray);font-size:.875rem;padding:8px 14px;border-radius:8px;transition:.2s;white-space:nowrap}}
+    nav a:hover{{color:#fff;background:rgba(255,255,255,.06)}}
+    .btn-nav{{background:var(--yellow)!important;color:var(--dark)!important;font-weight:700!important;border-radius:50px!important;margin-left:8px}}
+    .hamburger{{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}}
+    .hamburger span{{width:24px;height:2px;background:#fff;border-radius:2px;display:block}}
+    .wrap{{max-width:820px;margin:0 auto;padding:100px 40px 80px}}
+    .ms-breadcrumb{{font-size:13px;color:#666;margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--border)}}
     .ms-breadcrumb a{{color:var(--blue)}}
-    .ms-breadcrumb span{{margin:0 6px;color:#555}}
-    .ms-hero{{background:linear-gradient(135deg,#1A1A2E 0%,#2B7FE8 100%);border-radius:var(--radius-lg);padding:48px 40px;margin-bottom:36px;color:#fff}}
-    .ms-hero h1{{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;margin:0 0 16px;line-height:1.2;color:#fff}}
-    .ms-meta{{font-size:13px;opacity:.75;display:flex;gap:20px;flex-wrap:wrap;margin-top:20px}}
-    .ms-toc{{background:var(--ms-blue-light);border-left:4px solid var(--blue);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:36px}}
-    .ms-toc h3{{font-size:15px;font-weight:700;color:#1A1A2E;margin:0 0 14px;text-transform:uppercase;letter-spacing:.5px}}
+    .ms-breadcrumb span{{margin:0 6px;color:#444}}
+    .ms-hero{{background:linear-gradient(135deg,#1A1A2E 0%,#2B7FE8 100%);border-radius:20px;padding:48px 40px;margin-bottom:32px;color:#fff}}
+    .ms-hero h1{{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:900;margin:0 0 16px;color:#fff}}
+    .ms-meta{{font-size:13px;opacity:.75;display:flex;gap:20px;flex-wrap:wrap;margin-top:16px}}
+    .ms-toc{{background:rgba(43,127,232,.08);border-left:4px solid var(--blue);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:32px}}
+    .ms-toc h3{{font-size:14px;font-weight:700;color:#fff;margin:0 0 12px;text-transform:uppercase;letter-spacing:.5px}}
     .ms-toc ol{{margin:0;padding-left:20px}}
-    .ms-toc ol li{{margin-bottom:8px}}
-    .ms-toc ol li a{{color:var(--blue);font-size:14px;font-weight:500}}
-    .ms-intro{{font-size:17px;line-height:1.75;color:var(--text);margin-bottom:36px}}
+    .ms-toc li{{margin-bottom:6px}}
+    .ms-toc a{{color:var(--blue);font-size:14px;font-weight:500}}
+    .ms-intro{{font-size:17px;line-height:1.8;margin-bottom:32px}}
     .ms-intro p{{margin-bottom:16px}}
-    .ms-formula-box{{background:#1A1A2E;border-radius:12px;padding:28px 32px;margin:28px 0;text-align:center}}
-    .ms-formula-box .formula{{font-size:clamp(1.2rem,2.5vw,1.8rem);color:#fff;font-family:'Courier New',monospace;font-weight:700;letter-spacing:1px}}
-    .ms-formula-box .formula-label{{font-size:12px;color:var(--yellow);text-transform:uppercase;letter-spacing:1px;margin-top:10px}}
-    .ms-steps{{margin:36px 0}}
-    .ms-steps h2{{font-size:1.5rem;font-weight:800;color:var(--white);margin-bottom:24px}}
-    .ms-step{{display:flex;gap:20px;margin-bottom:24px;padding:24px;background:rgba(255,255,255,.04);border:1px solid rgba(43,127,232,.15);border-radius:12px}}
+    .ms-formula{{background:var(--dark-3);border-radius:12px;padding:28px 32px;margin:28px 0;text-align:center;border:1px solid var(--border)}}
+    .ms-formula .formula{{font-size:clamp(1.1rem,2vw,1.6rem);color:#fff;font-family:'Courier New',monospace;font-weight:700}}
+    .ms-formula .label{{font-size:12px;color:var(--yellow);text-transform:uppercase;letter-spacing:1px;margin-top:10px}}
+    .ms-steps{{margin:32px 0}}
+    .ms-steps h2{{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:20px}}
+    .ms-step{{display:flex;gap:20px;margin-bottom:20px;padding:24px;background:var(--dark-2);border:1px solid var(--border);border-radius:12px}}
     .ms-step-num{{width:44px;height:44px;min-width:44px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;font-family:'Bricolage Grotesque',sans-serif}}
-    .ms-step-body h3{{font-size:17px;font-weight:700;color:var(--white);margin:0 0 8px}}
-    .ms-step-body p{{font-size:15px;line-height:1.65;color:var(--gray-text);margin:0}}
-    .ms-cta-box{{background:linear-gradient(135deg,var(--blue) 0%,#1a5fc4 100%);border-radius:var(--radius-lg);padding:40px;text-align:center;margin:40px 0;color:#fff}}
-    .ms-cta-box h3{{font-size:1.5rem;font-weight:800;margin:0 0 12px;color:#fff}}
-    .ms-cta-box p{{font-size:16px;opacity:.85;margin:0 0 24px}}
-    .ms-cta-btn{{display:inline-block;background:var(--yellow);color:#1A1A2E;font-weight:800;font-size:16px;padding:14px 36px;border-radius:50px;text-decoration:none}}
-    .ms-cta-btn:hover{{transform:scale(1.04);color:#1A1A2E;text-decoration:none}}
-    .ms-store-hidden{{display:none}}
-    .ms-examples{{margin:36px 0}}
-    .ms-examples h2{{font-size:1.5rem;font-weight:800;color:var(--white);margin-bottom:24px}}
-    .ms-example{{background:rgba(255,255,255,.04);border:1px solid rgba(43,127,232,.15);border-radius:12px;padding:24px;margin-bottom:20px}}
-    .ms-example h3{{font-size:1.1rem;color:var(--white);margin-bottom:12px;font-weight:700}}
-    .ms-example p{{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:8px}}
-    .ms-example strong{{color:var(--white)}}
-    .ms-faq{{margin:40px 0}}
-    .ms-faq h2{{font-size:1.5rem;font-weight:800;color:var(--white);margin-bottom:24px}}
-    .ms-faq-item{{border:1px solid rgba(43,127,232,.15);border-radius:12px;margin-bottom:12px;overflow:hidden}}
-    .ms-faq-q{{background:rgba(255,255,255,.04);padding:18px 22px;font-weight:700;font-size:15px;color:var(--white);cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px}}
-    .ms-faq-q::-webkit-details-marker{{display:none}}
-    .ms-faq-a{{padding:18px 22px;font-size:15px;line-height:1.65;color:var(--gray-text);border-top:1px solid rgba(43,127,232,.1)}}
-    .ms-rating{{text-align:center;padding:28px;background:rgba(43,127,232,.08);border-radius:12px;margin:36px 0;border:1px solid rgba(43,127,232,.15)}}
+    .ms-step-body h3{{font-size:16px;font-weight:700;color:#fff;margin:0 0 8px}}
+    .ms-step-body p{{font-size:15px;line-height:1.7;color:var(--gray);margin:0}}
+    .ms-cta{{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);border-radius:16px;padding:40px;text-align:center;margin:36px 0;color:#fff}}
+    .ms-cta h3{{font-size:1.4rem;font-weight:800;margin:0 0 10px;color:#fff}}
+    .ms-cta p{{opacity:.85;margin:0 0 20px;font-size:16px}}
+    .ms-cta-btn{{display:inline-block;background:var(--yellow);color:var(--dark);font-weight:800;font-size:16px;padding:14px 36px;border-radius:50px}}
+    .ms-cta-btn:hover{{transform:scale(1.04);color:var(--dark);text-decoration:none}}
+    .ms-examples{{margin:32px 0}}
+    .ms-examples h2{{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:20px}}
+    .ms-example{{background:var(--dark-2);border:1px solid var(--border);border-radius:12px;padding:28px;margin-bottom:20px}}
+    .ms-example h3{{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:12px}}
+    .ms-example .problem{{font-size:1rem;font-weight:600;color:var(--yellow);margin-bottom:14px}}
+    .ms-example .solution{{font-size:.95rem;line-height:1.85;color:var(--text)}}
+    .ms-extra{{margin:32px 0}}
+    .ms-extra h2{{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:16px}}
+    .ms-extra p{{font-size:15px;line-height:1.8;color:var(--gray);margin-bottom:12px}}
+    .ms-faq{{margin:36px 0}}
+    .ms-faq h2{{font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:20px}}
+    .ms-faq-item{{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}}
+    .ms-faq-item summary{{background:var(--dark-2);padding:18px 22px;font-weight:700;font-size:15px;color:#fff;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px}}
+    .ms-faq-item summary::-webkit-details-marker{{display:none}}
+    .ms-faq-a{{padding:18px 22px;font-size:15px;line-height:1.7;color:var(--gray);border-top:1px solid var(--border)}}
+    .ms-rating{{text-align:center;padding:28px;background:rgba(43,127,232,.07);border-radius:12px;margin:32px 0;border:1px solid var(--border)}}
     .ms-stars{{font-size:28px}}
-    .ms-related{{background:rgba(255,255,255,.03);border-radius:12px;padding:28px;margin:36px 0;border:1px solid rgba(43,127,232,.12)}}
-    .ms-related h3{{font-size:16px;font-weight:700;color:var(--white);margin:0 0 16px}}
-    .ms-related ul{{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}}
-    .ms-related ul li a{{display:block;padding:10px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(43,127,232,.15);border-radius:8px;color:var(--blue);font-size:14px;font-weight:500;transition:border-color .2s;text-decoration:none}}
-    .ms-related ul li a:hover{{border-color:var(--blue)}}
-    footer{{border-top:1px solid rgba(255,255,255,.06);padding:48px 0 32px;margin-top:60px}}
-    .footer-inner{{display:flex;flex-direction:column;align-items:center;gap:28px;max-width:1160px;margin:0 auto;padding:0 40px}}
-    .footer-logo{{font-family:'Bricolage Grotesque',sans-serif;font-size:1.2rem;font-weight:700;color:var(--white);text-decoration:none}}
+    .ms-related{{background:var(--dark-2);border-radius:12px;padding:28px;margin:32px 0;border:1px solid var(--border)}}
+    .ms-related h3{{font-size:16px;font-weight:700;color:#fff;margin:0 0 16px}}
+    .ms-related ul{{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}}
+    .ms-related a{{display:block;padding:10px 14px;background:var(--dark-3);border:1px solid var(--border);border-radius:8px;font-size:14px;font-weight:500;color:var(--blue);transition:.2s}}
+    .ms-related a:hover{{border-color:var(--blue);text-decoration:none}}
+    footer{{border-top:1px solid rgba(255,255,255,.06);padding:48px 0 32px;margin-top:40px}}
+    .footer-inner{{max-width:1160px;margin:0 auto;padding:0 40px;display:flex;flex-direction:column;align-items:center;gap:24px}}
+    .footer-logo{{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.2rem;color:#fff}}
     .footer-nav{{display:flex;flex-wrap:wrap;justify-content:center;gap:4px}}
-    .footer-nav a{{color:var(--gray-text);font-size:.875rem;padding:6px 14px;border-radius:8px;transition:color .2s;text-decoration:none}}
-    .footer-nav a:hover{{color:var(--white)}}
-    .footer-copy{{text-align:center;color:rgba(255,255,255,.25);font-size:.8rem;line-height:1.8}}
-    @media(max-width:900px){{header{{padding:0 20px}}nav{{display:none}}nav.open{{display:flex;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:rgba(6,13,31,.98);padding:20px;border-bottom:1px solid rgba(255,255,255,.08);gap:4px}}nav.open a{{padding:12px 16px;font-size:1rem}}nav.open .btn-contact{{margin-left:0}}.hamburger{{display:flex}}.article-wrap{{padding:90px 20px 60px}}}}
+    .footer-nav a{{color:var(--gray);font-size:.875rem;padding:6px 14px;border-radius:8px;transition:.2s}}
+    .footer-nav a:hover{{color:#fff}}
+    .footer-copy{{color:rgba(255,255,255,.25);font-size:.8rem;text-align:center;line-height:1.8}}
+    @media(max-width:860px){{
+      header{{padding:0 20px}}
+      nav{{display:none}}
+      nav.open{{display:flex;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:rgba(6,13,31,.98);padding:20px;border-bottom:1px solid var(--border)}}
+      nav.open a{{padding:12px 16px;font-size:1rem}}
+      nav.open .btn-nav{{margin-left:0;margin-top:8px}}
+      .hamburger{{display:flex}}
+      .wrap{{padding:90px 20px 60px}}
+      .ms-hero{{padding:32px 24px}}
+      .ms-step{{flex-direction:column;gap:12px}}
+    }}
   </style>
 </head>
 <body>
   <header>
-    <a href="{SITE_URL}/" class="logo"><span class="logo-icon">&#8721;</span>MathSolver</a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-    <nav id="main-nav">
-      <a href="{SITE_URL}/">Home</a>
-      <a href="{SITE_URL}/privacy-policy/">Privacy notice</a>
-      <a href="{SITE_URL}/refund-policy/">Refund policy</a>
-      <a href="{SITE_URL}/price/">Price</a>
-      <a href="{SITE_URL}/terms-of-service/">Terms of Service</a>
-      <a href="{SITE_URL}/#contactus" class="btn-contact">Contact US</a>
+    <a href="/" class="logo"><span class="logo-icon">&#8721;</span>MathSolver</a>
+    <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav id="nav">
+      <a href="/">Home</a>
+      <a href="/privacy-policy/">Privacy notice</a>
+      <a href="/refund-policy/">Refund policy</a>
+      <a href="/price/">Price</a>
+      <a href="/terms-of-service/">Terms of Service</a>
+      <a href="/#contactus" class="btn-nav">Contact US</a>
     </nav>
   </header>
 
-  <div class="article-wrap">
+  <div class="wrap">
 
-    <nav class="ms-breadcrumb">
-      <a href="{SITE_URL}/">Home</a>
-      <span>›</span>
-      <a href="{SITE_URL}{pillar_url}">{cluster}</a>
-      <span>›</span>
-      <span>{article_data.get('h1', '')}</span>
+    <nav class="ms-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a><span>›</span>
+      <a href="{SITE_URL}{pillar_url}">{cluster}</a><span>›</span>
+      <span>{h1}</span>
     </nav>
 
-    <div class="ms-hero" id="what-is">
-      <h1>{article_data.get('h1', '')}</h1>
+    <div class="ms-hero">
+      <h1>{h1}</h1>
       <div class="ms-meta">
-        <span>&#128197; Updated {pub_date}</span>
-        <span>&#9200; {article_data.get('read_time', '8 min read')}</span>
-        <span>&#127891; {article_data.get('grade_level', 'All levels')}</span>
-        <span>&#9997; By MathSolver Team</span>
+        <span>📅 Updated {pub_date}</span>
+        <span>⏱ 8 min read</span>
+        <span>🎓 All levels</span>
+        <span>✍️ By MathSolver Team</span>
       </div>
     </div>
 
     <div class="ms-toc">
-      <h3>&#128203; In this guide</h3>
+      <h3>📋 In this guide</h3>
       <ol>
-{toc_html}
+        <li><a href="#intro">What is {keyword.title()}?</a></li>
+        <li><a href="#formula">Key Formula</a></li>
+        <li><a href="#steps">Step-by-Step Guide</a></li>
+        <li><a href="#examples">Worked Examples</a></li>
+        <li><a href="#mistakes">Common Mistakes</a></li>
+        <li><a href="#real-world">Real-World Uses</a></li>
+        <li><a href="#solver">Try AI Solver</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ol>
     </div>
 
-    <div class="ms-intro">
-{intro_html}
+    <div class="ms-intro" id="intro">
+      <p>{intro_html}</p>
     </div>
 
-    <div class="ms-formula-box" id="formula">
-      <div class="formula">{article_data.get('formula', '')}</div>
-      <div class="formula-label">{article_data.get('formula_label', 'Key Formula')}</div>
+    <div class="ms-formula" id="formula">
+      <div class="formula">{formula}</div>
+      <div class="label">{formula_label}</div>
     </div>
 
     <div class="ms-steps" id="steps">
-      <h2>Step-by-Step: How to {article_data.get('h1', '').replace('How to ', '')}</h2>
-{steps_html}
+      <h2>Step-by-Step: How to Solve {keyword.title()}</h2>
+      {steps_html}
     </div>
 
-    <div class="ms-cta-box" id="solver">
-      <h3>&#129302; Stuck on a math problem?</h3>
+    <div class="ms-cta" id="solver">
+      <h3>🤖 Stuck on a math problem?</h3>
       <p>Take a screenshot and let our AI solve it step-by-step in seconds</p>
-      <a href="{CWS_URL}" class="ms-cta-btn" target="_blank" rel="noopener">
-        &#9889; Try MathSolver Free &#8594;
-      </a>
-      <div class="ms-store-buttons ms-store-hidden">
-        <a href="#" class="ms-store-btn" target="_blank" rel="noopener">
-          <span class="store-icon">&#127822;</span>
-          <span class="store-text"><small>Download on the</small>App Store</span>
-        </a>
-        <a href="#" class="ms-store-btn" target="_blank" rel="noopener">
-          <span class="store-icon">&#9654;&#65039;</span>
-          <span class="store-text"><small>Get it on</small>Google Play</span>
-        </a>
-      </div>
+      <a href="{CWS_URL}" class="ms-cta-btn" target="_blank" rel="noopener">⚡ Try MathSolver Free →</a>
     </div>
 
     <div class="ms-examples" id="examples">
       <h2>Worked Examples</h2>
-
       <div class="ms-example">
         <h3>Example 1</h3>
-        <p><strong>Problem:</strong> {article_data.get('example1_problem', '')}</p>
-        <p><strong>Solution:</strong></p>
-        <p>{article_data.get('example1_solution', '')}</p>
+        <div class="problem">Problem: {data.get('example1_problem','')}</div>
+        <div class="solution">{ex1_sol}</div>
       </div>
-
       <div class="ms-example">
         <h3>Example 2</h3>
-        <p><strong>Problem:</strong> {article_data.get('example2_problem', '')}</p>
-        <p><strong>Solution:</strong></p>
-        <p>{article_data.get('example2_solution', '')}</p>
+        <div class="problem">Problem: {data.get('example2_problem','')}</div>
+        <div class="solution">{ex2_sol}</div>
       </div>
+    </div>
+
+    <div class="ms-extra" id="mistakes">
+      <h2>Common Mistakes to Avoid</h2>
+      <p>{mistakes}</p>
+    </div>
+
+    <div class="ms-extra" id="real-world">
+      <h2>Real-World Applications</h2>
+      <p>{real_world}</p>
     </div>
 
     <div class="ms-faq" id="faq">
       <h2>Frequently Asked Questions</h2>
-{faq_html}
+      {faq_html}
     </div>
 
     <div class="ms-rating">
       <p>Was this guide helpful?</p>
-      <div class="ms-stars">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
-      <p style="margin-top:10px;font-size:13px;color:var(--gray-text)">4.8/5 based on 127 ratings</p>
+      <div class="ms-stars">⭐⭐⭐⭐⭐</div>
+      <p style="margin-top:10px;font-size:13px;color:var(--gray)">4.8/5 based on 127 ratings</p>
     </div>
 
     <div class="ms-related" id="related">
-      <h3>&#128218; Related Topics</h3>
+      <h3>📚 Related Topics</h3>
       <ul>
-{related_html}
+        <li><a href="{SITE_URL}{pillar_url}">{cluster} Solver — Complete Guide</a></li>
       </ul>
     </div>
 
-    <div class="ms-cta-box">
-      <h3>&#128640; Solve any math problem instantly</h3>
+    <div class="ms-cta">
+      <h3>🚀 Solve any math problem instantly</h3>
       <p>2,000+ students use MathSolver every day — join them for free</p>
-      <a href="{CWS_URL}" class="ms-cta-btn" target="_blank" rel="noopener">
-        &#128229; Add to Chrome — It's Free
-      </a>
-      <div class="ms-store-buttons ms-store-hidden">
-        <a href="#" class="ms-store-btn" target="_blank" rel="noopener">
-          <span class="store-icon">&#127822;</span>
-          <span class="store-text"><small>Download on the</small>App Store</span>
-        </a>
-        <a href="#" class="ms-store-btn" target="_blank" rel="noopener">
-          <span class="store-icon">&#9654;&#65039;</span>
-          <span class="store-text"><small>Get it on</small>Google Play</span>
-        </a>
-      </div>
+      <a href="{CWS_URL}" class="ms-cta-btn" target="_blank" rel="noopener">📥 Add to Chrome — It's Free</a>
     </div>
 
   </div>
 
   <footer>
     <div class="footer-inner">
-      <a href="{SITE_URL}/" class="footer-logo">MathSolver</a>
+      <a href="/" class="footer-logo">MathSolver</a>
       <nav class="footer-nav">
-        <a href="{SITE_URL}/">Home</a>
-        <a href="{SITE_URL}/privacy-policy/">Privacy notice</a>
-        <a href="{SITE_URL}/refund-policy/">Refund policy</a>
-        <a href="{SITE_URL}/price/">Price</a>
-        <a href="{SITE_URL}/terms-of-service/">Terms of Service</a>
+        <a href="/">Home</a>
+        <a href="/privacy-policy/">Privacy notice</a>
+        <a href="/refund-policy/">Refund policy</a>
+        <a href="/price/">Price</a>
+        <a href="/terms-of-service/">Terms of Service</a>
       </nav>
-      <div class="footer-copy">
-        Copyright &copy; 2024 &ldquo;MARGOAPPS&rdquo; LLC<br>
-        Armenia, Yervand Kochar Street, 8 &mdash; Yerevan, 0070
-      </div>
+      <div class="footer-copy">Copyright &copy; 2024 &ldquo;MARGOAPPS&rdquo; LLC<br>Armenia, Yervand Kochar Street, 8 &mdash; Yerevan, 0070</div>
     </div>
   </footer>
 
-  <!-- insert zone -->
   <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
   <script src="https://ai-math-solver-3a62b.web.app/checkout.js"></script>
-  <!-- end of insert zone -->
-
   <script>
-    const h=document.getElementById('hamburger');
-    const n=document.getElementById('main-nav');
-    if(h) h.addEventListener('click',()=>n.classList.toggle('open'));
+    const h=document.getElementById('ham'),n=document.getElementById('nav');
+    if(h)h.addEventListener('click',()=>n.classList.toggle('open'));
     document.addEventListener('click',e=>{{if(h&&!h.contains(e.target)&&!n.contains(e.target))n.classList.remove('open')}});
   </script>
 </body>
 </html>"""
 
-# ── MAIN PIPELINE ─────────────────────────────────────────────────────────────
+# ── GENERATE ARTICLE ──────────────────────────────────────────────────────────
 
-def generate_article(client, article, related_articles):
-    keyword = article.get("Primary Keyword", "")
-    print(f"\n{'='*60}")
-    print(f"Generating: {keyword}")
-    print(f"Cluster: {article.get('Cluster', '')}")
-    print(f"{'='*60}")
+def generate_article(client, article, related):
+    keyword = article.get("Primary Keyword","")
+    cluster = article.get("Cluster","")
+    title   = article.get("Article Title","")
+    url     = article.get("URL","")
+    pillar  = PILLAR_MAP.get(cluster,"/")
 
-    prompt = build_generation_prompt(article, related_articles)
+    related_links = "\n".join([f'- {r["keyword"]}' for r in related[:4]])
 
-    for attempt in range(1, MAX_RETRIES + 1):
+    article_data = {}
+    score = 0
+
+    for attempt in range(1, MAX_RETRIES+1):
         print(f"\nAttempt {attempt}/{MAX_RETRIES}...")
 
-        # Step 1: Generate
-        print("  [1/3] Generating content with GPT-4o...")
-        response = client.chat.completions.create(
-            model=GEN_MODEL,
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.7,
-            max_tokens=8000,
-        )
-        content_raw = response.choices[0].message.content.strip()
-
-        # Parse JSON
         try:
-            # Remove markdown code blocks if present
-            content_raw = re.sub(r'^```json\s*', '', content_raw)
-            content_raw = re.sub(r'\s*```$', '', content_raw)
-            article_data = json.loads(content_raw)
-        except json.JSONDecodeError as e:
-            print(f"  ✗ JSON parse error: {e}")
-            continue
-
-        # Step 2: Quality check
-        print("  [2/3] Quality check with GPT-4o-mini...")
-        check_prompt = build_check_prompt(article_data, keyword)
-        check_response = client.chat.completions.create(
-            model=CHECK_MODEL,
-            messages=[{"role": "user", "content": check_prompt}],
-            temperature=0,
-            max_tokens=1000,
-        )
-        check_raw = check_response.choices[0].message.content.strip()
-
-        try:
-            check_raw = re.sub(r'^```json\s*', '', check_raw)
-            check_raw = re.sub(r'\s*```$', '', check_raw)
-            check_result = json.loads(check_raw)
-        except json.JSONDecodeError:
-            print("  ✗ Check JSON parse error, using content as-is")
-            return article_data, 10
-
-        score = check_result.get("total", 0)
-        failed = check_result.get("failed_criteria", [])
-        notes  = check_result.get("improvement_notes", "")
-
-        print(f"  Score: {score}/10")
-        if failed:
-            print(f"  Failed: {', '.join(failed)}")
-
-        if score >= MIN_SCORE:
-            print(f"  ✓ Quality check passed! ({score}/10)")
-            return article_data, score
-
-        # Step 3: Refinement
-        if attempt < MAX_RETRIES:
-            print(f"  [3/3] Refining content (score {score} < {MIN_SCORE})...")
-            refine_prompt = build_refinement_prompt(article_data, notes, keyword)
-            refine_response = client.chat.completions.create(
+            # Step 1: Write long article
+            print("  [1/3] Writing article with GPT-4o...")
+            r1 = client.chat.completions.create(
                 model=GEN_MODEL,
-                messages=[{"role": "user", "content": refine_prompt}],
-                temperature=0.5,
-                max_tokens=8000,
+                messages=[{"role":"user","content": prompt_write_article(keyword, title, cluster, related_links, f"{SITE_URL}{pillar}")}],
+                temperature=0.7,
+                max_tokens=6000,
             )
-            refined_raw = refine_response.choices[0].message.content.strip()
-            try:
-                refined_raw = re.sub(r'^```json\s*', '', refined_raw)
-                refined_raw = re.sub(r'\s*```$', '', refined_raw)
-                article_data = json.loads(refined_raw)
-                prompt = build_check_prompt(article_data, keyword)
-            except json.JSONDecodeError:
-                print("  ✗ Refinement JSON parse error")
-                continue
+            article_text = r1.choices[0].message.content.strip()
+            word_count = len(article_text.split())
+            print(f"  → Article text: {word_count} words")
 
-        time.sleep(1)
+            # Step 2: Structure into JSON
+            print("  [2/3] Structuring into JSON...")
+            r2 = client.chat.completions.create(
+                model=GEN_MODEL,
+                messages=[{"role":"user","content": prompt_structure_json(article_text, keyword)}],
+                temperature=0.2,
+                max_tokens=6000,
+            )
+            article_data = parse_json(r2.choices[0].message.content)
 
-    print(f"  ⚠ Max retries reached, sending to needs_review")
+            # Step 3: Validate
+            print("  [3/3] Quality check...")
+            r3 = client.chat.completions.create(
+                model=CHECK_MODEL,
+                messages=[{"role":"user","content": prompt_validate(article_data, keyword)}],
+                temperature=0,
+                max_tokens=500,
+            )
+            check = parse_json(r3.choices[0].message.content)
+            score = check.get("total", 0)
+            failed = check.get("failed_criteria", [])
+            wc = check.get("word_count", 0)
+
+            print(f"  Score: {score}/7 | Words: {wc}")
+            if failed:
+                print(f"  Failed: {', '.join(failed)}")
+
+            if score >= MIN_SCORE:
+                print(f"  ✓ Quality check passed! ({score}/7)")
+                return article_data, score
+
+        except Exception as e:
+            print(f"  ✗ Error: {e}")
+
+        time.sleep(2)
+
     return article_data, score
 
-def run(count=ARTICLES_PER_RUN, phase=1):
+# ── MAIN ──────────────────────────────────────────────────────────────────────
+
+def main():
+    print(f"\n{'='*60}")
+    print(f"MathSolver Article Generator v4 — {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    print(f"{'='*60}\n")
+
+    if OPENAI_API_KEY == "OPENAI_API_KEY":
+        print("❌ OPENAI_API_KEY not set!")
+        return
+
     client = OpenAI(api_key=OPENAI_API_KEY)
 
-    articles   = load_content_plan()
-    progress   = load_progress()
-    published_urls = {p["url"] for p in progress.get("published", [])}
+    articles = load_content_plan()
+    progress = load_progress()
+    published_urls = {a["url"] for a in progress["published"]}
+    review_urls = {a["url"] for a in progress.get("needs_review",[])}
 
-    # Filter: only SUB-ARTICLE, not yet published
     sub_articles = [
         a for a in articles
         if a.get("Type") == "SUB-ARTICLE"
         and a.get("URL") not in published_urls
+        and a.get("URL") not in review_urls
     ]
 
-    # Phase 1 quick wins first
-    phase1_sheet_keywords = set()
+    # Phase 1 priority
     try:
         wb = openpyxl.load_workbook(CONTENT_PLAN)
-        ws_phase1 = wb['🚀 Quick Wins (Phase 1)']
-        for row in ws_phase1.iter_rows(min_row=4, values_only=True):
-            if row[3]:
-                phase1_sheet_keywords.add(row[3])
-    except Exception:
-        pass
-
-    if phase1_sheet_keywords:
-        priority = [a for a in sub_articles if a.get("Primary Keyword") in phase1_sheet_keywords]
-        rest     = [a for a in sub_articles if a.get("Primary Keyword") not in phase1_sheet_keywords]
-        queue    = (priority + rest)[:count]
-    else:
-        queue = sub_articles[:count]
+        ws1 = wb['🚀 Quick Wins (Phase 1)']
+        phase1_keys = {row[3] for row in ws1.iter_rows(min_row=4, values_only=True) if row[3]}
+        priority = [a for a in sub_articles if a.get("Primary Keyword") in phase1_keys]
+        rest = [a for a in sub_articles if a.get("Primary Keyword") not in phase1_keys]
+        queue = (priority + rest)[:ARTICLES_PER_RUN]
+    except:
+        queue = sub_articles[:ARTICLES_PER_RUN]
 
     if not queue:
-        print("✅ All articles already published!")
+        print("✅ All articles published!")
         return
 
-    print(f"\n🚀 Starting generation of {len(queue)} articles...")
-    print(f"   Already published: {len(published_urls)}")
-    print(f"   Remaining in queue: {len(sub_articles)}\n")
+    print(f"📋 Queue: {len(queue)} articles | Published: {len(published_urls)} | Remaining: {len(sub_articles)}\n")
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    NEEDS_REVIEW_DIR.mkdir(parents=True, exist_ok=True)
-
-    generated_count = 0
+    NEEDS_REVIEW.mkdir(exist_ok=True)
+    published_count = 0
 
     for article in queue:
-        keyword = article.get("Primary Keyword", "")
-        cluster = article.get("Cluster", "")
-        url     = article.get("URL", "")
+        keyword = article.get("Primary Keyword","")
+        cluster = article.get("Cluster","")
+        url     = article.get("URL","")
         slug    = make_slug(keyword)
-
         if not url:
             url = f"/blog/{slug}"
 
-        # Related articles in same cluster
-        related = [
-            p for p in progress.get("published", [])
-            if p.get("cluster") == cluster and p.get("url") != url
-        ]
+        related = [p for p in progress["published"] if p.get("cluster")==cluster][:4]
 
-        try:
-            article_data, score = generate_article(client, article, related)
+        print(f"\n{'='*60}")
+        print(f"Generating: {keyword}")
+        print(f"Cluster: {cluster}")
+        print(f"{'='*60}")
 
-            html = build_html(article_data, keyword, slug, cluster, url, related)
+        article_data, score = generate_article(client, article, related)
 
-            if score >= MIN_SCORE:
-                # Save to Hugo content
-                out_dir = OUTPUT_DIR / slug
-                out_dir.mkdir(parents=True, exist_ok=True)
-                out_path = out_dir / "index.html"
-                out_path.write_text(html, encoding='utf-8')
+        html = build_html(article_data, keyword, slug, cluster, url)
 
-                progress["published"].append({
-                    "url": url,
-                    "slug": slug,
-                    "cluster": cluster,
-                    "keyword": keyword,
-                    "title": article_data.get("h1", ""),
-                    "score": score,
-                    "published_at": datetime.now().isoformat()
-                })
-                print(f"\n  ✅ Saved: {out_path}")
-            else:
-                # Save to needs_review
-                review_path = NEEDS_REVIEW_DIR / f"{slug}.html"
-                review_path.write_text(html, encoding='utf-8')
-                progress["needs_review"].append({
-                    "url": url, "slug": slug, "score": score,
-                    "published_at": datetime.now().isoformat()
-                })
-                print(f"\n  ⚠ Low score ({score}/10), saved to _needs_review/")
-
+        if score >= MIN_SCORE:
+            out_dir = OUTPUT_DIR / slug
+            out_dir.mkdir(parents=True, exist_ok=True)
+            (out_dir / "index.html").write_text(html, encoding="utf-8")
+            progress["published"].append({
+                "url": url, "slug": slug, "cluster": cluster,
+                "keyword": keyword, "score": score,
+                "published_at": datetime.now().isoformat()
+            })
             save_progress(progress)
-            generated_count += 1
-            time.sleep(2)
+            published_count += 1
+            print(f"\n  ✅ Published: /blog/{slug}/")
+        else:
+            (NEEDS_REVIEW / f"{slug}.html").write_text(html, encoding="utf-8")
+            progress.setdefault("needs_review",[]).append({
+                "url": url, "slug": slug, "score": score,
+                "published_at": datetime.now().isoformat()
+            })
+            save_progress(progress)
+            print(f"\n  ⚠ Needs review (score {score}/7): {slug}")
 
-        except Exception as e:
-            print(f"\n  ✗ Error generating {keyword}: {e}")
-            continue
+        time.sleep(2)
 
     print(f"\n{'='*60}")
-    print(f"✅ Done! Generated {generated_count} articles.")
-    print(f"   Published: {len([p for p in progress['published']])}")
-    print(f"   Needs review: {len(progress.get('needs_review', []))}")
+    print(f"✅ Done! Published: {published_count}/{len(queue)}")
     print(f"{'='*60}\n")
 
+    # Git push
+    if published_count > 0:
+        subprocess.run(["git","add","."], check=True)
+        result = subprocess.run(["git","diff","--staged","--quiet"])
+        if result.returncode != 0:
+            msg = f"Auto-publish {datetime.now().strftime('%Y-%m-%d')}: {published_count} articles"
+            subprocess.run(["git","commit","-m",msg], check=True)
+            subprocess.run(["git","push"], check=True)
+            print(f"✅ Pushed to GitHub")
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Generate MathSolver articles')
-    parser.add_argument('--count', type=int, default=ARTICLES_PER_RUN, help='Number of articles to generate')
-    parser.add_argument('--phase', type=int, default=1, help='Phase (1=quick wins first)')
-    args = parser.parse_args()
-    run(count=args.count, phase=args.phase)
+    main()
