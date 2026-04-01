@@ -598,7 +598,7 @@ def generate_article(client, article, related_articles):
             model=GEN_MODEL,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.7,
-            max_tokens=4000,
+            max_tokens=8000,
         )
         content_raw = response.choices[0].message.content.strip()
 
@@ -651,7 +651,7 @@ def generate_article(client, article, related_articles):
                 model=GEN_MODEL,
                 messages=[{"role": "user", "content": refine_prompt}],
                 temperature=0.5,
-                max_tokens=4000,
+                max_tokens=8000,
             )
             refined_raw = refine_response.choices[0].message.content.strip()
             try:
