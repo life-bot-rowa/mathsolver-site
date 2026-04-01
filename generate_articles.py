@@ -676,15 +676,8 @@ def main():
     print(f"✅ Done! Published: {published_count}/{len(queue)}")
     print(f"{'='*60}\n")
 
-    # Git push
-    if published_count > 0:
-        subprocess.run(["git","add","."], check=True)
-        result = subprocess.run(["git","diff","--staged","--quiet"])
-        if result.returncode != 0:
-            msg = f"Auto-publish {datetime.now().strftime('%Y-%m-%d')}: {published_count} articles"
-            subprocess.run(["git","commit","-m",msg], check=True)
-            subprocess.run(["git","push"], check=True)
-            print(f"✅ Pushed to GitHub")
+    # Git operations handled by GitHub Actions workflow
+    print(f"✅ Generation complete. GitHub Actions will commit and push.")
 
 if __name__ == "__main__":
     main()
