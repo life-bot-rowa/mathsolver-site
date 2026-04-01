@@ -150,7 +150,7 @@ Return ONLY this JSON structure with NO markdown, NO backticks:
   "meta_title": "under 60 chars, contains '{keyword}', ends with year 2026",
   "meta_description": "under 160 chars, contains keyword, mentions MathSolver AI",
   "h1": "the main article headline containing '{keyword}'",
-  "intro": "the full introduction text — ALL paragraphs combined, do not shorten",
+  "intro": "the full introduction text with paragraphs separated by \\n\\n (double newline). Keep all 3 paragraphs separated.",
   "formula": "the key formula or definition from the formula section",
   "formula_label": "short label like 'Standard Formula'",
   "steps": [
@@ -160,11 +160,11 @@ Return ONLY this JSON structure with NO markdown, NO backticks:
     {{"title": "step title", "content": "the FULL step explanation"}}
   ],
   "example1_problem": "the problem statement from Example 1",
-  "example1_solution": "the COMPLETE solution from Example 1 with all steps",
+  "example1_solution": "the COMPLETE solution with each step on its own line, starting with Step 1:, Step 2:, etc. Use \\n between steps.",
   "example2_problem": "the problem statement from Example 2",
-  "example2_solution": "the COMPLETE solution from Example 2 with all steps",
-  "common_mistakes": "the FULL common mistakes section — do not shorten",
-  "real_world": "the FULL real-world applications section — do not shorten",
+  "example2_solution": "the COMPLETE solution with each step on its own line, starting with Step 1:, Step 2:, etc. Use \\n between steps.",
+  "common_mistakes": "the FULL common mistakes text with paragraphs separated by \\n\\n",
+  "real_world": "the FULL real-world applications text with paragraphs separated by \\n\\n",
   "faq": [
     {{"q": "question 1", "a": "full answer"}},
     {{"q": "question 2", "a": "full answer"}},
