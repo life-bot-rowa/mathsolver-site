@@ -114,7 +114,7 @@ URL: {SITE_URL}{url}
 
 AUDIENCE: Students, parents, and anyone who needs help with math (all ages)
 TONE: Friendly, clear, like a helpful tutor. Explain the problem first, then the solution. Simple language.
-LENGTH: 1200-1800 words
+LENGTH: 1500-2000 words. IMPORTANT: Each section must be detailed. Intro = 3 paragraphs. Each step = 3-4 sentences. Each example must show full solution with 4+ steps. Common mistakes section = 2 paragraphs. Real-world applications = 2 paragraphs.
 
 REQUIRED STRUCTURE (return as JSON):
 {{
@@ -180,6 +180,7 @@ Score each criterion 0 or 1:
 8. faq_mentions_mathsolver: Does at least one FAQ mention MathSolver?
 9. has_lsi_keywords: Are there at least 5 LSI keywords?
 10. content_is_unique: Does the intro sound specific and not templated?
+11. sufficient_length: Is the total content (intro + steps + examples + faq) at least 800 words?
 
 Return ONLY this JSON:
 {{
@@ -193,9 +194,10 @@ Return ONLY this JSON:
     "no_generic_intro": 0,
     "faq_mentions_mathsolver": 0,
     "has_lsi_keywords": 0,
-    "content_is_unique": 0
+    "content_is_unique": 0,
+    "sufficient_length": 0
   }},
-  "total": 0,
+  "total": 0,  // sum of all 11 scores above
   "failed_criteria": ["list of criteria that scored 0"],
   "improvement_notes": "specific instructions to fix the failed criteria"
 }}"""
