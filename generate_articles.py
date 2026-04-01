@@ -64,6 +64,8 @@ def parse_json(raw):
     raw = raw.strip()
     raw = re.sub(r'^```json\s*', '', raw, flags=re.MULTILINE)
     raw = re.sub(r'\s*```\s*$', '', raw, flags=re.MULTILINE)
+    # Fix invalid backslash escapes in JSON (e.g. LaTeX: \frac, \sqrt)
+    raw = re.sub(r'\\(?!["\\/bfnrtu])', r'\\\\', raw)
     return json.loads(raw)
 
 def load_content_plan():
