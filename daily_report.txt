@@ -2,9 +2,12 @@
 Date: April 02, 2026
 
 ✅ Published today: 0
-⚠️  Needs review: 1
+⚠️  Needs review: 2
 📚 Total published: 0
 
 --- NEEDS REVIEW ---
 • math-1324-homework-answers
+  Score: 0/7
+
+• rational-reasoning-online-homework-answers
   Score: 0/7
