@@ -2,6 +2,8 @@
 
 import os
 import re
+import subprocess
+from datetime import datetime, timedelta
 from pathlib import Path
 
 SITE_URL = "https://mathsolver.cloud"
@@ -303,11 +305,65 @@ def audit_sync():
         check("No stale flat .html files in public/blog", len(stale) == 0)
 
 
+# ── 10. Site Stats ──
+
+def site_stats():
+    print("\n## 10. Site Statistics")
+
+    # Count pillar pages
+    pillars = [p.name for p in STATIC.iterdir()
+               if p.is_dir() and (p / "index.html").exists()
+               and p.name not in ("blog", "welcome", "mathsolver_solution_images")]
+    print(f"  Pillar pages: {len(pillars)}")
+
+    # Count blog articles
+    blog_dir = STATIC / "blog"
+    articles = []
+    if blog_dir.exists():
+        articles = [p.name for p in blog_dir.iterdir()
+                    if p.is_dir() and (p / "index.html").exists()]
+    print(f"  Blog articles: {len(articles)}")
+    print(f"  Total content pages: {len(pillars) + len(articles) + 1}")  # +1 for homepage
+
+    # New articles this week (from git log)
+    week_ago = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
+    try:
+        result = subprocess.run(
+            ["git", "log", f"--since={week_ago}", "--diff-filter=A", "--name-only", "--pretty=format:"],
+            capture_output=True, text=True
+        )
+        new_files = [l for l in result.stdout.strip().split("\n")
+                     if l.startswith("static/blog/") and l.endswith("index.html")]
+        new_slugs = sorted(set(f.replace("static/blog/", "").replace("/index.html", "") for f in new_files))
+        # Only count articles that still exist
+        new_slugs = [s for s in new_slugs if (blog_dir / s / "index.html").exists()]
+        print(f"  New articles this week: {len(new_slugs)}")
+        for s in new_slugs:
+            print(f"    - {s}")
+    except Exception:
+        print("  New articles this week: (git not available)")
+
+    # Sitemap URLs count
+    sitemap_file = STATIC / "sitemap.xml"
+    if sitemap_file.exists():
+        sitemap = sitemap_file.read_text()
+        url_count = sitemap.count("<url>")
+        print(f"  URLs in sitemap: {url_count}")
+
+    return {
+        "pillars": len(pillars),
+        "articles": len(articles),
+        "total": len(pillars) + len(articles) + 1,
+        "new_this_week": len(new_slugs) if 'new_slugs' in dir() else 0,
+        "new_slugs": new_slugs if 'new_slugs' in dir() else [],
+    }
+
+
 # ── MAIN ──
 
 def main():
     print("=" * 60)
-    print("SEO Audit — MathSolver")
+    print(f"SEO Audit — MathSolver — {datetime.now().strftime('%Y-%m-%d')}")
     print("=" * 60)
 
     audit_robots()
@@ -319,6 +375,7 @@ def main():
     audit_noindex()
     audit_homepage_schema()
     audit_sync()
+    stats = site_stats()
 
     print("\n" + "=" * 60)
     if fixes:
@@ -335,13 +392,26 @@ def main():
 
     # Write report
     with open("seo_report.txt", "w") as f:
-        f.write(f"SEO Audit Report\n")
-        f.write(f"Fixes: {len(fixes)}\n")
-        f.write(f"Issues: {len(issues)}\n")
-        for fix in fixes:
-            f.write(f"Fixed: {fix}\n")
-        for issue in issues:
-            f.write(f"Issue: {issue}\n")
+        f.write(f"SEO Audit Report — {datetime.now().strftime('%Y-%m-%d')}\n")
+        f.write(f"{'=' * 50}\n\n")
+        f.write(f"SITE STATISTICS\n")
+        f.write(f"  Pillar pages:         {stats['pillars']}\n")
+        f.write(f"  Blog articles:        {stats['articles']}\n")
+        f.write(f"  Total content pages:  {stats['total']}\n")
+        f.write(f"  New this week:        {stats['new_this_week']}\n")
+        for s in stats.get("new_slugs", []):
+            f.write(f"    - {s}\n")
+        f.write(f"\nAUDIT RESULTS\n")
+        if fixes:
+            f.write(f"  Auto-fixed: {len(fixes)}\n")
+            for fix in fixes:
+                f.write(f"    - {fix}\n")
+        if issues:
+            f.write(f"  Issues: {len(issues)}\n")
+            for issue in issues:
+                f.write(f"    - {issue}\n")
+        if not fixes and not issues:
+            f.write(f"  All SEO checks passed!\n")
 
     return 1 if issues and not fixes else 0
 
