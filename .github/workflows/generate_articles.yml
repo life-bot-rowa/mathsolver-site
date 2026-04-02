@@ -36,6 +36,9 @@ jobs:
       - name: Update pillar pages
         run: python update_pillars.py
 
+      - name: Sync blog articles to public
+        run: cp -r static/blog/* public/blog/ 2>/dev/null || true
+
       - name: Build report
         run: python send_report.py
 
