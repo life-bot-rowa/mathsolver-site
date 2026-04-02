@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git rebase:*)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f''''Published: {len\\(d.get\\(published,[]\\)\\)}''''\\); print\\(f''''Needs review: {len\\(d.get\\(needs_review,[]\\)\\)}''''\\)\")"
+    ]
+  }
+}
