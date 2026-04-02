@@ -640,6 +640,7 @@ def generate_article(client, article, related):
     url     = article.get("URL","")
     pillar  = PILLAR_MAP.get(cluster,"/")
 
+    slug = make_slug(keyword)
     related_links = "\n".join([f'- {r["keyword"]}' for r in related[:4]])
 
     article_data = {}
