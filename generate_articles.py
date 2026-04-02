@@ -163,6 +163,7 @@ REQUIREMENTS:
 - Start the article directly with the topic — NO generic intros like "In today's world..."
 - The keyword "{keyword}" must appear in the very first sentence
 - IMPORTANT: Write ALL formulas in plain text only. NO LaTeX, NO backslashes, NO \frac, NO \sum, NO \sqrt. Write fractions as "a/b", square roots as "sqrt(x)", summation as "sum of...".
+- KEYWORD DENSITY: Use the primary keyword "{keyword}" exactly 8-12 times throughout the article. Spread it naturally — in intro, headings, body paragraphs, FAQ, and conclusion. Do NOT stuff it unnaturally.
 
 WRITE THESE SECTIONS IN ORDER:
 
@@ -207,8 +208,16 @@ Write the full article now. Use clear headers. Be thorough and detailed."""
 
 # ── STEP 2: STRUCTURE INTO JSON ───────────────────────────────────────────────
 
-def prompt_structure_json(article_text, keyword):
+def prompt_structure_json(article_text, keyword, keyword_count=None):
+    density_note = ""
+    if keyword_count is not None:
+        if keyword_count < 8:
+            density_note = f"IMPORTANT: The keyword '{keyword}' appears only {keyword_count} times. You must add it more naturally throughout the content to reach 8-12 uses."
+        elif keyword_count > 12:
+            density_note = f"IMPORTANT: The keyword '{keyword}' appears {keyword_count} times which is too many. Remove some instances to reach 8-12 uses."
+    
     return f"""Convert this article into a structured JSON object. Extract and organize the content exactly as written — do NOT summarize or shorten anything.
+{density_note}
 
 ARTICLE TEXT:
 {article_text[:8000]}
@@ -288,10 +297,17 @@ def validate_article(article_json, keyword):
     faq_text = " ".join(f.get("a","") for f in faq).lower()
     scores["mentions_mathsolver"] = 1 if "mathsolver" in faq_text else 0
 
+    # 8. Keyword density check (8-12 times)
+    keyword_count = all_text.lower().count(keyword.lower())
+    scores["keyword_density"] = 1 if 8 <= keyword_count <= 12 else 0
+
     total = sum(scores.values())
     failed = [k for k,v in scores.items() if v == 0]
+    
+    # Add keyword stats to failed message for easier debugging
+    keyword_info = f"keyword_count={keyword_count}"
 
-    return total, failed, word_count
+    return total, failed, word_count, keyword_count
 
 # ── BUILD HTML ────────────────────────────────────────────────────────────────
 
@@ -665,14 +681,14 @@ def generate_article(client, article, related):
 
             # Step 3: Validate (Python-based)
             print("  [3/3] Quality check...")
-            score, failed, wc = validate_article(article_data, keyword)
+            score, failed, wc, kw_count = validate_article(article_data, keyword)
 
-            print(f"  Score: {score}/7 | Words: {wc}")
+            print(f"  Score: {score}/8 | Words: {wc} | Keyword count: {kw_count}/8-12")
             if failed:
                 print(f"  Failed: {', '.join(failed)}")
 
             if score >= MIN_SCORE:
-                print(f"  ✓ Quality check passed! ({score}/7)")
+                print(f"  ✓ Quality check passed! ({score}/8)")
                 return article_data, score
 
         except Exception as e:
@@ -766,7 +782,7 @@ def main():
                 "published_at": datetime.now().isoformat()
             })
             save_progress(progress)
-            print(f"\n  ⚠ Needs review (score {score}/7): {slug}")
+            print(f"\n  ⚠ Needs review (score {score}/8): {slug}")
 
         time.sleep(2)
 
