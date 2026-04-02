@@ -1,5 +1,14 @@
 {
-  "published": [],
+  "published": [
+    {
+      "url": "/math-word-problem-solver/hard-math-problems",
+      "slug": "hard-math-problems",
+      "cluster": "Word Problems & Homework",
+      "keyword": "hard math problems",
+      "score": 8,
+      "published_at": "2026-04-02T06:56:27.410371"
+    }
+  ],
   "needs_review": [
     {
       "url": "/math-word-problem-solver/math-1324-homework-answers",
