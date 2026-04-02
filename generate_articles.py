@@ -180,10 +180,12 @@ Step 3: [descriptive title]
 Step 4: [descriptive title]
 
 ## Worked Example 1 (full detailed solution, ~150 words)
-Present a concrete math problem then solve it step by step showing all work.
+{"MANDATORY — use EXACTLY this problem: " + example1 if example1 else "Present a concrete math problem then solve it step by step showing all work."}
+Solve it step by step showing all work.
 
 ## Worked Example 2 (full detailed solution, ~150 words)
-A slightly harder problem, solved step by step.
+{"MANDATORY — use EXACTLY this problem: " + example2 if example2 else "A slightly harder problem, solved step by step."}
+Solve it step by step showing all work.
 
 ## Common Mistakes to Avoid (2 full paragraphs, ~150 words)
 Describe the most common errors students make and how to avoid them.
