@@ -313,7 +313,7 @@ def validate_article(article_json, keyword):
 
 # ── BUILD HTML ────────────────────────────────────────────────────────────────
 
-def build_html(data, keyword, slug, cluster, url):
+def build_html(data, keyword, slug, cluster, url, related=None):
     pillar_url  = PILLAR_MAP.get(cluster, "/")
     pub_date    = datetime.now().strftime("%B %Y")
     year        = datetime.now().year
@@ -599,6 +599,7 @@ def build_html(data, keyword, slug, cluster, url):
       <h3>📚 Related Topics</h3>
       <ul>
         <li><a href="{SITE_URL}{pillar_url}">{cluster} Solver — Complete Guide</a></li>
+        {chr(10).join(f'        <li><a href="{SITE_URL}/blog/{r["slug"]}/">{r.get("keyword", r["slug"]).title()}</a></li>' for r in (related or []) if r.get("slug") != slug)}
       </ul>
     </div>
 
@@ -764,7 +765,7 @@ def main():
 
         article_data, score = generate_article(client, article, related)
 
-        html = build_html(article_data, keyword, slug, cluster, url)
+        html = build_html(article_data, keyword, slug, cluster, url, related)
 
         if score >= MIN_SCORE:
             out_dir = OUTPUT_DIR / slug
