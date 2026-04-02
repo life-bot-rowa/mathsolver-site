@@ -630,6 +630,7 @@ def build_html(data, keyword, slug, cluster, url, related=None):
     const h=document.getElementById('ham'),n=document.getElementById('nav');
     if(h)h.addEventListener('click',()=>n.classList.toggle('open'));
     document.addEventListener('click',e=>{{if(h&&!h.contains(e.target)&&!n.contains(e.target))n.classList.remove('open')}});
+    document.addEventListener('click',function(e){{var a=e.target.closest('a');if(a&&a.href&&a.href.includes('chromewebstore.google.com')){{gtag('event','cws_click',{{event_category:'engagement',event_label:a.textContent.trim(),link_url:a.href}});}}}});
   </script>
 </body>
 </html>"""
