@@ -8,7 +8,7 @@ on:
       articles_per_run:
         description: 'How many articles to generate'
         required: false
-        default: '5'
+        default: '8'
 
 jobs:
   generate:
@@ -30,7 +30,7 @@ jobs:
       - name: Generate articles
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          ARTICLES_PER_RUN: ${{ github.event.inputs.articles_per_run || '5' }}
+          ARTICLES_PER_RUN: ${{ github.event.inputs.articles_per_run || '8' }}
         run: python generate_articles.py
 
       - name: Update pillar pages
