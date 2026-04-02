@@ -19,7 +19,12 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install dependencies
+        run: pip install google-api-python-client google-auth google-analytics-data
+
       - name: Run SEO audit
+        env:
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
         run: python seo_audit.py
 
       - name: Commit fixes if any

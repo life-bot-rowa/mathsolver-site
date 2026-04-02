@@ -1,5 +1,6 @@
 """Weekly SEO audit — checks all items and fixes what it can."""
 
+import json
 import os
 import re
 import subprocess
@@ -8,6 +9,8 @@ from pathlib import Path
 
 SITE_URL = "https://mathsolver.cloud"
 STATIC = Path("static")
+GA4_PROPERTY_ID = "510795182"
+GSC_SITE_URL = "sc-domain:mathsolver.cloud"  # or "https://mathsolver.cloud/"
 LAYOUTS = Path("layouts")
 fixes = []
 issues = []
@@ -305,7 +308,116 @@ def audit_sync():
         check("No stale flat .html files in public/blog", len(stale) == 0)
 
 
-# ── 10. Site Stats ──
+# ── 10. Google Data ──
+
+def get_google_creds():
+    """Load Google service account credentials from env or file."""
+    try:
+        from google.oauth2 import service_account
+        key_json = os.environ.get("GOOGLE_SERVICE_ACCOUNT_KEY", "")
+        if key_json:
+            info = json.loads(key_json)
+            return service_account.Credentials.from_service_account_info(info)
+        key_file = Path("google-service-account.json")
+        if key_file.exists():
+            return service_account.Credentials.from_service_account_file(str(key_file))
+    except ImportError:
+        pass
+    return None
+
+
+def google_indexed_pages():
+    """Get number of indexed pages from Google Search Console."""
+    creds = get_google_creds()
+    if not creds:
+        return None
+    try:
+        from googleapiclient.discovery import build
+        scoped = creds.with_scopes(["https://www.googleapis.com/auth/webmasters.readonly"])
+        service = build("searchconsole", "v1", credentials=scoped)
+
+        # Try both URL formats
+        for site_url in [GSC_SITE_URL, SITE_URL + "/"]:
+            try:
+                response = service.searchAnalytics().query(
+                    siteUrl=site_url,
+                    body={
+                        "startDate": (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d"),
+                        "endDate": datetime.now().strftime("%Y-%m-%d"),
+                        "dimensions": ["page"],
+                        "rowLimit": 1000,
+                    }
+                ).execute()
+                rows = response.get("rows", [])
+                return {
+                    "indexed_pages": len(rows),
+                    "total_clicks": sum(r.get("clicks", 0) for r in rows),
+                    "total_impressions": sum(r.get("impressions", 0) for r in rows),
+                    "top_pages": sorted(rows, key=lambda r: r.get("clicks", 0), reverse=True)[:5],
+                }
+            except Exception:
+                continue
+    except Exception as e:
+        print(f"  ⚠ Search Console API error: {e}")
+    return None
+
+
+def google_analytics_traffic():
+    """Get weekly traffic from Google Analytics 4."""
+    creds = get_google_creds()
+    if not creds:
+        return None
+    try:
+        from google.analytics.data_v1beta import BetaAnalyticsDataClient
+        from google.analytics.data_v1beta.types import (
+            RunReportRequest, DateRange, Dimension, Metric, FilterExpression, Filter
+        )
+
+        scoped = creds.with_scopes(["https://www.googleapis.com/auth/analytics.readonly"])
+        client = BetaAnalyticsDataClient(credentials=scoped)
+
+        # Total traffic this week
+        request = RunReportRequest(
+            property=f"properties/{GA4_PROPERTY_ID}",
+            date_ranges=[DateRange(
+                start_date=(datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d"),
+                end_date="today",
+            )],
+            dimensions=[Dimension(name="pagePath")],
+            metrics=[
+                Metric(name="sessions"),
+                Metric(name="screenPageViews"),
+            ],
+            limit=100,
+        )
+        response = client.run_report(request)
+
+        total_sessions = 0
+        total_views = 0
+        blog_pages = []
+
+        for row in response.rows:
+            path = row.dimension_values[0].value
+            sessions = int(row.metric_values[0].value)
+            views = int(row.metric_values[1].value)
+            total_sessions += sessions
+            total_views += views
+            if "/blog/" in path:
+                blog_pages.append({"path": path, "sessions": sessions, "views": views})
+
+        blog_pages.sort(key=lambda x: x["views"], reverse=True)
+
+        return {
+            "total_sessions": total_sessions,
+            "total_views": total_views,
+            "blog_sessions": sum(p["sessions"] for p in blog_pages),
+            "blog_views": sum(p["views"] for p in blog_pages),
+            "top_blog_pages": blog_pages[:5],
+        }
+    except Exception as e:
+        print(f"  ⚠ Analytics API error: {e}")
+    return None
+
 
 def site_stats():
     print("\n## 10. Site Statistics")
@@ -350,12 +462,44 @@ def site_stats():
         url_count = sitemap.count("<url>")
         print(f"  URLs in sitemap: {url_count}")
 
+    # Google Search Console data
+    print("\n  --- Google Search Console (last 7 days) ---")
+    gsc = google_indexed_pages()
+    if gsc:
+        print(f"  Pages with impressions: {gsc['indexed_pages']}")
+        print(f"  Total clicks: {gsc['total_clicks']}")
+        print(f"  Total impressions: {gsc['total_impressions']}")
+        if gsc["top_pages"]:
+            print("  Top pages by clicks:")
+            for p in gsc["top_pages"]:
+                keys = p.get("keys", ["?"])
+                print(f"    {keys[0]} — {p.get('clicks', 0)} clicks, {p.get('impressions', 0)} impressions")
+    else:
+        print("  (Google Search Console API not available)")
+
+    # Google Analytics data
+    print("\n  --- Google Analytics (last 7 days) ---")
+    ga = google_analytics_traffic()
+    if ga:
+        print(f"  Total sessions: {ga['total_sessions']}")
+        print(f"  Total page views: {ga['total_views']}")
+        print(f"  Blog sessions: {ga['blog_sessions']}")
+        print(f"  Blog page views: {ga['blog_views']}")
+        if ga["top_blog_pages"]:
+            print("  Top blog pages:")
+            for p in ga["top_blog_pages"]:
+                print(f"    {p['path']} — {p['views']} views, {p['sessions']} sessions")
+    else:
+        print("  (Google Analytics API not available)")
+
     return {
         "pillars": len(pillars),
         "articles": len(articles),
         "total": len(pillars) + len(articles) + 1,
         "new_this_week": len(new_slugs) if 'new_slugs' in dir() else 0,
         "new_slugs": new_slugs if 'new_slugs' in dir() else [],
+        "gsc": gsc,
+        "ga": ga,
     }
 
 
@@ -401,6 +545,31 @@ def main():
         f.write(f"  New this week:        {stats['new_this_week']}\n")
         for s in stats.get("new_slugs", []):
             f.write(f"    - {s}\n")
+
+        gsc = stats.get("gsc")
+        if gsc:
+            f.write(f"\nGOOGLE SEARCH CONSOLE (last 7 days)\n")
+            f.write(f"  Pages with impressions: {gsc['indexed_pages']}\n")
+            f.write(f"  Total clicks:           {gsc['total_clicks']}\n")
+            f.write(f"  Total impressions:      {gsc['total_impressions']}\n")
+            if gsc["top_pages"]:
+                f.write(f"  Top pages:\n")
+                for p in gsc["top_pages"]:
+                    keys = p.get("keys", ["?"])
+                    f.write(f"    {keys[0]} — {p.get('clicks', 0)} clicks\n")
+
+        ga = stats.get("ga")
+        if ga:
+            f.write(f"\nGOOGLE ANALYTICS (last 7 days)\n")
+            f.write(f"  Total sessions:    {ga['total_sessions']}\n")
+            f.write(f"  Total page views:  {ga['total_views']}\n")
+            f.write(f"  Blog sessions:     {ga['blog_sessions']}\n")
+            f.write(f"  Blog page views:   {ga['blog_views']}\n")
+            if ga["top_blog_pages"]:
+                f.write(f"  Top blog pages:\n")
+                for p in ga["top_blog_pages"]:
+                    f.write(f"    {p['path']} — {p['views']} views\n")
+
         f.write(f"\nAUDIT RESULTS\n")
         if fixes:
             f.write(f"  Auto-fixed: {len(fixes)}\n")
