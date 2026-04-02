@@ -220,7 +220,7 @@ def prompt_structure_json(article_text, keyword, keyword_count=None):
 {density_note}
 
 ARTICLE TEXT:
-{article_text[:8000]}
+{article_text}
 
 Return ONLY this JSON structure with NO markdown, NO backticks:
 {{
