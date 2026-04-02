@@ -152,7 +152,7 @@ ARTICLE_EXAMPLES = load_article_examples()
 
 # ── STEP 1: WRITE LONG ARTICLE (plain text) ───────────────────────────────────
 
-def prompt_write_article(keyword, title, cluster, related_links, pillar_url):
+def prompt_write_article(keyword, title, cluster, related_links, pillar_url, example1=None, example2=None):
     return f"""You are an expert math tutor and SEO writer for MathSolver.cloud.
 
 Write a comprehensive, detailed article about "{keyword}".
