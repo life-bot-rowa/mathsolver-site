@@ -1,0 +1,47 @@
+name: Weekly SEO Audit
+
+on:
+  schedule:
+    - cron: '0 7 * * 1'  # Every Monday at 7:00 UTC (11:00 Yerevan)
+  workflow_dispatch: {}
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run SEO audit
+        run: python seo_audit.py
+
+      - name: Commit fixes if any
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git config --global user.name "MathSolver Bot"
+          git config --global user.email "bot@mathsolver.cloud"
+          git remote set-url origin https://life-bot-rowa:${{ secrets.GH_TOKEN }}@github.com/life-bot-rowa/mathsolver-site.git
+          git add .
+          git diff --staged --quiet || git commit -m "SEO audit: auto-fix $(date +%Y-%m-%d)"
+          git push || true
+
+      - name: Send audit report
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.GMAIL_USER }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: "MathSolver — Weekly SEO Audit"
+          to: 6205251@gmail.com
+          from: MathSolver Bot
+          body: file://seo_report.txt
