@@ -33,6 +33,9 @@ jobs:
           ARTICLES_PER_RUN: ${{ github.event.inputs.articles_per_run || '5' }}
         run: python generate_articles.py
 
+      - name: Update pillar pages
+        run: python update_pillars.py
+
       - name: Build report
         run: python send_report.py
 
