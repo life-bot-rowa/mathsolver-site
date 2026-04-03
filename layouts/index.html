@@ -27,6 +27,14 @@
     .btn-contact:hover { transform: translateY(-1px) !important; }
     .solver-link { display:block;padding:16px 20px;background:rgba(255,255,255,0.04);border:1px solid rgba(43,127,232,0.15);border-radius:12px;color:var(--text);text-decoration:none;font-weight:600;font-size:0.95rem;transition:border-color 0.2s,transform 0.2s; }
     .solver-link:hover { border-color:var(--blue);transform:translateY(-2px); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a { cursor: pointer; }
+    .nav-dropdown > a::after { content: ' \25BE'; font-size: 0.7em; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; min-width: 220px; background: rgba(6,13,31,0.98); border: 1px solid rgba(43,127,232,0.15); border-radius: 12px; padding: 8px 0; margin-top: 4px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); z-index: 200; }
+    .dropdown-menu a { display: block; padding: 10px 20px; color: var(--gray-text); font-size: 0.85rem; white-space: nowrap; border-radius: 0; }
+    .dropdown-menu a:hover { color: var(--white); background: rgba(43,127,232,0.1); }
+    .nav-dropdown:hover .dropdown-menu { display: block; }
+    @media(max-width:860px) { .dropdown-menu { position: static; border: none; box-shadow: none; padding: 0 0 0 16px; margin: 0; } .nav-dropdown:hover .dropdown-menu { display: block; } }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
     .page-hero { padding: 140px 40px 80px; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(43,127,232,0.18) 0%, transparent 70%), var(--dark); border-bottom: 1px solid rgba(43,127,232,0.1); }
@@ -179,7 +187,22 @@
     <a href="/" class="logo"><span class="logo-icon">&#8721;</span>MathSolver</a>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     <nav id="main-nav"><a href="/" class="active">Home</a>
-      <a href="/ai-math-solver/">Solvers</a>
+      <div class="nav-dropdown"><a href="/ai-math-solver/">Solvers</a>
+        <div class="dropdown-menu">
+          <a href="/algebra-solver/">Algebra Solver</a>
+          <a href="/calculus-solver/">Calculus Solver</a>
+          <a href="/geometry-solver/">Geometry Solver</a>
+          <a href="/trigonometry-solver/">Trigonometry Solver</a>
+          <a href="/equation-solver/">Equation Solver</a>
+          <a href="/statistics-solver/">Statistics Solver</a>
+          <a href="/fractions-calculator/">Fractions Calculator</a>
+          <a href="/matrix-solver/">Matrix Solver</a>
+          <a href="/physics-solver/">Physics Solver</a>
+          <a href="/online-math-calculator/">Online Calculator</a>
+          <a href="/ai-math-solver/">AI Math Solver</a>
+          <a href="/math-word-problem-solver/">Word Problems</a>
+        </div>
+      </div>
       <a href="/blog/">Blog</a>
       <a href="/price/">Price</a>
       <a href="/#contactus" class="btn-contact">Contact US</a></nav>
