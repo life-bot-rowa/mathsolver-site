@@ -95,6 +95,70 @@
       "keyword": "edmentum mastery test answers algebra 1",
       "score": 7,
       "published_at": "2026-04-02T09:53:25.604119"
+    },
+    {
+      "url": "/algebra-solver/algebra-1-regents",
+      "slug": "algebra-1-regents",
+      "cluster": "Algebra",
+      "keyword": "algebra 1 regents",
+      "score": 7,
+      "published_at": "2026-04-03T09:41:00.886162"
+    },
+    {
+      "url": "/algebra-solver/algebra-2.0",
+      "slug": "algebra-20",
+      "cluster": "Algebra",
+      "keyword": "algebra 2.0",
+      "score": 7,
+      "published_at": "2026-04-03T09:41:35.471369"
+    },
+    {
+      "url": "/geometry-solver/geometry-lessons",
+      "slug": "geometry-lessons",
+      "cluster": "Geometry",
+      "keyword": "geometry lessons",
+      "score": 8,
+      "published_at": "2026-04-03T09:42:06.536428"
+    },
+    {
+      "url": "/geometry-solver/geometry-dash-spam",
+      "slug": "geometry-dash-spam",
+      "cluster": "Geometry",
+      "keyword": "geometry dash spam",
+      "score": 7,
+      "published_at": "2026-04-03T09:42:41.205172"
+    },
+    {
+      "url": "/geometry-solver/geometry-dash-wave",
+      "slug": "geometry-dash-wave",
+      "cluster": "Geometry",
+      "keyword": "geometry dash wave",
+      "score": 7,
+      "published_at": "2026-04-03T09:43:27.066540"
+    },
+    {
+      "url": "/geometry-solver/geometry-dash-breeze",
+      "slug": "geometry-dash-breeze",
+      "cluster": "Geometry",
+      "keyword": "geometry dash breeze",
+      "score": 7,
+      "published_at": "2026-04-03T09:44:05.557445"
+    },
+    {
+      "url": "/geometry-solver/pythagorean-theorem-equation-solver",
+      "slug": "pythagorean-theorem-equation-solver",
+      "cluster": "Geometry",
+      "keyword": "pythagorean theorem equation solver",
+      "score": 8,
+      "published_at": "2026-04-03T09:44:46.565817"
+    },
+    {
+      "url": "/geometry-solver/demon-list-geometry-dash",
+      "slug": "demon-list-geometry-dash",
+      "cluster": "Geometry",
+      "keyword": "demon list geometry dash",
+      "score": 8,
+      "published_at": "2026-04-03T09:45:23.406624"
     }
   ],
   "needs_review": []

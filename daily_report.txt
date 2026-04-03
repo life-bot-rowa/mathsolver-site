@@ -1,55 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 02, 2026
+Date: April 03, 2026
 
-✅ Published today: 12
+✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 12
+📚 Total published: 20
 
 --- PUBLISHED TODAY ---
-• Math 1324 Homework Answers
-  https://mathsolver.cloud/blog/math-1324-homework-answers
-  Score: 8/7 | Cluster: Word Problems & Homework
-
-• Rational Reasoning Online Homework Answers
-  https://mathsolver.cloud/blog/rational-reasoning-online-homework-answers
-  Score: 7/7 | Cluster: Word Problems & Homework
-
-• Hard Math Problems
-  https://mathsolver.cloud/blog/hard-math-problems
-  Score: 7/7 | Cluster: Word Problems & Homework
-
-• Cpm Homework Help
-  https://mathsolver.cloud/blog/cpm-homework-help
-  Score: 7/7 | Cluster: Word Problems & Homework
-
-• Absolute Value And Step Functions Homework Answer Key
-  https://mathsolver.cloud/blog/absolute-value-and-step-functions-homework-answer-key
-  Score: 7/7 | Cluster: Word Problems & Homework
-
-• Which Equation Represents The Proportional Relationship In The Table
-  https://mathsolver.cloud/blog/which-equation-represents-the-proportional-relationship-in-the-table
-  Score: 7/7 | Cluster: Arithmetic & Fractions
-
-• Homework Lesson 11 Equations For Proportional Relationships Answer Key
-  https://mathsolver.cloud/blog/homework-lesson-11-equations-for-proportional-relationships-answer-key
-  Score: 7/7 | Cluster: Arithmetic & Fractions
-
-• Solving Exponential Equations
-  https://mathsolver.cloud/blog/solving-exponential-equations
-  Score: 8/7 | Cluster: Arithmetic & Fractions
-
-• Equation To Find 0.2 Percent Offset Yield Strength
-  https://mathsolver.cloud/blog/equation-to-find-02-percent-offset-yield-strength
-  Score: 8/7 | Cluster: Arithmetic & Fractions
-
-• Mystatlab Homework Answers Statistics
-  https://mathsolver.cloud/blog/mystatlab-homework-answers-statistics
-  Score: 7/7 | Cluster: Statistics & Probability
-
-• Which Regression Equation Best Fits The Data
-  https://mathsolver.cloud/blog/which-regression-equation-best-fits-the-data
-  Score: 8/7 | Cluster: Statistics & Probability
-
-• Edmentum Mastery Test Answers Algebra 1
-  https://mathsolver.cloud/blog/edmentum-mastery-test-answers-algebra-1
+• Algebra 1 Regents
+  https://mathsolver.cloud/blog/algebra-1-regents
   Score: 7/7 | Cluster: Algebra
+
+• Algebra 2.0
+  https://mathsolver.cloud/blog/algebra-20
+  Score: 7/7 | Cluster: Algebra
+
+• Geometry Lessons
+  https://mathsolver.cloud/blog/geometry-lessons
+  Score: 8/7 | Cluster: Geometry
+
+• Geometry Dash Spam
+  https://mathsolver.cloud/blog/geometry-dash-spam
+  Score: 7/7 | Cluster: Geometry
+
+• Geometry Dash Wave
+  https://mathsolver.cloud/blog/geometry-dash-wave
+  Score: 7/7 | Cluster: Geometry
+
+• Geometry Dash Breeze
+  https://mathsolver.cloud/blog/geometry-dash-breeze
+  Score: 7/7 | Cluster: Geometry
+
+• Pythagorean Theorem Equation Solver
+  https://mathsolver.cloud/blog/pythagorean-theorem-equation-solver
+  Score: 8/7 | Cluster: Geometry
+
+• Demon List Geometry Dash
+  https://mathsolver.cloud/blog/demon-list-geometry-dash
+  Score: 8/7 | Cluster: Geometry
