@@ -39,6 +39,9 @@ jobs:
       - name: Sync blog articles to public
         run: cp -r static/blog/* public/blog/ 2>/dev/null || true
 
+      - name: Generate blog index
+        run: python generate_blog_index.py
+
       - name: Generate sitemap
         run: python generate_sitemap.py
 
