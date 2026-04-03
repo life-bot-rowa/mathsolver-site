@@ -25,6 +25,8 @@
     nav a:hover, nav a.active { color: var(--white); background: rgba(255,255,255,0.06); }
     .btn-contact { margin-left: 12px; background: var(--yellow) !important; color: var(--dark) !important; font-weight: 600 !important; padding: 9px 20px !important; border-radius: 50px !important; transition: transform 0.2s !important; }
     .btn-contact:hover { transform: translateY(-1px) !important; }
+    .solver-link { display:block;padding:16px 20px;background:rgba(255,255,255,0.04);border:1px solid rgba(43,127,232,0.15);border-radius:12px;color:var(--text);text-decoration:none;font-weight:600;font-size:0.95rem;transition:border-color 0.2s,transform 0.2s; }
+    .solver-link:hover { border-color:var(--blue);transform:translateY(-2px); }
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
     .page-hero { padding: 140px 40px 80px; text-align: center; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(43,127,232,0.18) 0%, transparent 70%), var(--dark); border-bottom: 1px solid rgba(43,127,232,0.1); }
@@ -177,10 +179,9 @@
     <a href="/" class="logo"><span class="logo-icon">&#8721;</span>MathSolver</a>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     <nav id="main-nav"><a href="/" class="active">Home</a>
-      <a href="/privacy-policy/">Privacy notice</a>
-      <a href="/refund-policy/">Refund policy</a>
+      <a href="/ai-math-solver/">Solvers</a>
+      <a href="/blog/">Blog</a>
       <a href="/price/">Price</a>
-      <a href="/terms-of-service/">Terms of Service</a>
       <a href="/#contactus" class="btn-contact">Contact US</a></nav>
   </header>
 
@@ -270,6 +271,41 @@
           <small>solve math with AI</small>
         </div>
       </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section id="solvers-section" style="padding:80px 40px">
+    <div class="home-container" style="text-align:center">
+      <span class="section-label">Math Solvers</span>
+      <h2 class="section-title">Solve Any Math Topic</h2>
+      <p class="section-sub" style="margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto">Comprehensive guides with step-by-step solutions for every math subject.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;max-width:900px;margin:0 auto">
+        <a href="/algebra-solver/" class="solver-link">Algebra Solver</a>
+        <a href="/calculus-solver/" class="solver-link">Calculus Solver</a>
+        <a href="/geometry-solver/" class="solver-link">Geometry Solver</a>
+        <a href="/trigonometry-solver/" class="solver-link">Trigonometry Solver</a>
+        <a href="/equation-solver/" class="solver-link">Equation Solver</a>
+        <a href="/statistics-solver/" class="solver-link">Statistics Solver</a>
+        <a href="/fractions-calculator/" class="solver-link">Fractions Calculator</a>
+        <a href="/matrix-solver/" class="solver-link">Matrix Solver</a>
+        <a href="/physics-solver/" class="solver-link">Physics Solver</a>
+        <a href="/online-math-calculator/" class="solver-link">Online Calculator</a>
+        <a href="/ai-math-solver/" class="solver-link">AI Math Solver</a>
+        <a href="/math-word-problem-solver/" class="solver-link">Word Problems</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section id="blog-section" style="padding:80px 40px">
+    <div class="home-container" style="text-align:center">
+      <span class="section-label">Learn with us</span>
+      <h2 class="section-title">Free Math Guides &amp; Tutorials</h2>
+      <p class="section-sub" style="margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto">Step-by-step solutions, homework help, and expert tips for every math topic. New articles published daily.</p>
+      <a href="/blog/" class="btn-primary" style="font-size:1rem">&#128218; Browse All Guides &rarr;</a>
     </div>
   </section>
 
