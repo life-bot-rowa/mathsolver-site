@@ -26,7 +26,7 @@ MAX_RETRIES      = 3
 
 SITE_URL    = "https://mathsolver.cloud"
 CWS_URL     = "https://chromewebstore.google.com/detail/math-solver/pieobakkfhafplomcoiohhpikcofoghb?utm_source=mathsolver.cloud&utm_medium=blog&utm_campaign=article"
-CONTENT_PLAN   = Path("mathsolver_content_plan_FULL.xlsx")
+CONTENT_PLAN   = Path("publishing_roadmap.xlsx")
 OUTPUT_DIR     = Path("static/blog")
 NEEDS_REVIEW   = Path("_needs_review")
 PROGRESS_FILE  = Path(".generation_progress.json")
@@ -75,10 +75,10 @@ def parse_json(raw):
 
 def load_content_plan():
     wb = openpyxl.load_workbook(CONTENT_PLAN)
-    ws = wb.active
-    headers = [c.value for c in list(ws.iter_rows(min_row=2, max_row=2))[0]]
+    ws = wb['📅 Full Sequence']
+    headers = [c.value for c in list(ws.iter_rows(min_row=1, max_row=1))[0]]
     articles = []
-    for row in ws.iter_rows(min_row=3, values_only=True):
+    for row in ws.iter_rows(min_row=2, values_only=True):
         if row[0]:
             articles.append(dict(zip(headers, row)))
     return articles
@@ -152,7 +152,13 @@ ARTICLE_EXAMPLES = load_article_examples()
 
 # ── STEP 1: WRITE LONG ARTICLE (plain text) ───────────────────────────────────
 
-def prompt_write_article(keyword, title, cluster, related_links, pillar_url, example1=None, example2=None):
+def prompt_write_article(keyword, title, cluster, related_links, pillar_url, example1=None, example2=None, secondary_keywords=None):
+    sec_kw_instruction = ""
+    if secondary_keywords:
+        sec_kw_list = ", ".join(secondary_keywords)
+        sec_kw_instruction = f"""- SECONDARY KEYWORDS: You MUST use each of these secondary keywords at least once naturally in the article: {sec_kw_list}
+  Spread them across different sections (intro, steps, examples, FAQ). Do NOT list them together."""
+
     return f"""You are an expert math tutor and SEO writer for MathSolver.cloud.
 
 Write a comprehensive, detailed article about "{keyword}".
@@ -164,6 +170,7 @@ REQUIREMENTS:
 - The keyword "{keyword}" must appear in the very first sentence
 - IMPORTANT: Write ALL formulas in plain text only. NO LaTeX, NO backslashes, NO \frac, NO \sum, NO \sqrt. Write fractions as "a/b", square roots as "sqrt(x)", summation as "sum of...".
 - KEYWORD DENSITY: Use the primary keyword "{keyword}" exactly 8-12 times throughout the article. Spread it naturally — in intro, headings, body paragraphs, FAQ, and conclusion. Do NOT stuff it unnaturally.
+{sec_kw_instruction}
 
 WRITE THESE SECTIONS IN ORDER:
 
@@ -256,10 +263,9 @@ Return ONLY this JSON structure with NO markdown, NO backticks:
 
 # ── STEP 3: VALIDATE (Python-based, no GPT) ──────────────────────────────────
 
-def validate_article(article_json, keyword):
+def validate_article(article_json, keyword, secondary_keywords=None):
     """Validate article quality using Python checks — fast and reliable."""
     scores = {}
-    failed = []
 
     # 1. Has h1
     scores["has_h1"] = 1 if article_json.get("h1","").strip() else 0
@@ -303,13 +309,23 @@ def validate_article(article_json, keyword):
     keyword_count = all_text.lower().count(keyword.lower())
     scores["keyword_density"] = 1 if 8 <= keyword_count <= 12 else 0
 
+    # 9. Secondary keywords check
+    missing_secondary = []
+    if secondary_keywords:
+        all_text_lower = all_text.lower()
+        for sk in secondary_keywords:
+            if sk.lower().strip() not in all_text_lower:
+                missing_secondary.append(sk.strip())
+        scores["has_secondary_keywords"] = 1 if not missing_secondary else 0
+    else:
+        scores["has_secondary_keywords"] = 1  # no secondary keywords = pass
+
     total = sum(scores.values())
     failed = [k for k,v in scores.items() if v == 0]
-    
-    # Add keyword stats to failed message for easier debugging
-    keyword_info = f"keyword_count={keyword_count}"
+    if missing_secondary:
+        failed.append(f"missing_secondary: {', '.join(missing_secondary)}")
 
-    return total, failed, word_count, keyword_count
+    return total, failed, word_count, keyword_count, missing_secondary
 
 # ── BUILD HTML ────────────────────────────────────────────────────────────────
 
@@ -644,6 +660,10 @@ def generate_article(client, article, related):
     url     = article.get("URL","")
     pillar  = PILLAR_MAP.get(cluster,"/")
 
+    # Parse secondary keywords
+    sec_kw_raw = article.get("Secondary Keywords", "") or ""
+    secondary_keywords = [k.strip() for k in sec_kw_raw.split(",") if k.strip()]
+
     slug = make_slug(keyword)
     related_links = "\n".join([f'- {r["keyword"]}' for r in related[:4]])
 
@@ -656,6 +676,8 @@ def generate_article(client, article, related):
         try:
             # Step 1: Write long article
             print("  [1/3] Writing article with GPT-4o...")
+            if secondary_keywords:
+                print(f"  → Secondary keywords: {', '.join(secondary_keywords)}")
             # Get pre-defined examples for this article
             art_examples = ARTICLE_EXAMPLES.get(slug, {})
             ex1_data = art_examples.get(1, {})
@@ -666,7 +688,7 @@ def generate_article(client, article, related):
                 print(f"  → Using pre-defined examples: {ex1_data.get('screenshot_id')} + {ex2_data.get('screenshot_id')}")
             r1 = client.chat.completions.create(
                 model=GEN_MODEL,
-                messages=[{"role":"user","content": prompt_write_article(keyword, title, cluster, related_links, f"{SITE_URL}{pillar}", ex1_problem, ex2_problem)}],
+                messages=[{"role":"user","content": prompt_write_article(keyword, title, cluster, related_links, f"{SITE_URL}{pillar}", ex1_problem, ex2_problem, secondary_keywords)}],
                 temperature=0.7,
                 max_tokens=6000,
             )
@@ -686,14 +708,17 @@ def generate_article(client, article, related):
 
             # Step 3: Validate (Python-based)
             print("  [3/3] Quality check...")
-            score, failed, wc, kw_count = validate_article(article_data, keyword)
+            score, failed, wc, kw_count, missing_sec = validate_article(article_data, keyword, secondary_keywords)
 
-            print(f"  Score: {score}/8 | Words: {wc} | Keyword count: {kw_count}/8-12")
+            max_score = 9 if secondary_keywords else 8
+            print(f"  Score: {score}/{max_score} | Words: {wc} | Keyword count: {kw_count}/8-12")
             if failed:
                 print(f"  Failed: {', '.join(failed)}")
+            if missing_sec:
+                print(f"  Missing secondary keywords: {', '.join(missing_sec)}")
 
             if score >= MIN_SCORE:
-                print(f"  ✓ Quality check passed! ({score}/8)")
+                print(f"  ✓ Quality check passed! ({score}/{max_score})")
                 return article_data, score
 
         except Exception as e:
@@ -728,16 +753,10 @@ def main():
         and a.get("URL") not in review_urls
     ]
 
-    # Phase 1 priority
-    try:
-        wb = openpyxl.load_workbook(CONTENT_PLAN)
-        ws1 = wb['🚀 Quick Wins (Phase 1)']
-        phase1_keys = {row[3] for row in ws1.iter_rows(min_row=4, values_only=True) if row[3]}
-        priority = [a for a in sub_articles if a.get("Primary Keyword") in phase1_keys]
-        rest = [a for a in sub_articles if a.get("Primary Keyword") not in phase1_keys]
-        queue = (priority + rest)[:ARTICLES_PER_RUN]
-    except:
-        queue = sub_articles[:ARTICLES_PER_RUN]
+    # Phase 1 priority (from Phase column in Full Sequence)
+    priority = [a for a in sub_articles if "Phase 1" in str(a.get("Phase", ""))]
+    rest = [a for a in sub_articles if "Phase 1" not in str(a.get("Phase", ""))]
+    queue = (priority + rest)[:ARTICLES_PER_RUN]
 
     if not queue:
         print("✅ All articles published!")
