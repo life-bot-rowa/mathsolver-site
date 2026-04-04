@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 03, 2026
+Date: April 04, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 20
+📚 Total published: 28
 
 --- PUBLISHED TODAY ---
-• Algebra 1 Regents
-  https://mathsolver.cloud/blog/algebra-1-regents
-  Score: 7/7 | Cluster: Algebra
+• Differential Equation Calculator
+  https://mathsolver.cloud/blog/differential-equation-calculator
+  Score: 7/7 | Cluster: Calculus
 
-• Algebra 2.0
-  https://mathsolver.cloud/blog/algebra-20
-  Score: 7/7 | Cluster: Algebra
+• Flipped Math Calculus
+  https://mathsolver.cloud/blog/flipped-math-calculus
+  Score: 8/7 | Cluster: Calculus
 
-• Geometry Lessons
-  https://mathsolver.cloud/blog/geometry-lessons
-  Score: 8/7 | Cluster: Geometry
+• Ap Calculus Bc Score Calculator
+  https://mathsolver.cloud/blog/ap-calculus-bc-score-calculator
+  Score: 7/7 | Cluster: Calculus
 
-• Geometry Dash Spam
-  https://mathsolver.cloud/blog/geometry-dash-spam
-  Score: 7/7 | Cluster: Geometry
+• Second Fundamental Theorem Of Calculus
+  https://mathsolver.cloud/blog/second-fundamental-theorem-of-calculus
+  Score: 7/7 | Cluster: Calculus
 
-• Geometry Dash Wave
-  https://mathsolver.cloud/blog/geometry-dash-wave
-  Score: 7/7 | Cluster: Geometry
+• Bc Calculus Ap Score Calculator
+  https://mathsolver.cloud/blog/bc-calculus-ap-score-calculator
+  Score: 7/7 | Cluster: Calculus
 
-• Geometry Dash Breeze
-  https://mathsolver.cloud/blog/geometry-dash-breeze
-  Score: 7/7 | Cluster: Geometry
+• 2Nd Fundamental Theorem Of Calculus
+  https://mathsolver.cloud/blog/2nd-fundamental-theorem-of-calculus
+  Score: 7/7 | Cluster: Calculus
 
-• Pythagorean Theorem Equation Solver
-  https://mathsolver.cloud/blog/pythagorean-theorem-equation-solver
-  Score: 8/7 | Cluster: Geometry
+• Calculus Theorems
+  https://mathsolver.cloud/blog/calculus-theorems
+  Score: 7/7 | Cluster: Calculus
 
-• Demon List Geometry Dash
-  https://mathsolver.cloud/blog/demon-list-geometry-dash
-  Score: 8/7 | Cluster: Geometry
+• Define Ordinary Differential Equation
+  https://mathsolver.cloud/blog/define-ordinary-differential-equation
+  Score: 7/7 | Cluster: Calculus
