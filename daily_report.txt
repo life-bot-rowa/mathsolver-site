@@ -1,9 +1,9 @@
 📊 MathSolver Article Generation Report
 Date: April 04, 2026
 
-✅ Published today: 8
+✅ Published today: 16
 ⚠️  Needs review: 0
-📚 Total published: 28
+📚 Total published: 36
 
 --- PUBLISHED TODAY ---
 • Differential Equation Calculator
@@ -37,3 +37,35 @@ Date: April 04, 2026
 • Define Ordinary Differential Equation
   https://mathsolver.cloud/blog/define-ordinary-differential-equation
   Score: 7/7 | Cluster: Calculus
+
+• Two Step Equations
+  https://mathsolver.cloud/blog/two-step-equations
+  Score: 7/7 | Cluster: Equation Solving
+
+• Angular Velocity Equation
+  https://mathsolver.cloud/blog/angular-velocity-equation
+  Score: 8/7 | Cluster: Physics & Formulas
+
+• Multi Step Equations
+  https://mathsolver.cloud/blog/multi-step-equations
+  Score: 7/7 | Cluster: Equation Solving
+
+• Math Formulas
+  https://mathsolver.cloud/blog/math-formulas
+  Score: 7/7 | Cluster: Physics & Formulas
+
+• Ap Physics Equation Sheet
+  https://mathsolver.cloud/blog/ap-physics-equation-sheet
+  Score: 7/7 | Cluster: Physics & Formulas
+
+• Step By Step Multi Step Equations
+  https://mathsolver.cloud/blog/step-by-step-multi-step-equations
+  Score: 7/7 | Cluster: Equation Solving
+
+• Two Step Equations Worksheet
+  https://mathsolver.cloud/blog/two-step-equations-worksheet
+  Score: 7/7 | Cluster: Equation Solving
+
+• Ap Physics Equation Sheet C
+  https://mathsolver.cloud/blog/ap-physics-equation-sheet-c
+  Score: 7/7 | Cluster: Physics & Formulas

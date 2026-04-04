@@ -223,6 +223,70 @@
       "keyword": "define ordinary differential equation",
       "score": 7,
       "published_at": "2026-04-04T09:29:19.381319"
+    },
+    {
+      "url": "/equation-solver/two-step-equations",
+      "slug": "two-step-equations",
+      "cluster": "Equation Solving",
+      "keyword": "two step equations",
+      "score": 7,
+      "published_at": "2026-04-04T19:43:32.839153"
+    },
+    {
+      "url": "/physics-math-formulas/angular-velocity-equation",
+      "slug": "angular-velocity-equation",
+      "cluster": "Physics & Formulas",
+      "keyword": "angular velocity equation",
+      "score": 8,
+      "published_at": "2026-04-04T19:44:01.641823"
+    },
+    {
+      "url": "/equation-solver/multi-step-equations",
+      "slug": "multi-step-equations",
+      "cluster": "Equation Solving",
+      "keyword": "multi step equations",
+      "score": 7,
+      "published_at": "2026-04-04T19:44:33.365675"
+    },
+    {
+      "url": "/physics-math-formulas/math-formulas",
+      "slug": "math-formulas",
+      "cluster": "Physics & Formulas",
+      "keyword": "math formulas",
+      "score": 7,
+      "published_at": "2026-04-04T19:45:00.141829"
+    },
+    {
+      "url": "/physics-math-formulas/ap-physics-equation-sheet",
+      "slug": "ap-physics-equation-sheet",
+      "cluster": "Physics & Formulas",
+      "keyword": "ap physics equation sheet",
+      "score": 7,
+      "published_at": "2026-04-04T19:45:33.587153"
+    },
+    {
+      "url": "/equation-solver/step-by-step-multi-step-equations",
+      "slug": "step-by-step-multi-step-equations",
+      "cluster": "Equation Solving",
+      "keyword": "step by step multi step equations",
+      "score": 7,
+      "published_at": "2026-04-04T19:46:06.979649"
+    },
+    {
+      "url": "/equation-solver/two-step-equations-worksheet",
+      "slug": "two-step-equations-worksheet",
+      "cluster": "Equation Solving",
+      "keyword": "two step equations worksheet",
+      "score": 7,
+      "published_at": "2026-04-04T19:46:40.685586"
+    },
+    {
+      "url": "/physics-math-formulas/ap-physics-equation-sheet-c",
+      "slug": "ap-physics-equation-sheet-c",
+      "cluster": "Physics & Formulas",
+      "keyword": "ap physics equation sheet c",
+      "score": 7,
+      "published_at": "2026-04-04T19:47:14.788766"
     }
   ],
   "needs_review": []
