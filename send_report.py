@@ -38,14 +38,14 @@ def build_report():
             url = f"{site_url}/blog/{a.get('slug','')}"
             lines.append(f"• {a.get('keyword','').title()}")
             lines.append(f"  {url}")
-            lines.append(f"  Score: {a.get('score','?')}/7 | Cluster: {a.get('cluster','')}")
+            lines.append(f"  Score: {a.get('score','?')}/9 | Cluster: {a.get('cluster','')}")
             lines.append("")
 
     if todays_review:
         lines.append("--- NEEDS REVIEW ---")
         for a in todays_review:
             lines.append(f"• {a.get('slug','')}")
-            lines.append(f"  Score: {a.get('score','?')}/7")
+            lines.append(f"  Score: {a.get('score','?')}/9")
             lines.append("")
 
     return "\n".join(lines), todays_published, todays_review
