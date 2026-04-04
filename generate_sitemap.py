@@ -41,13 +41,14 @@ def get_pages():
                     "changefreq": "monthly",
                 })
 
-    # Static content pages
-    for name in ["price", "access", "privacy-policy", "refund-policy", "terms-of-service"]:
+    # Static content pages (exclude noindex pages)
+    for name in ["price", "access"]:
         pages.append({
             "url": f"{SITE_URL}/{name}/",
             "priority": "0.3",
             "changefreq": "monthly",
         })
+    # privacy-policy, refund-policy, terms-of-service have noindex — not in sitemap
 
     return pages, today
 

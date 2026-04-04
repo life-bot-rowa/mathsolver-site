@@ -1,0 +1,34 @@
+# MathSolver
+
+> MathSolver is an AI-powered math solving tool available as a Chrome extension. Students take a screenshot of any math problem and get instant step-by-step solutions.
+
+## Site Structure
+
+- Homepage: https://mathsolver.cloud/
+- Chrome Extension: https://chromewebstore.google.com/detail/math-solver/pieobakkfhafplomcoiohhpikcofoghb
+
+## Solver Pages (Pillar Pages)
+
+These are comprehensive guides for each math topic:
+
+- [AI Math Solver](https://mathsolver.cloud/ai-math-solver/)
+- [Algebra Solver](https://mathsolver.cloud/algebra-solver/)
+- [Calculus Solver](https://mathsolver.cloud/calculus-solver/)
+- [Equation Solver](https://mathsolver.cloud/equation-solver/)
+- [Fractions Calculator](https://mathsolver.cloud/fractions-calculator/)
+- [Geometry Solver](https://mathsolver.cloud/geometry-solver/)
+- [Math Word Problem Solver](https://mathsolver.cloud/math-word-problem-solver/)
+- [Matrix Solver](https://mathsolver.cloud/matrix-solver/)
+- [Online Math Calculator](https://mathsolver.cloud/online-math-calculator/)
+- [Physics Solver](https://mathsolver.cloud/physics-solver/)
+- [Statistics Solver](https://mathsolver.cloud/statistics-solver/)
+- [Trigonometry Solver](https://mathsolver.cloud/trigonometry-solver/)
+
+## Blog Articles
+
+Step-by-step tutorials and homework help guides. New articles are published daily.
+
+- [Hard Math Problems](https://mathsolver.cloud/blog/hard-math-problems/)
+- [Math 1324 Homework Answers](https://mathsolver.cloud/blog/math-1324-homework-answers/)
+- [Rational Reasoning Online Homework Answers](https://mathsolver.cloud/blog/rational-reasoning-online-homework-answers/)
+- [CPM Homework Help](https://mathsolver.cloud/blog/cpm-homework-help/)
