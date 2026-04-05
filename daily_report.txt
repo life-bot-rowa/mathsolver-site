@@ -1,71 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 04, 2026
+Date: April 05, 2026
 
-✅ Published today: 16
+✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 36
+📚 Total published: 44
 
 --- PUBLISHED TODAY ---
-• Differential Equation Calculator
-  https://mathsolver.cloud/blog/differential-equation-calculator
-  Score: 7/7 | Cluster: Calculus
+• One Step Equations Worksheet
+  https://mathsolver.cloud/blog/one-step-equations-worksheet
+  Score: 8/9 | Cluster: Equation Solving
 
-• Flipped Math Calculus
-  https://mathsolver.cloud/blog/flipped-math-calculus
-  Score: 8/7 | Cluster: Calculus
+• Physics Equation Sheet
+  https://mathsolver.cloud/blog/physics-equation-sheet
+  Score: 7/9 | Cluster: Physics & Formulas
 
-• Ap Calculus Bc Score Calculator
-  https://mathsolver.cloud/blog/ap-calculus-bc-score-calculator
-  Score: 7/7 | Cluster: Calculus
+• Constant Acceleration Equations
+  https://mathsolver.cloud/blog/constant-acceleration-equations
+  Score: 8/9 | Cluster: Physics & Formulas
 
-• Second Fundamental Theorem Of Calculus
-  https://mathsolver.cloud/blog/second-fundamental-theorem-of-calculus
-  Score: 7/7 | Cluster: Calculus
+• Step By Step Two Step Equations
+  https://mathsolver.cloud/blog/step-by-step-two-step-equations
+  Score: 8/9 | Cluster: Equation Solving
 
-• Bc Calculus Ap Score Calculator
-  https://mathsolver.cloud/blog/bc-calculus-ap-score-calculator
-  Score: 7/7 | Cluster: Calculus
+• Buoyant Force Equation
+  https://mathsolver.cloud/blog/buoyant-force-equation
+  Score: 7/9 | Cluster: Physics & Formulas
 
-• 2Nd Fundamental Theorem Of Calculus
-  https://mathsolver.cloud/blog/2nd-fundamental-theorem-of-calculus
-  Score: 7/7 | Cluster: Calculus
+• Unit Vector Equation
+  https://mathsolver.cloud/blog/unit-vector-equation
+  Score: 8/9 | Cluster: Matrix & Linear Algebra
 
-• Calculus Theorems
-  https://mathsolver.cloud/blog/calculus-theorems
-  Score: 7/7 | Cluster: Calculus
+• Ap Score Calculator Calculus Ab
+  https://mathsolver.cloud/blog/ap-score-calculator-calculus-ab
+  Score: 8/9 | Cluster: Calculus
 
-• Define Ordinary Differential Equation
-  https://mathsolver.cloud/blog/define-ordinary-differential-equation
-  Score: 7/7 | Cluster: Calculus
-
-• Two Step Equations
-  https://mathsolver.cloud/blog/two-step-equations
-  Score: 7/7 | Cluster: Equation Solving
-
-• Angular Velocity Equation
-  https://mathsolver.cloud/blog/angular-velocity-equation
-  Score: 8/7 | Cluster: Physics & Formulas
-
-• Multi Step Equations
-  https://mathsolver.cloud/blog/multi-step-equations
-  Score: 7/7 | Cluster: Equation Solving
-
-• Math Formulas
-  https://mathsolver.cloud/blog/math-formulas
-  Score: 7/7 | Cluster: Physics & Formulas
-
-• Ap Physics Equation Sheet
-  https://mathsolver.cloud/blog/ap-physics-equation-sheet
-  Score: 7/7 | Cluster: Physics & Formulas
-
-• Step By Step Multi Step Equations
-  https://mathsolver.cloud/blog/step-by-step-multi-step-equations
-  Score: 7/7 | Cluster: Equation Solving
-
-• Two Step Equations Worksheet
-  https://mathsolver.cloud/blog/two-step-equations-worksheet
-  Score: 7/7 | Cluster: Equation Solving
-
-• Ap Physics Equation Sheet C
-  https://mathsolver.cloud/blog/ap-physics-equation-sheet-c
-  Score: 7/7 | Cluster: Physics & Formulas
+• Differential Equations Calculator
+  https://mathsolver.cloud/blog/differential-equations-calculator
+  Score: 7/9 | Cluster: Calculus

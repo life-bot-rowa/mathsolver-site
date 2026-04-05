@@ -287,6 +287,70 @@
       "keyword": "ap physics equation sheet c",
       "score": 7,
       "published_at": "2026-04-04T19:47:14.788766"
+    },
+    {
+      "url": "/equation-solver/one-step-equations-worksheet",
+      "slug": "one-step-equations-worksheet",
+      "cluster": "Equation Solving",
+      "keyword": "one step equations worksheet",
+      "score": 8,
+      "published_at": "2026-04-05T09:27:49.296564"
+    },
+    {
+      "url": "/physics-math-formulas/physics-equation-sheet",
+      "slug": "physics-equation-sheet",
+      "cluster": "Physics & Formulas",
+      "keyword": "physics equation sheet",
+      "score": 7,
+      "published_at": "2026-04-05T09:28:18.351262"
+    },
+    {
+      "url": "/physics-math-formulas/constant-acceleration-equations",
+      "slug": "constant-acceleration-equations",
+      "cluster": "Physics & Formulas",
+      "keyword": "constant acceleration equations",
+      "score": 8,
+      "published_at": "2026-04-05T09:28:42.789977"
+    },
+    {
+      "url": "/equation-solver/step-by-step-two-step-equations",
+      "slug": "step-by-step-two-step-equations",
+      "cluster": "Equation Solving",
+      "keyword": "step by step two step equations",
+      "score": 8,
+      "published_at": "2026-04-05T09:29:08.231962"
+    },
+    {
+      "url": "/physics-math-formulas/buoyant-force-equation",
+      "slug": "buoyant-force-equation",
+      "cluster": "Physics & Formulas",
+      "keyword": "buoyant force equation",
+      "score": 7,
+      "published_at": "2026-04-05T09:29:32.228524"
+    },
+    {
+      "url": "/matrix-solver/unit-vector-equation",
+      "slug": "unit-vector-equation",
+      "cluster": "Matrix & Linear Algebra",
+      "keyword": "unit vector equation",
+      "score": 8,
+      "published_at": "2026-04-05T09:29:57.356316"
+    },
+    {
+      "url": "/calculus-solver/ap-score-calculator-calculus-ab",
+      "slug": "ap-score-calculator-calculus-ab",
+      "cluster": "Calculus",
+      "keyword": "ap score calculator calculus ab",
+      "score": 8,
+      "published_at": "2026-04-05T09:30:24.826753"
+    },
+    {
+      "url": "/calculus-solver/differential-equations-calculator",
+      "slug": "differential-equations-calculator",
+      "cluster": "Calculus",
+      "keyword": "differential equations calculator",
+      "score": 7,
+      "published_at": "2026-04-05T09:30:52.613257"
     }
   ],
   "needs_review": []
