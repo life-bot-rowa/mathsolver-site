@@ -10,7 +10,7 @@ from pathlib import Path
 SITE_URL = "https://mathsolver.cloud"
 STATIC = Path("static")
 GA4_PROPERTY_ID = "510795182"
-GSC_SITE_URL = "sc-domain:mathsolver.cloud"  # or "https://mathsolver.cloud/"
+GSC_SITE_URL = "https://mathsolver.cloud/"
 LAYOUTS = Path("layouts")
 fixes = []
 issues = []
