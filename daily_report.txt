@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 05, 2026
+Date: April 06, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 44
+📚 Total published: 52
 
 --- PUBLISHED TODAY ---
-• One Step Equations Worksheet
-  https://mathsolver.cloud/blog/one-step-equations-worksheet
-  Score: 8/9 | Cluster: Equation Solving
-
-• Physics Equation Sheet
-  https://mathsolver.cloud/blog/physics-equation-sheet
-  Score: 7/9 | Cluster: Physics & Formulas
-
-• Constant Acceleration Equations
-  https://mathsolver.cloud/blog/constant-acceleration-equations
-  Score: 8/9 | Cluster: Physics & Formulas
-
-• Step By Step Two Step Equations
-  https://mathsolver.cloud/blog/step-by-step-two-step-equations
-  Score: 8/9 | Cluster: Equation Solving
-
-• Buoyant Force Equation
-  https://mathsolver.cloud/blog/buoyant-force-equation
-  Score: 7/9 | Cluster: Physics & Formulas
-
-• Unit Vector Equation
-  https://mathsolver.cloud/blog/unit-vector-equation
-  Score: 8/9 | Cluster: Matrix & Linear Algebra
-
-• Ap Score Calculator Calculus Ab
-  https://mathsolver.cloud/blog/ap-score-calculator-calculus-ab
-  Score: 8/9 | Cluster: Calculus
-
-• Differential Equations Calculator
-  https://mathsolver.cloud/blog/differential-equations-calculator
+• Solve Differential Equation Calculator
+  https://mathsolver.cloud/blog/solve-differential-equation-calculator
   Score: 7/9 | Cluster: Calculus
+
+• Calculus Ap Score Calculator
+  https://mathsolver.cloud/blog/calculus-ap-score-calculator
+  Score: 7/9 | Cluster: Calculus
+
+• Solving Multi Step Equations
+  https://mathsolver.cloud/blog/solving-multi-step-equations
+  Score: 8/9 | Cluster: Equation Solving
+
+• Matrix Multiplication Solver
+  https://mathsolver.cloud/blog/matrix-multiplication-solver
+  Score: 7/9 | Cluster: Matrix & Linear Algebra
+
+• Multi Step Equations Worksheet
+  https://mathsolver.cloud/blog/multi-step-equations-worksheet
+  Score: 8/9 | Cluster: Equation Solving
+
+• Equation For Diagonal To The Right Sine Curve
+  https://mathsolver.cloud/blog/equation-for-diagonal-to-the-right-sine-curve
+  Score: 9/9 | Cluster: Trigonometry
+
+• How To Solve Two Step Equations
+  https://mathsolver.cloud/blog/how-to-solve-two-step-equations
+  Score: 8/9 | Cluster: Equation Solving
+
+• Determinant Matrix Solver
+  https://mathsolver.cloud/blog/determinant-matrix-solver
+  Score: 7/9 | Cluster: Matrix & Linear Algebra
