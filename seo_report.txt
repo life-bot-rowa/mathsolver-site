@@ -1,27 +1,72 @@
-SEO Audit Report — 2026-04-02
+SEO Audit Report — 2026-04-06
 ==================================================
 
 SITE STATISTICS
   Pillar pages:         12
-  Blog articles:        4
-  Total content pages:  17
-  New this week:        4
+  Blog articles:        44
+  Total content pages:  57
+  New this week:        44
+    - 2nd-fundamental-theorem-of-calculus
+    - absolute-value-and-step-functions-homework-answer-key
+    - algebra-1-regents
+    - algebra-20
+    - angular-velocity-equation
+    - ap-calculus-bc-score-calculator
+    - ap-physics-equation-sheet
+    - ap-physics-equation-sheet-c
+    - ap-score-calculator-calculus-ab
+    - bc-calculus-ap-score-calculator
+    - buoyant-force-equation
+    - calculus-theorems
+    - constant-acceleration-equations
     - cpm-homework-help
+    - define-ordinary-differential-equation
+    - demon-list-geometry-dash
+    - differential-equation-calculator
+    - differential-equations-calculator
+    - edmentum-mastery-test-answers-algebra-1
+    - equation-to-find-02-percent-offset-yield-strength
+    - flipped-math-calculus
+    - geometry-dash-breeze
+    - geometry-dash-spam
+    - geometry-dash-wave
+    - geometry-lessons
     - hard-math-problems
+    - homework-lesson-11-equations-for-proportional-relationships-answer-key
     - math-1324-homework-answers
+    - math-formulas
+    - multi-step-equations
+    - mystatlab-homework-answers-statistics
+    - one-step-equations-worksheet
+    - physics-equation-sheet
+    - pythagorean-theorem-equation-solver
     - rational-reasoning-online-homework-answers
+    - second-fundamental-theorem-of-calculus
+    - solving-exponential-equations
+    - step-by-step-multi-step-equations
+    - step-by-step-two-step-equations
+    - two-step-equations
+    - two-step-equations-worksheet
+    - unit-vector-equation
+    - which-equation-represents-the-proportional-relationship-in-the-table
+    - which-regression-equation-best-fits-the-data
 
 GOOGLE ANALYTICS (last 7 days)
-  Total sessions:    208
-  Total page views:  253
-  Blog sessions:     41
-  Blog page views:   80
+  Total sessions:    175
+  Total page views:  233
+  Blog sessions:     55
+  Blog page views:   97
   Top blog pages:
-    /blog/hard-math-problems/ — 35 views
+    /blog/hard-math-problems/ — 36 views
     /blog/math-1324-homework-answers — 14 views
     /blog/mystatlab-homework-answers-statistics/ — 8 views
-    /blog/rational-reasoning-online-homework-answers — 7 views
+    /blog/rational-reasoning-online-homework-answers — 8 views
     /blog/hard-math-problems — 6 views
 
 AUDIT RESULTS
-  All SEO checks passed!
+  Auto-fixed: 1
+    - Updated llms.txt with new pages
+  Issues: 3
+    - Title under 60 chars
+    - Title under 60 chars
+    - Organization schema present
