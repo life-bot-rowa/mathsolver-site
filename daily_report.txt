@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 06, 2026
+Date: April 07, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 52
+📚 Total published: 60
 
 --- PUBLISHED TODAY ---
-• Solve Differential Equation Calculator
-  https://mathsolver.cloud/blog/solve-differential-equation-calculator
-  Score: 7/9 | Cluster: Calculus
+• Equation Solver With Absolute Value
+  https://mathsolver.cloud/blog/equation-solver-with-absolute-value
+  Score: 7/9 | Cluster: Equation Solving
 
-• Calculus Ap Score Calculator
-  https://mathsolver.cloud/blog/calculus-ap-score-calculator
-  Score: 7/9 | Cluster: Calculus
-
-• Solving Multi Step Equations
-  https://mathsolver.cloud/blog/solving-multi-step-equations
+• Solving Equations With Variables On Both Sides
+  https://mathsolver.cloud/blog/solving-equations-with-variables-on-both-sides
   Score: 8/9 | Cluster: Equation Solving
 
-• Matrix Multiplication Solver
-  https://mathsolver.cloud/blog/matrix-multiplication-solver
+• Equation Of Tangent Plane
+  https://mathsolver.cloud/blog/equation-of-tangent-plane
+  Score: 7/9 | Cluster: Trigonometry
+
+• How To Solve Multi Step Equations
+  https://mathsolver.cloud/blog/how-to-solve-multi-step-equations
+  Score: 7/9 | Cluster: Equation Solving
+
+• Inverse Matrix Solver
+  https://mathsolver.cloud/blog/inverse-matrix-solver
   Score: 7/9 | Cluster: Matrix & Linear Algebra
 
-• Multi Step Equations Worksheet
-  https://mathsolver.cloud/blog/multi-step-equations-worksheet
-  Score: 8/9 | Cluster: Equation Solving
+• Tangent Equation
+  https://mathsolver.cloud/blog/tangent-equation
+  Score: 7/9 | Cluster: Trigonometry
 
-• Equation For Diagonal To The Right Sine Curve
-  https://mathsolver.cloud/blog/equation-for-diagonal-to-the-right-sine-curve
-  Score: 9/9 | Cluster: Trigonometry
+• Tangent Plane Equation
+  https://mathsolver.cloud/blog/tangent-plane-equation
+  Score: 7/9 | Cluster: Trigonometry
 
-• How To Solve Two Step Equations
-  https://mathsolver.cloud/blog/how-to-solve-two-step-equations
-  Score: 8/9 | Cluster: Equation Solving
-
-• Determinant Matrix Solver
-  https://mathsolver.cloud/blog/determinant-matrix-solver
-  Score: 7/9 | Cluster: Matrix & Linear Algebra
+• Delta Math Calculator
+  https://mathsolver.cloud/blog/delta-math-calculator
+  Score: 7/9 | Cluster: Online Calculators

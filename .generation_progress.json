@@ -415,6 +415,70 @@
       "keyword": "determinant matrix solver",
       "score": 7,
       "published_at": "2026-04-06T10:02:16.615570"
+    },
+    {
+      "url": "/equation-solver/equation-solver-with-absolute-value",
+      "slug": "equation-solver-with-absolute-value",
+      "cluster": "Equation Solving",
+      "keyword": "equation solver with absolute value",
+      "score": 7,
+      "published_at": "2026-04-07T09:55:57.093770"
+    },
+    {
+      "url": "/equation-solver/solving-equations-with-variables-on-both-sides",
+      "slug": "solving-equations-with-variables-on-both-sides",
+      "cluster": "Equation Solving",
+      "keyword": "solving equations with variables on both sides",
+      "score": 8,
+      "published_at": "2026-04-07T09:56:34.602581"
+    },
+    {
+      "url": "/trigonometry-solver/equation-of-tangent-plane",
+      "slug": "equation-of-tangent-plane",
+      "cluster": "Trigonometry",
+      "keyword": "equation of tangent plane",
+      "score": 7,
+      "published_at": "2026-04-07T09:57:14.123287"
+    },
+    {
+      "url": "/equation-solver/how-to-solve-multi-step-equations",
+      "slug": "how-to-solve-multi-step-equations",
+      "cluster": "Equation Solving",
+      "keyword": "how to solve multi step equations",
+      "score": 7,
+      "published_at": "2026-04-07T09:57:46.958280"
+    },
+    {
+      "url": "/matrix-solver/inverse-matrix-solver",
+      "slug": "inverse-matrix-solver",
+      "cluster": "Matrix & Linear Algebra",
+      "keyword": "inverse matrix solver",
+      "score": 7,
+      "published_at": "2026-04-07T09:58:26.999372"
+    },
+    {
+      "url": "/trigonometry-solver/tangent-equation",
+      "slug": "tangent-equation",
+      "cluster": "Trigonometry",
+      "keyword": "tangent equation",
+      "score": 7,
+      "published_at": "2026-04-07T09:59:04.217361"
+    },
+    {
+      "url": "/trigonometry-solver/tangent-plane-equation",
+      "slug": "tangent-plane-equation",
+      "cluster": "Trigonometry",
+      "keyword": "tangent plane equation",
+      "score": 7,
+      "published_at": "2026-04-07T09:59:41.360054"
+    },
+    {
+      "url": "/online-math-calculator/delta-math-calculator",
+      "slug": "delta-math-calculator",
+      "cluster": "Online Calculators",
+      "keyword": "delta math calculator",
+      "score": 7,
+      "published_at": "2026-04-07T10:00:28.811551"
     }
   ],
   "needs_review": []
