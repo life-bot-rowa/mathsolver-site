@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 07, 2026
+Date: April 08, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 60
+📚 Total published: 68
 
 --- PUBLISHED TODAY ---
-• Equation Solver With Absolute Value
-  https://mathsolver.cloud/blog/equation-solver-with-absolute-value
-  Score: 7/9 | Cluster: Equation Solving
+• Texas Instruments 30Xiis Scientific/Math Calculator - Orange
+  https://mathsolver.cloud/blog/texas-instruments-30xiis-scientificmath-calculator-orange
+  Score: 7/9 | Cluster: Online Calculators
 
-• Solving Equations With Variables On Both Sides
-  https://mathsolver.cloud/blog/solving-equations-with-variables-on-both-sides
-  Score: 8/9 | Cluster: Equation Solving
-
-• Equation Of Tangent Plane
-  https://mathsolver.cloud/blog/equation-of-tangent-plane
+• How To Find The Equation Of A Tangent Line
+  https://mathsolver.cloud/blog/how-to-find-the-equation-of-a-tangent-line
   Score: 7/9 | Cluster: Trigonometry
 
-• How To Solve Multi Step Equations
-  https://mathsolver.cloud/blog/how-to-solve-multi-step-equations
-  Score: 7/9 | Cluster: Equation Solving
+• Cubic Equation Calculator
+  https://mathsolver.cloud/blog/cubic-equation-calculator
+  Score: 7/9 | Cluster: Online Calculators
 
-• Inverse Matrix Solver
-  https://mathsolver.cloud/blog/inverse-matrix-solver
+• Matrix Equation
+  https://mathsolver.cloud/blog/matrix-equation
   Score: 7/9 | Cluster: Matrix & Linear Algebra
 
-• Tangent Equation
-  https://mathsolver.cloud/blog/tangent-equation
-  Score: 7/9 | Cluster: Trigonometry
+• Equation Of Sine Curve
+  https://mathsolver.cloud/blog/equation-of-sine-curve
+  Score: 8/9 | Cluster: Trigonometry
 
-• Tangent Plane Equation
-  https://mathsolver.cloud/blog/tangent-plane-equation
-  Score: 7/9 | Cluster: Trigonometry
+• How To Solve A Matrix
+  https://mathsolver.cloud/blog/how-to-solve-a-matrix
+  Score: 7/9 | Cluster: Matrix & Linear Algebra
 
-• Delta Math Calculator
-  https://mathsolver.cloud/blog/delta-math-calculator
-  Score: 7/9 | Cluster: Online Calculators
+• Terminus Math Calculator
+  https://mathsolver.cloud/blog/terminus-math-calculator
+  Score: 8/9 | Cluster: Online Calculators
+
+• Solving Trig Equations
+  https://mathsolver.cloud/blog/solving-trig-equations
+  Score: 7/9 | Cluster: Trigonometry
