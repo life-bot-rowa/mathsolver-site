@@ -543,6 +543,70 @@
       "keyword": "solving trig equations",
       "score": 7,
       "published_at": "2026-04-08T10:00:54.293568"
+    },
+    {
+      "url": "/trigonometry-solver/equation-tangent-plane",
+      "slug": "equation-tangent-plane",
+      "cluster": "Trigonometry",
+      "keyword": "equation tangent plane",
+      "score": 9,
+      "published_at": "2026-04-09T10:00:34.171808"
+    },
+    {
+      "url": "/trigonometry-solver/solving-trigonometric-equations",
+      "slug": "solving-trigonometric-equations",
+      "cluster": "Trigonometry",
+      "keyword": "solving trigonometric equations",
+      "score": 8,
+      "published_at": "2026-04-09T10:01:17.675557"
+    },
+    {
+      "url": "/trigonometry-solver/find-an-equation-of-tangent-line",
+      "slug": "find-an-equation-of-tangent-line",
+      "cluster": "Trigonometry",
+      "keyword": "find an equation of tangent line",
+      "score": 8,
+      "published_at": "2026-04-09T10:02:13.730098"
+    },
+    {
+      "url": "/matrix-solver/augmented-matrix-solver",
+      "slug": "augmented-matrix-solver",
+      "cluster": "Matrix & Linear Algebra",
+      "keyword": "augmented matrix solver",
+      "score": 7,
+      "published_at": "2026-04-09T10:02:55.221502"
+    },
+    {
+      "url": "/matrix-solver/vector-equation-of-a-line",
+      "slug": "vector-equation-of-a-line",
+      "cluster": "Matrix & Linear Algebra",
+      "keyword": "vector equation of a line",
+      "score": 8,
+      "published_at": "2026-04-09T10:03:40.054860"
+    },
+    {
+      "url": "/algebra-solver/quadratic-equation",
+      "slug": "quadratic-equation",
+      "cluster": "Algebra",
+      "keyword": "quadratic equation",
+      "score": 7,
+      "published_at": "2026-04-09T10:04:17.694527"
+    },
+    {
+      "url": "/ai-math-solver/symbolab",
+      "slug": "symbolab",
+      "cluster": "AI Tools & Comparison",
+      "keyword": "symbolab",
+      "score": 7,
+      "published_at": "2026-04-09T10:04:56.354824"
+    },
+    {
+      "url": "/physics-math-formulas/kinematic-equations",
+      "slug": "kinematic-equations",
+      "cluster": "Physics & Formulas",
+      "keyword": "kinematic equations",
+      "score": 7,
+      "published_at": "2026-04-09T10:05:31.141927"
     }
   ],
   "needs_review": []
