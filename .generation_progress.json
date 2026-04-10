@@ -607,6 +607,70 @@
       "keyword": "kinematic equations",
       "score": 7,
       "published_at": "2026-04-09T10:05:31.141927"
+    },
+    {
+      "url": "/geometry-solver/geometry-dash-unblocked",
+      "slug": "geometry-dash-unblocked",
+      "cluster": "Geometry",
+      "keyword": "geometry dash unblocked",
+      "score": 7,
+      "published_at": "2026-04-10T09:58:04.948958"
+    },
+    {
+      "url": "/geometry-solver/scratch-geometry-dash",
+      "slug": "scratch-geometry-dash",
+      "cluster": "Geometry",
+      "keyword": "scratch geometry dash",
+      "score": 8,
+      "published_at": "2026-04-10T09:58:39.155707"
+    },
+    {
+      "url": "/geometry-solver/geometry-dash-scratch",
+      "slug": "geometry-dash-scratch",
+      "cluster": "Geometry",
+      "keyword": "geometry dash scratch",
+      "score": 7,
+      "published_at": "2026-04-10T09:59:09.163048"
+    },
+    {
+      "url": "/geometry-solver/geometry-dash-world",
+      "slug": "geometry-dash-world",
+      "cluster": "Geometry",
+      "keyword": "geometry dash world",
+      "score": 7,
+      "published_at": "2026-04-10T09:59:45.137349"
+    },
+    {
+      "url": "/physics-math-formulas/kinematics-equations",
+      "slug": "kinematics-equations",
+      "cluster": "Physics & Formulas",
+      "keyword": "kinematics equations",
+      "score": 7,
+      "published_at": "2026-04-10T10:00:20.067951"
+    },
+    {
+      "url": "/ai-math-solver/photomath-software",
+      "slug": "photomath-software",
+      "cluster": "AI Tools & Comparison",
+      "keyword": "photomath software",
+      "score": 7,
+      "published_at": "2026-04-10T10:01:01.998985"
+    },
+    {
+      "url": "/ai-math-solver/microsoft-math-solver",
+      "slug": "microsoft-math-solver",
+      "cluster": "AI Tools & Comparison",
+      "keyword": "microsoft math solver",
+      "score": 7,
+      "published_at": "2026-04-10T10:01:48.791186"
+    },
+    {
+      "url": "/calculus-solver/fundamental-theorem-of-calculus",
+      "slug": "fundamental-theorem-of-calculus",
+      "cluster": "Calculus",
+      "keyword": "fundamental theorem of calculus",
+      "score": 7,
+      "published_at": "2026-04-10T10:02:27.554712"
     }
   ],
   "needs_review": []

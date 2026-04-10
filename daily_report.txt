@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 09, 2026
+Date: April 10, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 76
+📚 Total published: 84
 
 --- PUBLISHED TODAY ---
-• Equation Tangent Plane
-  https://mathsolver.cloud/blog/equation-tangent-plane
-  Score: 9/9 | Cluster: Trigonometry
+• Geometry Dash Unblocked
+  https://mathsolver.cloud/blog/geometry-dash-unblocked
+  Score: 7/9 | Cluster: Geometry
 
-• Solving Trigonometric Equations
-  https://mathsolver.cloud/blog/solving-trigonometric-equations
-  Score: 8/9 | Cluster: Trigonometry
+• Scratch Geometry Dash
+  https://mathsolver.cloud/blog/scratch-geometry-dash
+  Score: 8/9 | Cluster: Geometry
 
-• Find An Equation Of Tangent Line
-  https://mathsolver.cloud/blog/find-an-equation-of-tangent-line
-  Score: 8/9 | Cluster: Trigonometry
+• Geometry Dash Scratch
+  https://mathsolver.cloud/blog/geometry-dash-scratch
+  Score: 7/9 | Cluster: Geometry
 
-• Augmented Matrix Solver
-  https://mathsolver.cloud/blog/augmented-matrix-solver
-  Score: 7/9 | Cluster: Matrix & Linear Algebra
+• Geometry Dash World
+  https://mathsolver.cloud/blog/geometry-dash-world
+  Score: 7/9 | Cluster: Geometry
 
-• Vector Equation Of A Line
-  https://mathsolver.cloud/blog/vector-equation-of-a-line
-  Score: 8/9 | Cluster: Matrix & Linear Algebra
+• Kinematics Equations
+  https://mathsolver.cloud/blog/kinematics-equations
+  Score: 7/9 | Cluster: Physics & Formulas
 
-• Quadratic Equation
-  https://mathsolver.cloud/blog/quadratic-equation
-  Score: 7/9 | Cluster: Algebra
-
-• Symbolab
-  https://mathsolver.cloud/blog/symbolab
+• Photomath Software
+  https://mathsolver.cloud/blog/photomath-software
   Score: 7/9 | Cluster: AI Tools & Comparison
 
-• Kinematic Equations
-  https://mathsolver.cloud/blog/kinematic-equations
-  Score: 7/9 | Cluster: Physics & Formulas
+• Microsoft Math Solver
+  https://mathsolver.cloud/blog/microsoft-math-solver
+  Score: 7/9 | Cluster: AI Tools & Comparison
+
+• Fundamental Theorem Of Calculus
+  https://mathsolver.cloud/blog/fundamental-theorem-of-calculus
+  Score: 7/9 | Cluster: Calculus
