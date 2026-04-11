@@ -671,6 +671,70 @@
       "keyword": "fundamental theorem of calculus",
       "score": 7,
       "published_at": "2026-04-10T10:02:27.554712"
+    },
+    {
+      "url": "/algebra-solver/linear-equations",
+      "slug": "linear-equations",
+      "cluster": "Algebra",
+      "keyword": "linear equations",
+      "score": 7,
+      "published_at": "2026-04-11T09:29:07.531343"
+    },
+    {
+      "url": "/algebra-solver/system-of-equations-calculator",
+      "slug": "system-of-equations-calculator",
+      "cluster": "Algebra",
+      "keyword": "system of equations calculator",
+      "score": 7,
+      "published_at": "2026-04-11T09:29:33.997093"
+    },
+    {
+      "url": "/algebra-solver/system-of-equations",
+      "slug": "system-of-equations",
+      "cluster": "Algebra",
+      "keyword": "system of equations",
+      "score": 7,
+      "published_at": "2026-04-11T09:30:01.645591"
+    },
+    {
+      "url": "/geometry-solver/equation-of-a-circle",
+      "slug": "equation-of-a-circle",
+      "cluster": "Geometry",
+      "keyword": "equation of a circle",
+      "score": 7,
+      "published_at": "2026-04-11T09:30:27.757012"
+    },
+    {
+      "url": "/algebra-solver/algebra-2",
+      "slug": "algebra-2",
+      "cluster": "Algebra",
+      "keyword": "algebra 2",
+      "score": 7,
+      "published_at": "2026-04-11T09:30:55.575498"
+    },
+    {
+      "url": "/math-word-problem-solver/math-problems",
+      "slug": "math-problems",
+      "cluster": "Word Problems & Homework",
+      "keyword": "math problems",
+      "score": 7,
+      "published_at": "2026-04-11T09:31:22.624368"
+    },
+    {
+      "url": "/geometry-solver/circle-equation",
+      "slug": "circle-equation",
+      "cluster": "Geometry",
+      "keyword": "circle equation",
+      "score": 8,
+      "published_at": "2026-04-11T09:31:46.106288"
+    },
+    {
+      "url": "/ai-math-solver/wolfram-and-alpha",
+      "slug": "wolfram-and-alpha",
+      "cluster": "AI Tools & Comparison",
+      "keyword": "wolfram and alpha",
+      "score": 8,
+      "published_at": "2026-04-11T09:32:15.309127"
     }
   ],
   "needs_review": []

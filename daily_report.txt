@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 10, 2026
+Date: April 11, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 84
+📚 Total published: 92
 
 --- PUBLISHED TODAY ---
-• Geometry Dash Unblocked
-  https://mathsolver.cloud/blog/geometry-dash-unblocked
+• Linear Equations
+  https://mathsolver.cloud/blog/linear-equations
+  Score: 7/9 | Cluster: Algebra
+
+• System Of Equations Calculator
+  https://mathsolver.cloud/blog/system-of-equations-calculator
+  Score: 7/9 | Cluster: Algebra
+
+• System Of Equations
+  https://mathsolver.cloud/blog/system-of-equations
+  Score: 7/9 | Cluster: Algebra
+
+• Equation Of A Circle
+  https://mathsolver.cloud/blog/equation-of-a-circle
   Score: 7/9 | Cluster: Geometry
 
-• Scratch Geometry Dash
-  https://mathsolver.cloud/blog/scratch-geometry-dash
+• Algebra 2
+  https://mathsolver.cloud/blog/algebra-2
+  Score: 7/9 | Cluster: Algebra
+
+• Math Problems
+  https://mathsolver.cloud/blog/math-problems
+  Score: 7/9 | Cluster: Word Problems & Homework
+
+• Circle Equation
+  https://mathsolver.cloud/blog/circle-equation
   Score: 8/9 | Cluster: Geometry
 
-• Geometry Dash Scratch
-  https://mathsolver.cloud/blog/geometry-dash-scratch
-  Score: 7/9 | Cluster: Geometry
-
-• Geometry Dash World
-  https://mathsolver.cloud/blog/geometry-dash-world
-  Score: 7/9 | Cluster: Geometry
-
-• Kinematics Equations
-  https://mathsolver.cloud/blog/kinematics-equations
-  Score: 7/9 | Cluster: Physics & Formulas
-
-• Photomath Software
-  https://mathsolver.cloud/blog/photomath-software
-  Score: 7/9 | Cluster: AI Tools & Comparison
-
-• Microsoft Math Solver
-  https://mathsolver.cloud/blog/microsoft-math-solver
-  Score: 7/9 | Cluster: AI Tools & Comparison
-
-• Fundamental Theorem Of Calculus
-  https://mathsolver.cloud/blog/fundamental-theorem-of-calculus
-  Score: 7/9 | Cluster: Calculus
+• Wolfram And Alpha
+  https://mathsolver.cloud/blog/wolfram-and-alpha
+  Score: 8/9 | Cluster: AI Tools & Comparison
