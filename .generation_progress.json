@@ -735,6 +735,70 @@
       "keyword": "wolfram and alpha",
       "score": 8,
       "published_at": "2026-04-11T09:32:15.309127"
+    },
+    {
+      "url": "/equation-solver/pythagoras-equation-solver",
+      "slug": "pythagoras-equation-solver",
+      "cluster": "Equation Solving",
+      "keyword": "pythagoras equation solver",
+      "score": 7,
+      "published_at": "2026-04-12T09:34:48.360559"
+    },
+    {
+      "url": "/algebra-solver/algebra-1",
+      "slug": "algebra-1",
+      "cluster": "Algebra",
+      "keyword": "algebra 1",
+      "score": 7,
+      "published_at": "2026-04-12T09:35:14.495808"
+    },
+    {
+      "url": "/math-word-problem-solver/homework-help",
+      "slug": "homework-help",
+      "cluster": "Word Problems & Homework",
+      "keyword": "homework help",
+      "score": 7,
+      "published_at": "2026-04-12T09:35:37.107228"
+    },
+    {
+      "url": "/fraction-solver/solve-the-given-exponential-equation",
+      "slug": "solve-the-given-exponential-equation",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "solve the given exponential equation",
+      "score": 7,
+      "published_at": "2026-04-12T09:35:58.866648"
+    },
+    {
+      "url": "/algebra-solver/college-algebra",
+      "slug": "college-algebra",
+      "cluster": "Algebra",
+      "keyword": "college algebra",
+      "score": 7,
+      "published_at": "2026-04-12T09:36:19.669757"
+    },
+    {
+      "url": "/algebra-solver/quadratic-equation-calculator",
+      "slug": "quadratic-equation-calculator",
+      "cluster": "Algebra",
+      "keyword": "quadratic equation calculator",
+      "score": 8,
+      "published_at": "2026-04-12T09:36:41.698821"
+    },
+    {
+      "url": "/algebra-solver/system-of-equations-solver",
+      "slug": "system-of-equations-solver",
+      "cluster": "Algebra",
+      "keyword": "system of equations solver",
+      "score": 7,
+      "published_at": "2026-04-12T09:37:07.940955"
+    },
+    {
+      "url": "/math-word-problem-solver/hardest-math-problem",
+      "slug": "hardest-math-problem",
+      "cluster": "Word Problems & Homework",
+      "keyword": "hardest math problem",
+      "score": 8,
+      "published_at": "2026-04-12T09:37:31.501259"
     }
   ],
   "needs_review": []

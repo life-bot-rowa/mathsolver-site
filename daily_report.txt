@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 11, 2026
+Date: April 12, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 92
+📚 Total published: 100
 
 --- PUBLISHED TODAY ---
-• Linear Equations
-  https://mathsolver.cloud/blog/linear-equations
+• Pythagoras Equation Solver
+  https://mathsolver.cloud/blog/pythagoras-equation-solver
+  Score: 7/9 | Cluster: Equation Solving
+
+• Algebra 1
+  https://mathsolver.cloud/blog/algebra-1
   Score: 7/9 | Cluster: Algebra
 
-• System Of Equations Calculator
-  https://mathsolver.cloud/blog/system-of-equations-calculator
-  Score: 7/9 | Cluster: Algebra
-
-• System Of Equations
-  https://mathsolver.cloud/blog/system-of-equations
-  Score: 7/9 | Cluster: Algebra
-
-• Equation Of A Circle
-  https://mathsolver.cloud/blog/equation-of-a-circle
-  Score: 7/9 | Cluster: Geometry
-
-• Algebra 2
-  https://mathsolver.cloud/blog/algebra-2
-  Score: 7/9 | Cluster: Algebra
-
-• Math Problems
-  https://mathsolver.cloud/blog/math-problems
+• Homework Help
+  https://mathsolver.cloud/blog/homework-help
   Score: 7/9 | Cluster: Word Problems & Homework
 
-• Circle Equation
-  https://mathsolver.cloud/blog/circle-equation
-  Score: 8/9 | Cluster: Geometry
+• Solve The Given Exponential Equation
+  https://mathsolver.cloud/blog/solve-the-given-exponential-equation
+  Score: 7/9 | Cluster: Arithmetic & Fractions
 
-• Wolfram And Alpha
-  https://mathsolver.cloud/blog/wolfram-and-alpha
-  Score: 8/9 | Cluster: AI Tools & Comparison
+• College Algebra
+  https://mathsolver.cloud/blog/college-algebra
+  Score: 7/9 | Cluster: Algebra
+
+• Quadratic Equation Calculator
+  https://mathsolver.cloud/blog/quadratic-equation-calculator
+  Score: 8/9 | Cluster: Algebra
+
+• System Of Equations Solver
+  https://mathsolver.cloud/blog/system-of-equations-solver
+  Score: 7/9 | Cluster: Algebra
+
+• Hardest Math Problem
+  https://mathsolver.cloud/blog/hardest-math-problem
+  Score: 8/9 | Cluster: Word Problems & Homework
