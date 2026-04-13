@@ -1,72 +1,126 @@
-SEO Audit Report — 2026-04-06
+SEO Audit Report — 2026-04-13
 ==================================================
 
 SITE STATISTICS
   Pillar pages:         12
-  Blog articles:        44
-  Total content pages:  57
-  New this week:        44
+  Blog articles:        100
+  Total content pages:  113
+  New this week:        100
     - 2nd-fundamental-theorem-of-calculus
     - absolute-value-and-step-functions-homework-answer-key
+    - algebra-1
     - algebra-1-regents
+    - algebra-2
     - algebra-20
     - angular-velocity-equation
     - ap-calculus-bc-score-calculator
     - ap-physics-equation-sheet
     - ap-physics-equation-sheet-c
     - ap-score-calculator-calculus-ab
+    - augmented-matrix-solver
     - bc-calculus-ap-score-calculator
     - buoyant-force-equation
+    - calculus-ap-score-calculator
     - calculus-theorems
+    - circle-equation
+    - college-algebra
     - constant-acceleration-equations
     - cpm-homework-help
+    - cubic-equation-calculator
     - define-ordinary-differential-equation
+    - delta-math-calculator
     - demon-list-geometry-dash
+    - determinant-matrix-solver
     - differential-equation-calculator
     - differential-equations-calculator
     - edmentum-mastery-test-answers-algebra-1
+    - equation-for-diagonal-to-the-right-sine-curve
+    - equation-of-a-circle
+    - equation-of-sine-curve
+    - equation-of-tangent-plane
+    - equation-solver-with-absolute-value
+    - equation-tangent-plane
     - equation-to-find-02-percent-offset-yield-strength
+    - find-an-equation-of-tangent-line
     - flipped-math-calculus
+    - fundamental-theorem-of-calculus
     - geometry-dash-breeze
+    - geometry-dash-scratch
     - geometry-dash-spam
+    - geometry-dash-unblocked
     - geometry-dash-wave
+    - geometry-dash-world
     - geometry-lessons
     - hard-math-problems
+    - hardest-math-problem
+    - homework-help
     - homework-lesson-11-equations-for-proportional-relationships-answer-key
+    - how-to-find-the-equation-of-a-tangent-line
+    - how-to-solve-a-matrix
+    - how-to-solve-multi-step-equations
+    - how-to-solve-two-step-equations
+    - inverse-matrix-solver
+    - kinematic-equations
+    - kinematics-equations
+    - linear-equations
     - math-1324-homework-answers
     - math-formulas
+    - math-problems
+    - matrix-equation
+    - matrix-multiplication-solver
+    - microsoft-math-solver
     - multi-step-equations
+    - multi-step-equations-worksheet
     - mystatlab-homework-answers-statistics
     - one-step-equations-worksheet
+    - photomath-software
     - physics-equation-sheet
+    - pythagoras-equation-solver
     - pythagorean-theorem-equation-solver
+    - quadratic-equation
+    - quadratic-equation-calculator
     - rational-reasoning-online-homework-answers
+    - scratch-geometry-dash
     - second-fundamental-theorem-of-calculus
+    - solve-differential-equation-calculator
+    - solve-the-given-exponential-equation
+    - solving-equations-with-variables-on-both-sides
     - solving-exponential-equations
+    - solving-multi-step-equations
+    - solving-trig-equations
+    - solving-trigonometric-equations
     - step-by-step-multi-step-equations
     - step-by-step-two-step-equations
+    - symbolab
+    - system-of-equations
+    - system-of-equations-calculator
+    - system-of-equations-solver
+    - tangent-equation
+    - tangent-plane-equation
+    - terminus-math-calculator
+    - texas-instruments-30xiis-scientificmath-calculator-orange
     - two-step-equations
     - two-step-equations-worksheet
     - unit-vector-equation
+    - vector-equation-of-a-line
     - which-equation-represents-the-proportional-relationship-in-the-table
     - which-regression-equation-best-fits-the-data
+    - wolfram-and-alpha
 
 GOOGLE ANALYTICS (last 7 days)
-  Total sessions:    175
-  Total page views:  233
-  Blog sessions:     55
-  Blog page views:   97
+  Total sessions:    31
+  Total page views:  33
+  Blog sessions:     7
+  Blog page views:   7
   Top blog pages:
-    /blog/hard-math-problems/ — 36 views
-    /blog/math-1324-homework-answers — 14 views
-    /blog/mystatlab-homework-answers-statistics/ — 8 views
-    /blog/rational-reasoning-online-homework-answers — 8 views
-    /blog/hard-math-problems — 6 views
+    /blog/ — 1 views
+    /blog/equation-of-tangent-plane/ — 1 views
+    /blog/equation-tangent-plane/ — 1 views
+    /blog/math-1324-homework-answers/ — 1 views
+    /blog/microsoft-math-solver/ — 1 views
 
 AUDIT RESULTS
   Auto-fixed: 1
     - Updated llms.txt with new pages
-  Issues: 3
+  Issues: 1
     - Title under 60 chars
-    - Title under 60 chars
-    - Organization schema present
