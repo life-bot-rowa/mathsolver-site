@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 12, 2026
+Date: April 13, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 100
+📚 Total published: 108
 
 --- PUBLISHED TODAY ---
-• Pythagoras Equation Solver
-  https://mathsolver.cloud/blog/pythagoras-equation-solver
-  Score: 7/9 | Cluster: Equation Solving
+• Google Math Solver
+  https://mathsolver.cloud/blog/google-math-solver
+  Score: 7/9 | Cluster: AI Tools & Comparison
 
-• Algebra 1
-  https://mathsolver.cloud/blog/algebra-1
-  Score: 7/9 | Cluster: Algebra
-
-• Homework Help
-  https://mathsolver.cloud/blog/homework-help
-  Score: 7/9 | Cluster: Word Problems & Homework
-
-• Solve The Given Exponential Equation
-  https://mathsolver.cloud/blog/solve-the-given-exponential-equation
+• Exponential Equation
+  https://mathsolver.cloud/blog/exponential-equation
   Score: 7/9 | Cluster: Arithmetic & Fractions
 
-• College Algebra
-  https://mathsolver.cloud/blog/college-algebra
-  Score: 7/9 | Cluster: Algebra
+• Math Problems That Are Hard
+  https://mathsolver.cloud/blog/math-problems-that-are-hard
+  Score: 8/9 | Cluster: Word Problems & Homework
 
-• Quadratic Equation Calculator
-  https://mathsolver.cloud/blog/quadratic-equation-calculator
+• System Of Equations Solver With Work
+  https://mathsolver.cloud/blog/system-of-equations-solver-with-work
   Score: 8/9 | Cluster: Algebra
 
-• System Of Equations Solver
-  https://mathsolver.cloud/blog/system-of-equations-solver
+• Percent Yield Equation
+  https://mathsolver.cloud/blog/percent-yield-equation
+  Score: 7/9 | Cluster: Arithmetic & Fractions
+
+• Boolean Algebra
+  https://mathsolver.cloud/blog/boolean-algebra
+  Score: 8/9 | Cluster: Algebra
+
+• Quadratic Equations
+  https://mathsolver.cloud/blog/quadratic-equations
   Score: 7/9 | Cluster: Algebra
 
-• Hardest Math Problem
-  https://mathsolver.cloud/blog/hardest-math-problem
-  Score: 8/9 | Cluster: Word Problems & Homework
+• Pre Algebra
+  https://mathsolver.cloud/blog/pre-algebra
+  Score: 7/9 | Cluster: Algebra

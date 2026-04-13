@@ -799,6 +799,70 @@
       "keyword": "hardest math problem",
       "score": 8,
       "published_at": "2026-04-12T09:37:31.501259"
+    },
+    {
+      "url": "/ai-math-solver/google-math-solver",
+      "slug": "google-math-solver",
+      "cluster": "AI Tools & Comparison",
+      "keyword": "google math solver",
+      "score": 7,
+      "published_at": "2026-04-13T10:24:16.490045"
+    },
+    {
+      "url": "/fraction-solver/exponential-equation",
+      "slug": "exponential-equation",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "exponential equation",
+      "score": 7,
+      "published_at": "2026-04-13T10:24:49.001087"
+    },
+    {
+      "url": "/math-word-problem-solver/math-problems-that-are-hard",
+      "slug": "math-problems-that-are-hard",
+      "cluster": "Word Problems & Homework",
+      "keyword": "math problems that are hard",
+      "score": 8,
+      "published_at": "2026-04-13T10:25:25.133030"
+    },
+    {
+      "url": "/algebra-solver/system-of-equations-solver-with-work",
+      "slug": "system-of-equations-solver-with-work",
+      "cluster": "Algebra",
+      "keyword": "system of equations solver with work",
+      "score": 8,
+      "published_at": "2026-04-13T10:25:59.246871"
+    },
+    {
+      "url": "/fraction-solver/percent-yield-equation",
+      "slug": "percent-yield-equation",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "percent yield equation",
+      "score": 7,
+      "published_at": "2026-04-13T10:26:28.887076"
+    },
+    {
+      "url": "/algebra-solver/boolean-algebra",
+      "slug": "boolean-algebra",
+      "cluster": "Algebra",
+      "keyword": "boolean algebra",
+      "score": 8,
+      "published_at": "2026-04-13T10:27:02.108911"
+    },
+    {
+      "url": "/algebra-solver/quadratic-equations",
+      "slug": "quadratic-equations",
+      "cluster": "Algebra",
+      "keyword": "quadratic equations",
+      "score": 7,
+      "published_at": "2026-04-13T10:27:32.571695"
+    },
+    {
+      "url": "/algebra-solver/pre-algebra",
+      "slug": "pre-algebra",
+      "cluster": "Algebra",
+      "keyword": "pre algebra",
+      "score": 7,
+      "published_at": "2026-04-13T10:28:04.995329"
     }
   ],
   "needs_review": []
