@@ -863,6 +863,70 @@
       "keyword": "pre algebra",
       "score": 7,
       "published_at": "2026-04-13T10:28:04.995329"
+    },
+    {
+      "url": "/algebra-solver/algebraic-equations",
+      "slug": "algebraic-equations",
+      "cluster": "Algebra",
+      "keyword": "algebraic equations",
+      "score": 7,
+      "published_at": "2026-04-14T10:04:44.441252"
+    },
+    {
+      "url": "/algebra-solver/algebra-2-regents",
+      "slug": "algebra-2-regents",
+      "cluster": "Algebra",
+      "keyword": "algebra 2 regents",
+      "score": 7,
+      "published_at": "2026-04-14T10:05:23.870300"
+    },
+    {
+      "url": "/statistics-solver/variance-equation",
+      "slug": "variance-equation",
+      "cluster": "Statistics & Probability",
+      "keyword": "variance equation",
+      "score": 7,
+      "published_at": "2026-04-14T10:06:07.762807"
+    },
+    {
+      "url": "/calculus-solver/partial-differential-equations",
+      "slug": "partial-differential-equations",
+      "cluster": "Calculus",
+      "keyword": "partial differential equations",
+      "score": 8,
+      "published_at": "2026-04-14T10:06:45.551547"
+    },
+    {
+      "url": "/statistics-solver/standard-deviation-equation",
+      "slug": "standard-deviation-equation",
+      "cluster": "Statistics & Probability",
+      "keyword": "standard deviation equation",
+      "score": 8,
+      "published_at": "2026-04-14T10:07:26.101750"
+    },
+    {
+      "url": "/statistics-solver/mode-definition-math",
+      "slug": "mode-definition-math",
+      "cluster": "Statistics & Probability",
+      "keyword": "mode definition math",
+      "score": 7,
+      "published_at": "2026-04-14T10:08:09.204770"
+    },
+    {
+      "url": "/math-word-problem-solver/math-tutor-near-me",
+      "slug": "math-tutor-near-me",
+      "cluster": "Word Problems & Homework",
+      "keyword": "math tutor near me",
+      "score": 8,
+      "published_at": "2026-04-14T10:08:46.903013"
+    },
+    {
+      "url": "/math-word-problem-solver/math-tutoring-near-me",
+      "slug": "math-tutoring-near-me",
+      "cluster": "Word Problems & Homework",
+      "keyword": "math tutoring near me",
+      "score": 8,
+      "published_at": "2026-04-14T10:09:28.087369"
     }
   ],
   "needs_review": []

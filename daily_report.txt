@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 13, 2026
+Date: April 14, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 108
+📚 Total published: 116
 
 --- PUBLISHED TODAY ---
-• Google Math Solver
-  https://mathsolver.cloud/blog/google-math-solver
-  Score: 7/9 | Cluster: AI Tools & Comparison
+• Algebraic Equations
+  https://mathsolver.cloud/blog/algebraic-equations
+  Score: 7/9 | Cluster: Algebra
 
-• Exponential Equation
-  https://mathsolver.cloud/blog/exponential-equation
-  Score: 7/9 | Cluster: Arithmetic & Fractions
+• Algebra 2 Regents
+  https://mathsolver.cloud/blog/algebra-2-regents
+  Score: 7/9 | Cluster: Algebra
 
-• Math Problems That Are Hard
-  https://mathsolver.cloud/blog/math-problems-that-are-hard
+• Variance Equation
+  https://mathsolver.cloud/blog/variance-equation
+  Score: 7/9 | Cluster: Statistics & Probability
+
+• Partial Differential Equations
+  https://mathsolver.cloud/blog/partial-differential-equations
+  Score: 8/9 | Cluster: Calculus
+
+• Standard Deviation Equation
+  https://mathsolver.cloud/blog/standard-deviation-equation
+  Score: 8/9 | Cluster: Statistics & Probability
+
+• Mode Definition Math
+  https://mathsolver.cloud/blog/mode-definition-math
+  Score: 7/9 | Cluster: Statistics & Probability
+
+• Math Tutor Near Me
+  https://mathsolver.cloud/blog/math-tutor-near-me
   Score: 8/9 | Cluster: Word Problems & Homework
 
-• System Of Equations Solver With Work
-  https://mathsolver.cloud/blog/system-of-equations-solver-with-work
-  Score: 8/9 | Cluster: Algebra
-
-• Percent Yield Equation
-  https://mathsolver.cloud/blog/percent-yield-equation
-  Score: 7/9 | Cluster: Arithmetic & Fractions
-
-• Boolean Algebra
-  https://mathsolver.cloud/blog/boolean-algebra
-  Score: 8/9 | Cluster: Algebra
-
-• Quadratic Equations
-  https://mathsolver.cloud/blog/quadratic-equations
-  Score: 7/9 | Cluster: Algebra
-
-• Pre Algebra
-  https://mathsolver.cloud/blog/pre-algebra
-  Score: 7/9 | Cluster: Algebra
+• Math Tutoring Near Me
+  https://mathsolver.cloud/blog/math-tutoring-near-me
+  Score: 8/9 | Cluster: Word Problems & Homework
