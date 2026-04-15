@@ -927,6 +927,70 @@
       "keyword": "math tutoring near me",
       "score": 8,
       "published_at": "2026-04-14T10:09:28.087369"
+    },
+    {
+      "url": "/statistics-solver/linear-regression-equation",
+      "slug": "linear-regression-equation",
+      "cluster": "Statistics & Probability",
+      "keyword": "linear regression equation",
+      "score": 7,
+      "published_at": "2026-04-15T10:05:15.221609"
+    },
+    {
+      "url": "/statistics-solver/mean-math-definition",
+      "slug": "mean-math-definition",
+      "cluster": "Statistics & Probability",
+      "keyword": "mean math definition",
+      "score": 8,
+      "published_at": "2026-04-15T10:06:05.292501"
+    },
+    {
+      "url": "/calculus-solver/differential-equation-solver",
+      "slug": "differential-equation-solver",
+      "cluster": "Calculus",
+      "keyword": "differential equation solver",
+      "score": 7,
+      "published_at": "2026-04-15T10:06:54.057113"
+    },
+    {
+      "url": "/calculus-solver/calculus-problems",
+      "slug": "calculus-problems",
+      "cluster": "Calculus",
+      "keyword": "calculus problems",
+      "score": 7,
+      "published_at": "2026-04-15T10:07:32.530597"
+    },
+    {
+      "url": "/ai-math-solver/mathways",
+      "slug": "mathways",
+      "cluster": "AI Tools & Comparison",
+      "keyword": "mathways",
+      "score": 7,
+      "published_at": "2026-04-15T10:08:12.943920"
+    },
+    {
+      "url": "/physics-math-formulas/acceleration-equation",
+      "slug": "acceleration-equation",
+      "cluster": "Physics & Formulas",
+      "keyword": "acceleration equation",
+      "score": 7,
+      "published_at": "2026-04-15T10:08:53.490015"
+    },
+    {
+      "url": "/fraction-solver/exponential-growth-equation",
+      "slug": "exponential-growth-equation",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "exponential growth equation",
+      "score": 7,
+      "published_at": "2026-04-15T10:09:35.487475"
+    },
+    {
+      "url": "/math-word-problem-solver/math-tutors-near-me",
+      "slug": "math-tutors-near-me",
+      "cluster": "Word Problems & Homework",
+      "keyword": "math tutors near me",
+      "score": 9,
+      "published_at": "2026-04-15T10:10:11.701393"
     }
   ],
   "needs_review": []

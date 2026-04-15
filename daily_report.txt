@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 14, 2026
+Date: April 15, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 116
+📚 Total published: 124
 
 --- PUBLISHED TODAY ---
-• Algebraic Equations
-  https://mathsolver.cloud/blog/algebraic-equations
-  Score: 7/9 | Cluster: Algebra
-
-• Algebra 2 Regents
-  https://mathsolver.cloud/blog/algebra-2-regents
-  Score: 7/9 | Cluster: Algebra
-
-• Variance Equation
-  https://mathsolver.cloud/blog/variance-equation
+• Linear Regression Equation
+  https://mathsolver.cloud/blog/linear-regression-equation
   Score: 7/9 | Cluster: Statistics & Probability
 
-• Partial Differential Equations
-  https://mathsolver.cloud/blog/partial-differential-equations
-  Score: 8/9 | Cluster: Calculus
-
-• Standard Deviation Equation
-  https://mathsolver.cloud/blog/standard-deviation-equation
+• Mean Math Definition
+  https://mathsolver.cloud/blog/mean-math-definition
   Score: 8/9 | Cluster: Statistics & Probability
 
-• Mode Definition Math
-  https://mathsolver.cloud/blog/mode-definition-math
-  Score: 7/9 | Cluster: Statistics & Probability
+• Differential Equation Solver
+  https://mathsolver.cloud/blog/differential-equation-solver
+  Score: 7/9 | Cluster: Calculus
 
-• Math Tutor Near Me
-  https://mathsolver.cloud/blog/math-tutor-near-me
-  Score: 8/9 | Cluster: Word Problems & Homework
+• Calculus Problems
+  https://mathsolver.cloud/blog/calculus-problems
+  Score: 7/9 | Cluster: Calculus
 
-• Math Tutoring Near Me
-  https://mathsolver.cloud/blog/math-tutoring-near-me
-  Score: 8/9 | Cluster: Word Problems & Homework
+• Mathways
+  https://mathsolver.cloud/blog/mathways
+  Score: 7/9 | Cluster: AI Tools & Comparison
+
+• Acceleration Equation
+  https://mathsolver.cloud/blog/acceleration-equation
+  Score: 7/9 | Cluster: Physics & Formulas
+
+• Exponential Growth Equation
+  https://mathsolver.cloud/blog/exponential-growth-equation
+  Score: 7/9 | Cluster: Arithmetic & Fractions
+
+• Math Tutors Near Me
+  https://mathsolver.cloud/blog/math-tutors-near-me
+  Score: 9/9 | Cluster: Word Problems & Homework
