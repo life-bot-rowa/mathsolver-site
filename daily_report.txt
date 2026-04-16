@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 15, 2026
+Date: April 16, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 124
+📚 Total published: 132
 
 --- PUBLISHED TODAY ---
-• Linear Regression Equation
-  https://mathsolver.cloud/blog/linear-regression-equation
-  Score: 7/9 | Cluster: Statistics & Probability
+• Pythagorean Theorem Equation
+  https://mathsolver.cloud/blog/pythagorean-theorem-equation
+  Score: 7/9 | Cluster: Geometry
 
-• Mean Math Definition
-  https://mathsolver.cloud/blog/mean-math-definition
-  Score: 8/9 | Cluster: Statistics & Probability
+• Force Equation
+  https://mathsolver.cloud/blog/force-equation
+  Score: 8/9 | Cluster: Physics & Formulas
 
-• Differential Equation Solver
-  https://mathsolver.cloud/blog/differential-equation-solver
-  Score: 7/9 | Cluster: Calculus
+• How To Solve For X
+  https://mathsolver.cloud/blog/how-to-solve-for-x
+  Score: 7/9 | Cluster: Equation Solving
 
-• Calculus Problems
-  https://mathsolver.cloud/blog/calculus-problems
-  Score: 7/9 | Cluster: Calculus
+• Math Tutors
+  https://mathsolver.cloud/blog/math-tutors
+  Score: 7/9 | Cluster: Word Problems & Homework
 
-• Mathways
-  https://mathsolver.cloud/blog/mathways
-  Score: 7/9 | Cluster: AI Tools & Comparison
-
-• Acceleration Equation
-  https://mathsolver.cloud/blog/acceleration-equation
+• Gravitational Force Equation
+  https://mathsolver.cloud/blog/gravitational-force-equation
   Score: 7/9 | Cluster: Physics & Formulas
 
-• Exponential Growth Equation
-  https://mathsolver.cloud/blog/exponential-growth-equation
-  Score: 7/9 | Cluster: Arithmetic & Fractions
+• One Step Equations
+  https://mathsolver.cloud/blog/one-step-equations
+  Score: 7/9 | Cluster: Equation Solving
 
-• Math Tutors Near Me
-  https://mathsolver.cloud/blog/math-tutors-near-me
-  Score: 9/9 | Cluster: Word Problems & Homework
+• A Circle Equation
+  https://mathsolver.cloud/blog/a-circle-equation
+  Score: 7/9 | Cluster: Geometry
+
+• Physics Equations
+  https://mathsolver.cloud/blog/physics-equations
+  Score: 7/9 | Cluster: Physics & Formulas

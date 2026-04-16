@@ -991,6 +991,70 @@
       "keyword": "math tutors near me",
       "score": 9,
       "published_at": "2026-04-15T10:10:11.701393"
+    },
+    {
+      "url": "/geometry-solver/pythagorean-theorem-equation",
+      "slug": "pythagorean-theorem-equation",
+      "cluster": "Geometry",
+      "keyword": "pythagorean theorem equation",
+      "score": 7,
+      "published_at": "2026-04-16T10:04:22.688116"
+    },
+    {
+      "url": "/physics-math-formulas/force-equation",
+      "slug": "force-equation",
+      "cluster": "Physics & Formulas",
+      "keyword": "force equation",
+      "score": 8,
+      "published_at": "2026-04-16T10:05:01.758557"
+    },
+    {
+      "url": "/equation-solver/how-to-solve-for-x",
+      "slug": "how-to-solve-for-x",
+      "cluster": "Equation Solving",
+      "keyword": "how to solve for x",
+      "score": 7,
+      "published_at": "2026-04-16T10:05:51.372433"
+    },
+    {
+      "url": "/math-word-problem-solver/math-tutors",
+      "slug": "math-tutors",
+      "cluster": "Word Problems & Homework",
+      "keyword": "math tutors",
+      "score": 7,
+      "published_at": "2026-04-16T10:06:29.323516"
+    },
+    {
+      "url": "/physics-math-formulas/gravitational-force-equation",
+      "slug": "gravitational-force-equation",
+      "cluster": "Physics & Formulas",
+      "keyword": "gravitational force equation",
+      "score": 7,
+      "published_at": "2026-04-16T10:07:13.290972"
+    },
+    {
+      "url": "/equation-solver/one-step-equations",
+      "slug": "one-step-equations",
+      "cluster": "Equation Solving",
+      "keyword": "one step equations",
+      "score": 7,
+      "published_at": "2026-04-16T10:07:54.200724"
+    },
+    {
+      "url": "/geometry-solver/a-circle-equation",
+      "slug": "a-circle-equation",
+      "cluster": "Geometry",
+      "keyword": "a circle equation",
+      "score": 7,
+      "published_at": "2026-04-16T10:08:30.006212"
+    },
+    {
+      "url": "/physics-math-formulas/physics-equations",
+      "slug": "physics-equations",
+      "cluster": "Physics & Formulas",
+      "keyword": "physics equations",
+      "score": 7,
+      "published_at": "2026-04-16T10:09:09.266556"
     }
   ],
   "needs_review": []
