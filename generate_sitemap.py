@@ -48,7 +48,13 @@ def get_pages():
             "priority": "0.3",
             "changefreq": "monthly",
         })
-    # privacy-policy, refund-policy, terms-of-service have noindex — not in sitemap
+    # Privacy policy — indexable
+    pages.append({
+        "url": f"{SITE_URL}/privacy-policy/",
+        "priority": "0.5",
+        "changefreq": "monthly",
+    })
+    # refund-policy, terms-of-service have noindex — not in sitemap
 
     return pages, today
 
