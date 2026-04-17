@@ -1055,6 +1055,70 @@
       "keyword": "physics equations",
       "score": 7,
       "published_at": "2026-04-16T10:09:09.266556"
+    },
+    {
+      "url": "/geometry-solver/geometry-dash-on-scratch",
+      "slug": "geometry-dash-on-scratch",
+      "cluster": "Geometry",
+      "keyword": "geometry dash on scratch",
+      "score": 8,
+      "published_at": "2026-04-17T10:02:37.583966"
+    },
+    {
+      "url": "/physics-math-formulas/drag-force-equation",
+      "slug": "drag-force-equation",
+      "cluster": "Physics & Formulas",
+      "keyword": "drag force equation",
+      "score": 7,
+      "published_at": "2026-04-17T10:03:42.390988"
+    },
+    {
+      "url": "/statistics-solver/equation-for-standard-deviation",
+      "slug": "equation-for-standard-deviation",
+      "cluster": "Statistics & Probability",
+      "keyword": "equation for standard deviation",
+      "score": 8,
+      "published_at": "2026-04-17T10:04:36.981734"
+    },
+    {
+      "url": "/trigonometry-solver/tangent-line-equation",
+      "slug": "tangent-line-equation",
+      "cluster": "Trigonometry",
+      "keyword": "tangent line equation",
+      "score": 7,
+      "published_at": "2026-04-17T10:05:17.959796"
+    },
+    {
+      "url": "/calculus-solver/differential-equation",
+      "slug": "differential-equation",
+      "cluster": "Calculus",
+      "keyword": "differential equation",
+      "score": 8,
+      "published_at": "2026-04-17T10:05:59.887506"
+    },
+    {
+      "url": "/statistics-solver/regression-equation",
+      "slug": "regression-equation",
+      "cluster": "Statistics & Probability",
+      "keyword": "regression equation",
+      "score": 7,
+      "published_at": "2026-04-17T10:06:49.005402"
+    },
+    {
+      "url": "/math-word-problem-solver/math-problem",
+      "slug": "math-problem",
+      "cluster": "Word Problems & Homework",
+      "keyword": "math problem",
+      "score": 7,
+      "published_at": "2026-04-17T10:07:28.492207"
+    },
+    {
+      "url": "/fraction-solver/percent-error-equation",
+      "slug": "percent-error-equation",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "percent error equation",
+      "score": 8,
+      "published_at": "2026-04-17T10:08:10.777076"
     }
   ],
   "needs_review": []

@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 16, 2026
+Date: April 17, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 132
+📚 Total published: 140
 
 --- PUBLISHED TODAY ---
-• Pythagorean Theorem Equation
-  https://mathsolver.cloud/blog/pythagorean-theorem-equation
-  Score: 7/9 | Cluster: Geometry
+• Geometry Dash On Scratch
+  https://mathsolver.cloud/blog/geometry-dash-on-scratch
+  Score: 8/9 | Cluster: Geometry
 
-• Force Equation
-  https://mathsolver.cloud/blog/force-equation
-  Score: 8/9 | Cluster: Physics & Formulas
+• Drag Force Equation
+  https://mathsolver.cloud/blog/drag-force-equation
+  Score: 7/9 | Cluster: Physics & Formulas
 
-• How To Solve For X
-  https://mathsolver.cloud/blog/how-to-solve-for-x
-  Score: 7/9 | Cluster: Equation Solving
+• Equation For Standard Deviation
+  https://mathsolver.cloud/blog/equation-for-standard-deviation
+  Score: 8/9 | Cluster: Statistics & Probability
 
-• Math Tutors
-  https://mathsolver.cloud/blog/math-tutors
+• Tangent Line Equation
+  https://mathsolver.cloud/blog/tangent-line-equation
+  Score: 7/9 | Cluster: Trigonometry
+
+• Differential Equation
+  https://mathsolver.cloud/blog/differential-equation
+  Score: 8/9 | Cluster: Calculus
+
+• Regression Equation
+  https://mathsolver.cloud/blog/regression-equation
+  Score: 7/9 | Cluster: Statistics & Probability
+
+• Math Problem
+  https://mathsolver.cloud/blog/math-problem
   Score: 7/9 | Cluster: Word Problems & Homework
 
-• Gravitational Force Equation
-  https://mathsolver.cloud/blog/gravitational-force-equation
-  Score: 7/9 | Cluster: Physics & Formulas
-
-• One Step Equations
-  https://mathsolver.cloud/blog/one-step-equations
-  Score: 7/9 | Cluster: Equation Solving
-
-• A Circle Equation
-  https://mathsolver.cloud/blog/a-circle-equation
-  Score: 7/9 | Cluster: Geometry
-
-• Physics Equations
-  https://mathsolver.cloud/blog/physics-equations
-  Score: 7/9 | Cluster: Physics & Formulas
+• Percent Error Equation
+  https://mathsolver.cloud/blog/percent-error-equation
+  Score: 8/9 | Cluster: Arithmetic & Fractions
