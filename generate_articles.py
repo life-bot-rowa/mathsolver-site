@@ -234,7 +234,7 @@ ARTICLE TEXT:
 Return ONLY this JSON structure with NO markdown, NO backticks:
 {{
   "meta_title": "under 60 chars, contains '{keyword}', ends with year 2026",
-  "meta_description": "under 160 chars, contains keyword, mentions MathSolver AI",
+  "meta_description": "BETWEEN 120 AND 160 CHARS (strict) — contains keyword, mentions MathSolver AI, reads as a complete sentence. Do not go under 120 chars.",
   "h1": "the main article headline containing '{keyword}'",
   "intro": "the full introduction text with paragraphs separated by \\n\\n (double newline). Keep all 3 paragraphs separated.",
   "formula": "ONE SHORT LINE only — the main formula, e.g. Y = a + bX or Mean = sum / n. Max 50 chars. No explanations.",
@@ -327,6 +327,46 @@ def validate_article(article_json, keyword, secondary_keywords=None):
 
     return total, failed, word_count, keyword_count, missing_secondary
 
+# ── SEO HELPERS ───────────────────────────────────────────────────────────────
+
+DESC_MIN = 120
+DESC_MAX = 160
+DESC_TAILS = (
+    ". Free AI math solver — take a screenshot, get instant step-by-step solutions.",  # 80
+    ". Free AI math solver with step-by-step solutions.",                               # 52
+    ". Free step-by-step math help.",                                                    # 30
+)
+
+
+def normalize_description(desc: str) -> str:
+    """Ensure meta description is within [DESC_MIN, DESC_MAX] chars.
+    If too long, trim to last full word before DESC_MAX.
+    If too short, append a branded tail that lands it in range.
+    """
+    desc = (desc or "").strip()
+    if not desc:
+        desc = "Free AI math solver with step-by-step solutions."
+    if len(desc) > DESC_MAX:
+        trimmed = desc[:DESC_MAX].rsplit(" ", 1)[0].rstrip(",;:.")
+        return trimmed + "."
+    if len(desc) >= DESC_MIN:
+        return desc
+    base = desc.rstrip(". ")
+    # Skip if already tailed (idempotent)
+    for tail in DESC_TAILS:
+        if base.endswith(tail.rstrip(".")):
+            return desc
+    for tail in DESC_TAILS:
+        candidate = base + tail
+        if DESC_MIN <= len(candidate) <= DESC_MAX:
+            return candidate
+    # None landed in range — take the first tail that doesn't overshoot, else the shortest.
+    for tail in DESC_TAILS:
+        if len(base + tail) <= DESC_MAX:
+            return base + tail
+    return (base + DESC_TAILS[-1])[:DESC_MAX]
+
+
 # ── BUILD HTML ────────────────────────────────────────────────────────────────
 
 def build_html(data, keyword, slug, cluster, url, related=None):
@@ -338,6 +378,7 @@ def build_html(data, keyword, slug, cluster, url, related=None):
     h1    = data.get("h1") or keyword.title() + " — Step-by-Step Guide"
     title = data.get("meta_title") or f"{keyword.title()} Guide ({year})"
     desc  = data.get("meta_description") or f"Learn {keyword} step by step. Free AI math solver."
+    desc  = normalize_description(desc)
     intro = data.get("intro") or f"Learn how to solve {keyword} with this complete guide."
     formula       = data.get("formula") or "See step-by-step solution below"
     formula_label = data.get("formula_label") or "Key Concept"
