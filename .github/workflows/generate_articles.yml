@@ -45,6 +45,9 @@ jobs:
       - name: Generate sitemap
         run: python generate_sitemap.py
 
+      - name: Patch SEO tags (og:image, twitter:card, meta description length)
+        run: python patch_seo_tags.py
+
       - name: Build report
         run: python send_report.py
 
