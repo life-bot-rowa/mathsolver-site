@@ -1,2 +1,4 @@
 .claude/worktrees/
 .claude/launch.json
+__pycache__/
+*.pyc
