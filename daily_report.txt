@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 17, 2026
+Date: April 18, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 140
+📚 Total published: 148
 
 --- PUBLISHED TODAY ---
-• Geometry Dash On Scratch
-  https://mathsolver.cloud/blog/geometry-dash-on-scratch
-  Score: 8/9 | Cluster: Geometry
-
-• Drag Force Equation
-  https://mathsolver.cloud/blog/drag-force-equation
-  Score: 7/9 | Cluster: Physics & Formulas
-
-• Equation For Standard Deviation
-  https://mathsolver.cloud/blog/equation-for-standard-deviation
-  Score: 8/9 | Cluster: Statistics & Probability
-
-• Tangent Line Equation
-  https://mathsolver.cloud/blog/tangent-line-equation
-  Score: 7/9 | Cluster: Trigonometry
-
-• Differential Equation
-  https://mathsolver.cloud/blog/differential-equation
-  Score: 8/9 | Cluster: Calculus
-
-• Regression Equation
-  https://mathsolver.cloud/blog/regression-equation
-  Score: 7/9 | Cluster: Statistics & Probability
-
-• Math Problem
-  https://mathsolver.cloud/blog/math-problem
+• What Is The Hardest Math Problem
+  https://mathsolver.cloud/blog/what-is-the-hardest-math-problem
   Score: 7/9 | Cluster: Word Problems & Homework
 
-• Percent Error Equation
-  https://mathsolver.cloud/blog/percent-error-equation
-  Score: 8/9 | Cluster: Arithmetic & Fractions
+• The Toughest Math Problem In The World
+  https://mathsolver.cloud/blog/the-toughest-math-problem-in-the-world
+  Score: 7/9 | Cluster: Word Problems & Homework
+
+• Ordinary Differential Equation
+  https://mathsolver.cloud/blog/ordinary-differential-equation
+  Score: 7/9 | Cluster: Calculus
+
+• Average Velocity Equation
+  https://mathsolver.cloud/blog/average-velocity-equation
+  Score: 7/9 | Cluster: Physics & Formulas
+
+• Mode Math Definition
+  https://mathsolver.cloud/blog/mode-math-definition
+  Score: 7/9 | Cluster: Statistics & Probability
+
+• Equation For The Standard Deviation
+  https://mathsolver.cloud/blog/equation-for-the-standard-deviation
+  Score: 8/9 | Cluster: Statistics & Probability
+
+• Fraction Solver With Whole Numbers
+  https://mathsolver.cloud/blog/fraction-solver-with-whole-numbers
+  Score: 7/9 | Cluster: Arithmetic & Fractions
+
+• Trig Equations
+  https://mathsolver.cloud/blog/trig-equations
+  Score: 7/9 | Cluster: Trigonometry
