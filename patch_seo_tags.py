@@ -45,12 +45,30 @@ def pick_tail(desc: str) -> str:
 
 
 def expand_description(html: str) -> tuple[str, bool]:
-    """Expand <meta name=description> if it's shorter than MIN_DESC_LEN."""
+    """Normalize <meta name=description>: extend if < MIN_DESC_LEN, trim if > MAX_DESC_LEN."""
     m = re.search(r'<meta name="description" content="([^"]*)">', html)
     if not m:
         return html, False
 
     current = m.group(1)
+
+    # Trim if too long
+    if len(current) > MAX_DESC_LEN:
+        trimmed = current[:MAX_DESC_LEN].rsplit(" ", 1)[0].rstrip(",;:.") + "."
+        new_tag = f'<meta name="description" content="{trimmed}">'
+        html = html.replace(m.group(0), new_tag, 1)
+        html = re.sub(
+            r'<meta property="og:description" content="' + re.escape(current) + r'">',
+            f'<meta property="og:description" content="{trimmed}">',
+            html,
+        )
+        html = re.sub(
+            r'<meta name="twitter:description" content="' + re.escape(current) + r'">',
+            f'<meta name="twitter:description" content="{trimmed}">',
+            html,
+        )
+        return html, True
+
     if len(current) >= MIN_DESC_LEN:
         return html, False
 
