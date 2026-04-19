@@ -1183,6 +1183,70 @@
       "keyword": "trig equations",
       "score": 7,
       "published_at": "2026-04-18T09:39:40.107357"
+    },
+    {
+      "url": "/physics-math-formulas/spring-force-equation",
+      "slug": "spring-force-equation",
+      "cluster": "Physics & Formulas",
+      "keyword": "spring force equation",
+      "score": 7,
+      "published_at": "2026-04-19T09:35:56.480030"
+    },
+    {
+      "url": "/calculus-solver/arc-length-formula-calculus",
+      "slug": "arc-length-formula-calculus",
+      "cluster": "Calculus",
+      "keyword": "arc length formula calculus",
+      "score": 7,
+      "published_at": "2026-04-19T09:36:28.054492"
+    },
+    {
+      "url": "/matrix-solver/matrix-math-calculator",
+      "slug": "matrix-math-calculator",
+      "cluster": "Matrix & Linear Algebra",
+      "keyword": "matrix math calculator",
+      "score": 7,
+      "published_at": "2026-04-19T09:36:54.459754"
+    },
+    {
+      "url": "/matrix-solver/solve-for-a-matrix",
+      "slug": "solve-for-a-matrix",
+      "cluster": "Matrix & Linear Algebra",
+      "keyword": "solve for a matrix",
+      "score": 7,
+      "published_at": "2026-04-19T09:37:18.677557"
+    },
+    {
+      "url": "/physics-math-formulas/friction-force-equation",
+      "slug": "friction-force-equation",
+      "cluster": "Physics & Formulas",
+      "keyword": "friction force equation",
+      "score": 7,
+      "published_at": "2026-04-19T09:37:50.280525"
+    },
+    {
+      "url": "/physics-math-formulas/electric-force-equation",
+      "slug": "electric-force-equation",
+      "cluster": "Physics & Formulas",
+      "keyword": "electric force equation",
+      "score": 7,
+      "published_at": "2026-04-19T09:38:21.904105"
+    },
+    {
+      "url": "/physics-math-formulas/integration-math-formula",
+      "slug": "integration-math-formula",
+      "cluster": "Physics & Formulas",
+      "keyword": "integration math formula",
+      "score": 8,
+      "published_at": "2026-04-19T09:38:57.967011"
+    },
+    {
+      "url": "/statistics-solver/mean-arterial-pressure-equation",
+      "slug": "mean-arterial-pressure-equation",
+      "cluster": "Statistics & Probability",
+      "keyword": "mean arterial pressure equation",
+      "score": 7,
+      "published_at": "2026-04-19T09:39:29.024476"
     }
   ],
   "needs_review": []

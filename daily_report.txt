@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 18, 2026
+Date: April 19, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 148
+📚 Total published: 156
 
 --- PUBLISHED TODAY ---
-• What Is The Hardest Math Problem
-  https://mathsolver.cloud/blog/what-is-the-hardest-math-problem
-  Score: 7/9 | Cluster: Word Problems & Homework
-
-• The Toughest Math Problem In The World
-  https://mathsolver.cloud/blog/the-toughest-math-problem-in-the-world
-  Score: 7/9 | Cluster: Word Problems & Homework
-
-• Ordinary Differential Equation
-  https://mathsolver.cloud/blog/ordinary-differential-equation
-  Score: 7/9 | Cluster: Calculus
-
-• Average Velocity Equation
-  https://mathsolver.cloud/blog/average-velocity-equation
+• Spring Force Equation
+  https://mathsolver.cloud/blog/spring-force-equation
   Score: 7/9 | Cluster: Physics & Formulas
 
-• Mode Math Definition
-  https://mathsolver.cloud/blog/mode-math-definition
+• Arc Length Formula Calculus
+  https://mathsolver.cloud/blog/arc-length-formula-calculus
+  Score: 7/9 | Cluster: Calculus
+
+• Matrix Math Calculator
+  https://mathsolver.cloud/blog/matrix-math-calculator
+  Score: 7/9 | Cluster: Matrix & Linear Algebra
+
+• Solve For A Matrix
+  https://mathsolver.cloud/blog/solve-for-a-matrix
+  Score: 7/9 | Cluster: Matrix & Linear Algebra
+
+• Friction Force Equation
+  https://mathsolver.cloud/blog/friction-force-equation
+  Score: 7/9 | Cluster: Physics & Formulas
+
+• Electric Force Equation
+  https://mathsolver.cloud/blog/electric-force-equation
+  Score: 7/9 | Cluster: Physics & Formulas
+
+• Integration Math Formula
+  https://mathsolver.cloud/blog/integration-math-formula
+  Score: 8/9 | Cluster: Physics & Formulas
+
+• Mean Arterial Pressure Equation
+  https://mathsolver.cloud/blog/mean-arterial-pressure-equation
   Score: 7/9 | Cluster: Statistics & Probability
-
-• Equation For The Standard Deviation
-  https://mathsolver.cloud/blog/equation-for-the-standard-deviation
-  Score: 8/9 | Cluster: Statistics & Probability
-
-• Fraction Solver With Whole Numbers
-  https://mathsolver.cloud/blog/fraction-solver-with-whole-numbers
-  Score: 7/9 | Cluster: Arithmetic & Fractions
-
-• Trig Equations
-  https://mathsolver.cloud/blog/trig-equations
-  Score: 7/9 | Cluster: Trigonometry
