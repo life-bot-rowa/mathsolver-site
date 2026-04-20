@@ -1,26 +1,34 @@
-SEO Audit Report — 2026-04-13
+SEO Audit Report — 2026-04-20
 ==================================================
 
 SITE STATISTICS
   Pillar pages:         12
-  Blog articles:        100
-  Total content pages:  113
-  New this week:        100
+  Blog articles:        156
+  Total content pages:  169
+  New this week:        156
     - 2nd-fundamental-theorem-of-calculus
+    - a-circle-equation
     - absolute-value-and-step-functions-homework-answer-key
+    - acceleration-equation
     - algebra-1
     - algebra-1-regents
     - algebra-2
+    - algebra-2-regents
     - algebra-20
+    - algebraic-equations
     - angular-velocity-equation
     - ap-calculus-bc-score-calculator
     - ap-physics-equation-sheet
     - ap-physics-equation-sheet-c
     - ap-score-calculator-calculus-ab
+    - arc-length-formula-calculus
     - augmented-matrix-solver
+    - average-velocity-equation
     - bc-calculus-ap-score-calculator
+    - boolean-algebra
     - buoyant-force-equation
     - calculus-ap-score-calculator
+    - calculus-problems
     - calculus-theorems
     - circle-equation
     - college-algebra
@@ -31,96 +39,141 @@ SITE STATISTICS
     - delta-math-calculator
     - demon-list-geometry-dash
     - determinant-matrix-solver
+    - differential-equation
     - differential-equation-calculator
+    - differential-equation-solver
     - differential-equations-calculator
+    - drag-force-equation
     - edmentum-mastery-test-answers-algebra-1
+    - electric-force-equation
     - equation-for-diagonal-to-the-right-sine-curve
+    - equation-for-standard-deviation
+    - equation-for-the-standard-deviation
     - equation-of-a-circle
     - equation-of-sine-curve
     - equation-of-tangent-plane
     - equation-solver-with-absolute-value
     - equation-tangent-plane
     - equation-to-find-02-percent-offset-yield-strength
+    - exponential-equation
+    - exponential-growth-equation
     - find-an-equation-of-tangent-line
     - flipped-math-calculus
+    - force-equation
+    - fraction-solver-with-whole-numbers
+    - friction-force-equation
     - fundamental-theorem-of-calculus
     - geometry-dash-breeze
+    - geometry-dash-on-scratch
     - geometry-dash-scratch
     - geometry-dash-spam
     - geometry-dash-unblocked
     - geometry-dash-wave
     - geometry-dash-world
     - geometry-lessons
+    - google-math-solver
+    - gravitational-force-equation
     - hard-math-problems
     - hardest-math-problem
     - homework-help
     - homework-lesson-11-equations-for-proportional-relationships-answer-key
     - how-to-find-the-equation-of-a-tangent-line
     - how-to-solve-a-matrix
+    - how-to-solve-for-x
     - how-to-solve-multi-step-equations
     - how-to-solve-two-step-equations
+    - integration-math-formula
     - inverse-matrix-solver
     - kinematic-equations
     - kinematics-equations
     - linear-equations
+    - linear-regression-equation
     - math-1324-homework-answers
     - math-formulas
+    - math-problem
     - math-problems
+    - math-problems-that-are-hard
+    - math-tutor-near-me
+    - math-tutoring-near-me
+    - math-tutors
+    - math-tutors-near-me
+    - mathways
     - matrix-equation
+    - matrix-math-calculator
     - matrix-multiplication-solver
+    - mean-arterial-pressure-equation
+    - mean-math-definition
     - microsoft-math-solver
+    - mode-definition-math
+    - mode-math-definition
     - multi-step-equations
     - multi-step-equations-worksheet
     - mystatlab-homework-answers-statistics
+    - one-step-equations
     - one-step-equations-worksheet
+    - ordinary-differential-equation
+    - partial-differential-equations
+    - percent-error-equation
+    - percent-yield-equation
     - photomath-software
     - physics-equation-sheet
+    - physics-equations
+    - pre-algebra
     - pythagoras-equation-solver
+    - pythagorean-theorem-equation
     - pythagorean-theorem-equation-solver
     - quadratic-equation
     - quadratic-equation-calculator
+    - quadratic-equations
     - rational-reasoning-online-homework-answers
+    - regression-equation
     - scratch-geometry-dash
     - second-fundamental-theorem-of-calculus
     - solve-differential-equation-calculator
+    - solve-for-a-matrix
     - solve-the-given-exponential-equation
     - solving-equations-with-variables-on-both-sides
     - solving-exponential-equations
     - solving-multi-step-equations
     - solving-trig-equations
     - solving-trigonometric-equations
+    - spring-force-equation
+    - standard-deviation-equation
     - step-by-step-multi-step-equations
     - step-by-step-two-step-equations
     - symbolab
     - system-of-equations
     - system-of-equations-calculator
     - system-of-equations-solver
+    - system-of-equations-solver-with-work
     - tangent-equation
+    - tangent-line-equation
     - tangent-plane-equation
     - terminus-math-calculator
     - texas-instruments-30xiis-scientificmath-calculator-orange
+    - the-toughest-math-problem-in-the-world
+    - trig-equations
     - two-step-equations
     - two-step-equations-worksheet
     - unit-vector-equation
+    - variance-equation
     - vector-equation-of-a-line
+    - what-is-the-hardest-math-problem
     - which-equation-represents-the-proportional-relationship-in-the-table
     - which-regression-equation-best-fits-the-data
     - wolfram-and-alpha
 
 GOOGLE ANALYTICS (last 7 days)
-  Total sessions:    31
-  Total page views:  33
-  Blog sessions:     7
-  Blog page views:   7
+  Total sessions:    30
+  Total page views:  38
+  Blog sessions:     1
+  Blog page views:   1
   Top blog pages:
-    /blog/ — 1 views
-    /blog/equation-of-tangent-plane/ — 1 views
-    /blog/equation-tangent-plane/ — 1 views
-    /blog/math-1324-homework-answers/ — 1 views
-    /blog/microsoft-math-solver/ — 1 views
+    /blog/ordinary-differential-equation/ — 1 views
 
 AUDIT RESULTS
   Auto-fixed: 1
     - Updated llms.txt with new pages
-  Issues: 1
+  Issues: 2
     - Title under 60 chars
+    - privacy-policy has noindex
