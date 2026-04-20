@@ -1247,6 +1247,70 @@
       "keyword": "mean arterial pressure equation",
       "score": 7,
       "published_at": "2026-04-19T09:39:29.024476"
+    },
+    {
+      "url": "/statistics-solver/median-math-definition",
+      "slug": "median-math-definition",
+      "cluster": "Statistics & Probability",
+      "keyword": "median math definition",
+      "score": 7,
+      "published_at": "2026-04-20T10:25:18.173807"
+    },
+    {
+      "url": "/trigonometry-solver/equation-of-tangent-line",
+      "slug": "equation-of-tangent-line",
+      "cluster": "Trigonometry",
+      "keyword": "equation of tangent line",
+      "score": 7,
+      "published_at": "2026-04-20T10:26:05.281371"
+    },
+    {
+      "url": "/calculus-solver/stochastic-differential-equations",
+      "slug": "stochastic-differential-equations",
+      "cluster": "Calculus",
+      "keyword": "stochastic differential equations",
+      "score": 7,
+      "published_at": "2026-04-20T10:27:07.635332"
+    },
+    {
+      "url": "/fraction-solver/percent-difference-equation",
+      "slug": "percent-difference-equation",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "percent difference equation",
+      "score": 7,
+      "published_at": "2026-04-20T10:27:47.161238"
+    },
+    {
+      "url": "/fraction-solver/exponential-equations",
+      "slug": "exponential-equations",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "exponential equations",
+      "score": 7,
+      "published_at": "2026-04-20T10:28:33.923292"
+    },
+    {
+      "url": "/fraction-solver/current-ratio-equation",
+      "slug": "current-ratio-equation",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "current ratio equation",
+      "score": 8,
+      "published_at": "2026-04-20T10:29:11.333895"
+    },
+    {
+      "url": "/physics-math-formulas/centripetal-force-equation",
+      "slug": "centripetal-force-equation",
+      "cluster": "Physics & Formulas",
+      "keyword": "centripetal force equation",
+      "score": 7,
+      "published_at": "2026-04-20T10:29:51.534732"
+    },
+    {
+      "url": "/physics-math-formulas/angular-acceleration-equation",
+      "slug": "angular-acceleration-equation",
+      "cluster": "Physics & Formulas",
+      "keyword": "angular acceleration equation",
+      "score": 7,
+      "published_at": "2026-04-20T10:30:37.153595"
     }
   ],
   "needs_review": []

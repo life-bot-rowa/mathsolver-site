@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 19, 2026
+Date: April 20, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 156
+📚 Total published: 164
 
 --- PUBLISHED TODAY ---
-• Spring Force Equation
-  https://mathsolver.cloud/blog/spring-force-equation
-  Score: 7/9 | Cluster: Physics & Formulas
+• Median Math Definition
+  https://mathsolver.cloud/blog/median-math-definition
+  Score: 7/9 | Cluster: Statistics & Probability
 
-• Arc Length Formula Calculus
-  https://mathsolver.cloud/blog/arc-length-formula-calculus
+• Equation Of Tangent Line
+  https://mathsolver.cloud/blog/equation-of-tangent-line
+  Score: 7/9 | Cluster: Trigonometry
+
+• Stochastic Differential Equations
+  https://mathsolver.cloud/blog/stochastic-differential-equations
   Score: 7/9 | Cluster: Calculus
 
-• Matrix Math Calculator
-  https://mathsolver.cloud/blog/matrix-math-calculator
-  Score: 7/9 | Cluster: Matrix & Linear Algebra
+• Percent Difference Equation
+  https://mathsolver.cloud/blog/percent-difference-equation
+  Score: 7/9 | Cluster: Arithmetic & Fractions
 
-• Solve For A Matrix
-  https://mathsolver.cloud/blog/solve-for-a-matrix
-  Score: 7/9 | Cluster: Matrix & Linear Algebra
+• Exponential Equations
+  https://mathsolver.cloud/blog/exponential-equations
+  Score: 7/9 | Cluster: Arithmetic & Fractions
 
-• Friction Force Equation
-  https://mathsolver.cloud/blog/friction-force-equation
+• Current Ratio Equation
+  https://mathsolver.cloud/blog/current-ratio-equation
+  Score: 8/9 | Cluster: Arithmetic & Fractions
+
+• Centripetal Force Equation
+  https://mathsolver.cloud/blog/centripetal-force-equation
   Score: 7/9 | Cluster: Physics & Formulas
 
-• Electric Force Equation
-  https://mathsolver.cloud/blog/electric-force-equation
+• Angular Acceleration Equation
+  https://mathsolver.cloud/blog/angular-acceleration-equation
   Score: 7/9 | Cluster: Physics & Formulas
-
-• Integration Math Formula
-  https://mathsolver.cloud/blog/integration-math-formula
-  Score: 8/9 | Cluster: Physics & Formulas
-
-• Mean Arterial Pressure Equation
-  https://mathsolver.cloud/blog/mean-arterial-pressure-equation
-  Score: 7/9 | Cluster: Statistics & Probability
