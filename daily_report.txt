@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 20, 2026
+Date: April 21, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 164
+📚 Total published: 172
 
 --- PUBLISHED TODAY ---
-• Median Math Definition
-  https://mathsolver.cloud/blog/median-math-definition
-  Score: 7/9 | Cluster: Statistics & Probability
+• Net Force Equation
+  https://mathsolver.cloud/blog/net-force-equation
+  Score: 7/9 | Cluster: Physics & Formulas
 
-• Equation Of Tangent Line
-  https://mathsolver.cloud/blog/equation-of-tangent-line
+• Kinematic Equation
+  https://mathsolver.cloud/blog/kinematic-equation
+  Score: 7/9 | Cluster: Physics & Formulas
+
+• Trigonometric Equations
+  https://mathsolver.cloud/blog/trigonometric-equations
   Score: 7/9 | Cluster: Trigonometry
 
-• Stochastic Differential Equations
-  https://mathsolver.cloud/blog/stochastic-differential-equations
-  Score: 7/9 | Cluster: Calculus
+• Mean Definition In Maths
+  https://mathsolver.cloud/blog/mean-definition-in-maths
+  Score: 7/9 | Cluster: Statistics & Probability
 
-• Percent Difference Equation
-  https://mathsolver.cloud/blog/percent-difference-equation
-  Score: 7/9 | Cluster: Arithmetic & Fractions
+• Solving Equations
+  https://mathsolver.cloud/blog/solving-equations
+  Score: 8/9 | Cluster: Equation Solving
 
-• Exponential Equations
-  https://mathsolver.cloud/blog/exponential-equations
-  Score: 7/9 | Cluster: Arithmetic & Fractions
+• Balance Equation Calculator
+  https://mathsolver.cloud/blog/balance-equation-calculator
+  Score: 8/9 | Cluster: Online Calculators
 
-• Current Ratio Equation
-  https://mathsolver.cloud/blog/current-ratio-equation
-  Score: 8/9 | Cluster: Arithmetic & Fractions
+• Equation Of The Regression
+  https://mathsolver.cloud/blog/equation-of-the-regression
+  Score: 7/9 | Cluster: Statistics & Probability
 
-• Centripetal Force Equation
-  https://mathsolver.cloud/blog/centripetal-force-equation
-  Score: 7/9 | Cluster: Physics & Formulas
-
-• Angular Acceleration Equation
-  https://mathsolver.cloud/blog/angular-acceleration-equation
-  Score: 7/9 | Cluster: Physics & Formulas
+• Va Math Calculator
+  https://mathsolver.cloud/blog/va-math-calculator
+  Score: 7/9 | Cluster: Online Calculators

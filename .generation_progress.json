@@ -1311,6 +1311,70 @@
       "keyword": "angular acceleration equation",
       "score": 7,
       "published_at": "2026-04-20T10:30:37.153595"
+    },
+    {
+      "url": "/physics-math-formulas/net-force-equation",
+      "slug": "net-force-equation",
+      "cluster": "Physics & Formulas",
+      "keyword": "net force equation",
+      "score": 7,
+      "published_at": "2026-04-21T10:07:53.603685"
+    },
+    {
+      "url": "/physics-math-formulas/kinematic-equation",
+      "slug": "kinematic-equation",
+      "cluster": "Physics & Formulas",
+      "keyword": "kinematic equation",
+      "score": 7,
+      "published_at": "2026-04-21T10:08:46.837865"
+    },
+    {
+      "url": "/trigonometry-solver/trigonometric-equations",
+      "slug": "trigonometric-equations",
+      "cluster": "Trigonometry",
+      "keyword": "trigonometric equations",
+      "score": 7,
+      "published_at": "2026-04-21T10:10:07.206105"
+    },
+    {
+      "url": "/statistics-solver/mean-definition-in-maths",
+      "slug": "mean-definition-in-maths",
+      "cluster": "Statistics & Probability",
+      "keyword": "mean definition in maths",
+      "score": 7,
+      "published_at": "2026-04-21T10:10:42.261904"
+    },
+    {
+      "url": "/equation-solver/solving-equations",
+      "slug": "solving-equations",
+      "cluster": "Equation Solving",
+      "keyword": "solving equations",
+      "score": 8,
+      "published_at": "2026-04-21T10:11:32.414824"
+    },
+    {
+      "url": "/online-math-calculator/balance-equation-calculator",
+      "slug": "balance-equation-calculator",
+      "cluster": "Online Calculators",
+      "keyword": "balance equation calculator",
+      "score": 8,
+      "published_at": "2026-04-21T10:12:12.264293"
+    },
+    {
+      "url": "/statistics-solver/equation-of-the-regression",
+      "slug": "equation-of-the-regression",
+      "cluster": "Statistics & Probability",
+      "keyword": "equation of the regression",
+      "score": 7,
+      "published_at": "2026-04-21T10:13:02.846275"
+    },
+    {
+      "url": "/online-math-calculator/va-math-calculator",
+      "slug": "va-math-calculator",
+      "cluster": "Online Calculators",
+      "keyword": "va math calculator",
+      "score": 7,
+      "published_at": "2026-04-21T10:13:41.994072"
     }
   ],
   "needs_review": []
