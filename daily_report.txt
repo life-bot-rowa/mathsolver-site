@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 21, 2026
+Date: April 22, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 172
+📚 Total published: 180
 
 --- PUBLISHED TODAY ---
-• Net Force Equation
-  https://mathsolver.cloud/blog/net-force-equation
-  Score: 7/9 | Cluster: Physics & Formulas
+• Solve Equation
+  https://mathsolver.cloud/blog/solve-equation
+  Score: 7/9 | Cluster: Equation Solving
 
-• Kinematic Equation
-  https://mathsolver.cloud/blog/kinematic-equation
-  Score: 7/9 | Cluster: Physics & Formulas
+• Integral Solver With Steps
+  https://mathsolver.cloud/blog/integral-solver-with-steps
+  Score: 8/9 | Cluster: Calculus
 
-• Trigonometric Equations
-  https://mathsolver.cloud/blog/trigonometric-equations
-  Score: 7/9 | Cluster: Trigonometry
+• Mass Percent Equation
+  https://mathsolver.cloud/blog/mass-percent-equation
+  Score: 7/9 | Cluster: Arithmetic & Fractions
 
-• Mean Definition In Maths
-  https://mathsolver.cloud/blog/mean-definition-in-maths
+• Vector Equation
+  https://mathsolver.cloud/blog/vector-equation
+  Score: 8/9 | Cluster: Matrix & Linear Algebra
+
+• Calculus Math
+  https://mathsolver.cloud/blog/calculus-math
+  Score: 7/9 | Cluster: Calculus
+
+• Equation For Variance
+  https://mathsolver.cloud/blog/equation-for-variance
   Score: 7/9 | Cluster: Statistics & Probability
 
-• Solving Equations
-  https://mathsolver.cloud/blog/solving-equations
-  Score: 8/9 | Cluster: Equation Solving
-
-• Balance Equation Calculator
-  https://mathsolver.cloud/blog/balance-equation-calculator
-  Score: 8/9 | Cluster: Online Calculators
-
-• Equation Of The Regression
-  https://mathsolver.cloud/blog/equation-of-the-regression
+• Sample Variance Equation
+  https://mathsolver.cloud/blog/sample-variance-equation
   Score: 7/9 | Cluster: Statistics & Probability
 
-• Va Math Calculator
-  https://mathsolver.cloud/blog/va-math-calculator
-  Score: 7/9 | Cluster: Online Calculators
+• Calculus Equations
+  https://mathsolver.cloud/blog/calculus-equations
+  Score: 7/9 | Cluster: Calculus

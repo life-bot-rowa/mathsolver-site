@@ -1375,6 +1375,70 @@
       "keyword": "va math calculator",
       "score": 7,
       "published_at": "2026-04-21T10:13:41.994072"
+    },
+    {
+      "url": "/equation-solver/solve-equation",
+      "slug": "solve-equation",
+      "cluster": "Equation Solving",
+      "keyword": "solve equation",
+      "score": 7,
+      "published_at": "2026-04-22T10:08:12.536398"
+    },
+    {
+      "url": "/calculus-solver/integral-solver-with-steps",
+      "slug": "integral-solver-with-steps",
+      "cluster": "Calculus",
+      "keyword": "integral solver with steps",
+      "score": 8,
+      "published_at": "2026-04-22T10:08:56.434172"
+    },
+    {
+      "url": "/fraction-solver/mass-percent-equation",
+      "slug": "mass-percent-equation",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "mass percent equation",
+      "score": 7,
+      "published_at": "2026-04-22T10:09:34.517314"
+    },
+    {
+      "url": "/matrix-solver/vector-equation",
+      "slug": "vector-equation",
+      "cluster": "Matrix & Linear Algebra",
+      "keyword": "vector equation",
+      "score": 8,
+      "published_at": "2026-04-22T10:10:12.604225"
+    },
+    {
+      "url": "/calculus-solver/calculus-math",
+      "slug": "calculus-math",
+      "cluster": "Calculus",
+      "keyword": "calculus math",
+      "score": 7,
+      "published_at": "2026-04-22T10:10:52.349147"
+    },
+    {
+      "url": "/statistics-solver/equation-for-variance",
+      "slug": "equation-for-variance",
+      "cluster": "Statistics & Probability",
+      "keyword": "equation for variance",
+      "score": 7,
+      "published_at": "2026-04-22T10:11:31.126187"
+    },
+    {
+      "url": "/statistics-solver/sample-variance-equation",
+      "slug": "sample-variance-equation",
+      "cluster": "Statistics & Probability",
+      "keyword": "sample variance equation",
+      "score": 7,
+      "published_at": "2026-04-22T10:12:13.017064"
+    },
+    {
+      "url": "/calculus-solver/calculus-equations",
+      "slug": "calculus-equations",
+      "cluster": "Calculus",
+      "keyword": "calculus equations",
+      "score": 7,
+      "published_at": "2026-04-22T10:12:52.188302"
     }
   ],
   "needs_review": []
