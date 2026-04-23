@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 22, 2026
+Date: April 23, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 180
+📚 Total published: 188
 
 --- PUBLISHED TODAY ---
-• Solve Equation
-  https://mathsolver.cloud/blog/solve-equation
-  Score: 7/9 | Cluster: Equation Solving
+• Law Of Cosines Equation
+  https://mathsolver.cloud/blog/law-of-cosines-equation
+  Score: 8/9 | Cluster: Trigonometry
 
-• Integral Solver With Steps
-  https://mathsolver.cloud/blog/integral-solver-with-steps
-  Score: 8/9 | Cluster: Calculus
+• Exponential Function Equation
+  https://mathsolver.cloud/blog/exponential-function-equation
+  Score: 8/9 | Cluster: Arithmetic & Fractions
 
-• Mass Percent Equation
-  https://mathsolver.cloud/blog/mass-percent-equation
+• Ejection Fraction Equation
+  https://mathsolver.cloud/blog/ejection-fraction-equation
   Score: 7/9 | Cluster: Arithmetic & Fractions
 
-• Vector Equation
-  https://mathsolver.cloud/blog/vector-equation
-  Score: 8/9 | Cluster: Matrix & Linear Algebra
+• Math Definition For Proportion
+  https://mathsolver.cloud/blog/math-definition-for-proportion
+  Score: 7/9 | Cluster: Arithmetic & Fractions
 
-• Calculus Math
-  https://mathsolver.cloud/blog/calculus-math
-  Score: 7/9 | Cluster: Calculus
+• How To Solve Exponential Equations
+  https://mathsolver.cloud/blog/how-to-solve-exponential-equations
+  Score: 7/9 | Cluster: Arithmetic & Fractions
 
-• Equation For Variance
-  https://mathsolver.cloud/blog/equation-for-variance
-  Score: 7/9 | Cluster: Statistics & Probability
+• Solve By Graphing Calculator
+  https://mathsolver.cloud/blog/solve-by-graphing-calculator
+  Score: 7/9 | Cluster: Online Calculators
 
-• Sample Variance Equation
-  https://mathsolver.cloud/blog/sample-variance-equation
-  Score: 7/9 | Cluster: Statistics & Probability
+• Odds Ratio Equation
+  https://mathsolver.cloud/blog/odds-ratio-equation
+  Score: 7/9 | Cluster: Arithmetic & Fractions
 
-• Calculus Equations
-  https://mathsolver.cloud/blog/calculus-equations
-  Score: 7/9 | Cluster: Calculus
+• Sharpe Ratio Equation
+  https://mathsolver.cloud/blog/sharpe-ratio-equation
+  Score: 7/9 | Cluster: Arithmetic & Fractions

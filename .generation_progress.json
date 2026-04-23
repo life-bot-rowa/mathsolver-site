@@ -1439,6 +1439,70 @@
       "keyword": "calculus equations",
       "score": 7,
       "published_at": "2026-04-22T10:12:52.188302"
+    },
+    {
+      "url": "/trigonometry-solver/law-of-cosines-equation",
+      "slug": "law-of-cosines-equation",
+      "cluster": "Trigonometry",
+      "keyword": "law of cosines equation",
+      "score": 8,
+      "published_at": "2026-04-23T10:11:38.539807"
+    },
+    {
+      "url": "/fraction-solver/exponential-function-equation",
+      "slug": "exponential-function-equation",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "exponential function equation",
+      "score": 8,
+      "published_at": "2026-04-23T10:12:16.600691"
+    },
+    {
+      "url": "/fraction-solver/ejection-fraction-equation",
+      "slug": "ejection-fraction-equation",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "ejection fraction equation",
+      "score": 7,
+      "published_at": "2026-04-23T10:13:01.289619"
+    },
+    {
+      "url": "/fraction-solver/math-definition-for-proportion",
+      "slug": "math-definition-for-proportion",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "math definition for proportion",
+      "score": 7,
+      "published_at": "2026-04-23T10:13:39.756087"
+    },
+    {
+      "url": "/fraction-solver/how-to-solve-exponential-equations",
+      "slug": "how-to-solve-exponential-equations",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "how to solve exponential equations",
+      "score": 7,
+      "published_at": "2026-04-23T10:14:21.803001"
+    },
+    {
+      "url": "/online-math-calculator/solve-by-graphing-calculator",
+      "slug": "solve-by-graphing-calculator",
+      "cluster": "Online Calculators",
+      "keyword": "solve by graphing calculator",
+      "score": 7,
+      "published_at": "2026-04-23T10:15:07.239720"
+    },
+    {
+      "url": "/fraction-solver/odds-ratio-equation",
+      "slug": "odds-ratio-equation",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "odds ratio equation",
+      "score": 7,
+      "published_at": "2026-04-23T10:15:50.091575"
+    },
+    {
+      "url": "/fraction-solver/sharpe-ratio-equation",
+      "slug": "sharpe-ratio-equation",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "sharpe ratio equation",
+      "score": 7,
+      "published_at": "2026-04-23T10:16:27.112071"
     }
   ],
   "needs_review": []
