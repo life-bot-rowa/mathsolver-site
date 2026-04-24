@@ -1503,6 +1503,70 @@
       "keyword": "sharpe ratio equation",
       "score": 7,
       "published_at": "2026-04-23T10:16:27.112071"
+    },
+    {
+      "url": "/statistics-solver/mean-in-math-definition",
+      "slug": "mean-in-math-definition",
+      "cluster": "Statistics & Probability",
+      "keyword": "mean in math definition",
+      "score": 7,
+      "published_at": "2026-04-24T10:13:54.531432"
+    },
+    {
+      "url": "/equation-solver/how-to-solve-equations",
+      "slug": "how-to-solve-equations",
+      "cluster": "Equation Solving",
+      "keyword": "how to solve equations",
+      "score": 8,
+      "published_at": "2026-04-24T10:14:29.297451"
+    },
+    {
+      "url": "/equation-solver/quad-equation-solver",
+      "slug": "quad-equation-solver",
+      "cluster": "Equation Solving",
+      "keyword": "quad equation solver",
+      "score": 7,
+      "published_at": "2026-04-24T10:15:01.025105"
+    },
+    {
+      "url": "/equation-solver/two-step-equations-calculator",
+      "slug": "two-step-equations-calculator",
+      "cluster": "Equation Solving",
+      "keyword": "two step equations calculator",
+      "score": 8,
+      "published_at": "2026-04-24T10:15:38.151055"
+    },
+    {
+      "url": "/equation-solver/solve-for-x-equations",
+      "slug": "solve-for-x-equations",
+      "cluster": "Equation Solving",
+      "keyword": "solve for x equations",
+      "score": 8,
+      "published_at": "2026-04-24T10:16:07.622131"
+    },
+    {
+      "url": "/statistics-solver/probability-equations",
+      "slug": "probability-equations",
+      "cluster": "Statistics & Probability",
+      "keyword": "probability equations",
+      "score": 7,
+      "published_at": "2026-04-24T10:16:44.580445"
+    },
+    {
+      "url": "/online-math-calculator/balanced-equation-calculator",
+      "slug": "balanced-equation-calculator",
+      "cluster": "Online Calculators",
+      "keyword": "balanced equation calculator",
+      "score": 7,
+      "published_at": "2026-04-24T10:17:12.265756"
+    },
+    {
+      "url": "/online-math-calculator/creatinine-clearance-equation-calculator",
+      "slug": "creatinine-clearance-equation-calculator",
+      "cluster": "Online Calculators",
+      "keyword": "creatinine clearance equation calculator",
+      "score": 7,
+      "published_at": "2026-04-24T10:17:48.409538"
     }
   ],
   "needs_review": []

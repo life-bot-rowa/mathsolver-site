@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 23, 2026
+Date: April 24, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 188
+📚 Total published: 196
 
 --- PUBLISHED TODAY ---
-• Law Of Cosines Equation
-  https://mathsolver.cloud/blog/law-of-cosines-equation
-  Score: 8/9 | Cluster: Trigonometry
+• Mean In Math Definition
+  https://mathsolver.cloud/blog/mean-in-math-definition
+  Score: 7/9 | Cluster: Statistics & Probability
 
-• Exponential Function Equation
-  https://mathsolver.cloud/blog/exponential-function-equation
-  Score: 8/9 | Cluster: Arithmetic & Fractions
+• How To Solve Equations
+  https://mathsolver.cloud/blog/how-to-solve-equations
+  Score: 8/9 | Cluster: Equation Solving
 
-• Ejection Fraction Equation
-  https://mathsolver.cloud/blog/ejection-fraction-equation
-  Score: 7/9 | Cluster: Arithmetic & Fractions
+• Quad Equation Solver
+  https://mathsolver.cloud/blog/quad-equation-solver
+  Score: 7/9 | Cluster: Equation Solving
 
-• Math Definition For Proportion
-  https://mathsolver.cloud/blog/math-definition-for-proportion
-  Score: 7/9 | Cluster: Arithmetic & Fractions
+• Two Step Equations Calculator
+  https://mathsolver.cloud/blog/two-step-equations-calculator
+  Score: 8/9 | Cluster: Equation Solving
 
-• How To Solve Exponential Equations
-  https://mathsolver.cloud/blog/how-to-solve-exponential-equations
-  Score: 7/9 | Cluster: Arithmetic & Fractions
+• Solve For X Equations
+  https://mathsolver.cloud/blog/solve-for-x-equations
+  Score: 8/9 | Cluster: Equation Solving
 
-• Solve By Graphing Calculator
-  https://mathsolver.cloud/blog/solve-by-graphing-calculator
+• Probability Equations
+  https://mathsolver.cloud/blog/probability-equations
+  Score: 7/9 | Cluster: Statistics & Probability
+
+• Balanced Equation Calculator
+  https://mathsolver.cloud/blog/balanced-equation-calculator
   Score: 7/9 | Cluster: Online Calculators
 
-• Odds Ratio Equation
-  https://mathsolver.cloud/blog/odds-ratio-equation
-  Score: 7/9 | Cluster: Arithmetic & Fractions
-
-• Sharpe Ratio Equation
-  https://mathsolver.cloud/blog/sharpe-ratio-equation
-  Score: 7/9 | Cluster: Arithmetic & Fractions
+• Creatinine Clearance Equation Calculator
+  https://mathsolver.cloud/blog/creatinine-clearance-equation-calculator
+  Score: 7/9 | Cluster: Online Calculators
