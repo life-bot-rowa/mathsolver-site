@@ -1631,6 +1631,70 @@
       "keyword": "equation of a tangent line",
       "score": 7,
       "published_at": "2026-04-25T09:43:39.816289"
+    },
+    {
+      "url": "/trigonometry-solver/law-of-sines-equation",
+      "slug": "law-of-sines-equation",
+      "cluster": "Trigonometry",
+      "keyword": "law of sines equation",
+      "score": 9,
+      "published_at": "2026-04-26T09:41:20.518589"
+    },
+    {
+      "url": "/trigonometry-solver/equation-of-the-tangent-line",
+      "slug": "equation-of-the-tangent-line",
+      "cluster": "Trigonometry",
+      "keyword": "equation of the tangent line",
+      "score": 7,
+      "published_at": "2026-04-26T09:41:52.781000"
+    },
+    {
+      "url": "/fraction-solver/how-to-solve-for-x-with-fractions",
+      "slug": "how-to-solve-for-x-with-fractions",
+      "cluster": "Arithmetic & Fractions",
+      "keyword": "how to solve for x with fractions",
+      "score": 7,
+      "published_at": "2026-04-26T09:42:23.825978"
+    },
+    {
+      "url": "/online-math-calculator/balanced-chemical-equation-calculator",
+      "slug": "balanced-chemical-equation-calculator",
+      "cluster": "Online Calculators",
+      "keyword": "balanced chemical equation calculator",
+      "score": 8,
+      "published_at": "2026-04-26T09:42:55.050905"
+    },
+    {
+      "url": "/trigonometry-solver/sine-equation",
+      "slug": "sine-equation",
+      "cluster": "Trigonometry",
+      "keyword": "sine equation",
+      "score": 7,
+      "published_at": "2026-04-26T09:43:25.999074"
+    },
+    {
+      "url": "/online-math-calculator/harris-benedict-equation-calculator",
+      "slug": "harris-benedict-equation-calculator",
+      "cluster": "Online Calculators",
+      "keyword": "harris benedict equation calculator",
+      "score": 9,
+      "published_at": "2026-04-26T09:44:03.095031"
+    },
+    {
+      "url": "/online-math-calculator/series-math-calculator",
+      "slug": "series-math-calculator",
+      "cluster": "Online Calculators",
+      "keyword": "series math calculator",
+      "score": 8,
+      "published_at": "2026-04-26T09:44:32.269191"
+    },
+    {
+      "url": "/matrix-solver/projection-vector-equation",
+      "slug": "projection-vector-equation",
+      "cluster": "Matrix & Linear Algebra",
+      "keyword": "projection vector equation",
+      "score": 8,
+      "published_at": "2026-04-26T09:45:03.176857"
     }
   ],
   "needs_review": []
