@@ -1,11 +1,11 @@
-SEO Audit Report — 2026-04-20
+SEO Audit Report — 2026-04-27
 ==================================================
 
 SITE STATISTICS
   Pillar pages:         12
-  Blog articles:        156
-  Total content pages:  169
-  New this week:        156
+  Blog articles:        212
+  Total content pages:  225
+  New this week:        212
     - 2nd-fundamental-theorem-of-calculus
     - a-circle-equation
     - absolute-value-and-step-functions-homework-answer-key
@@ -16,6 +16,7 @@ SITE STATISTICS
     - algebra-2-regents
     - algebra-20
     - algebraic-equations
+    - angular-acceleration-equation
     - angular-velocity-equation
     - ap-calculus-bc-score-calculator
     - ap-physics-equation-sheet
@@ -24,18 +25,27 @@ SITE STATISTICS
     - arc-length-formula-calculus
     - augmented-matrix-solver
     - average-velocity-equation
+    - balance-equation-calculator
+    - balanced-chemical-equation-calculator
+    - balanced-equation-calculator
     - bc-calculus-ap-score-calculator
     - boolean-algebra
     - buoyant-force-equation
     - calculus-ap-score-calculator
+    - calculus-equations
+    - calculus-math
     - calculus-problems
     - calculus-theorems
+    - centripetal-force-equation
     - circle-equation
     - college-algebra
     - constant-acceleration-equations
     - cpm-homework-help
+    - creatinine-clearance-equation-calculator
     - cubic-equation-calculator
+    - current-ratio-equation
     - define-ordinary-differential-equation
+    - definition-of-mean-in-math
     - delta-math-calculator
     - demon-list-geometry-dash
     - determinant-matrix-solver
@@ -45,17 +55,29 @@ SITE STATISTICS
     - differential-equations-calculator
     - drag-force-equation
     - edmentum-mastery-test-answers-algebra-1
+    - ejection-fraction-equation
     - electric-force-equation
+    - equation-for-covariance
     - equation-for-diagonal-to-the-right-sine-curve
+    - equation-for-exponential-decay
+    - equation-for-exponential-growth
     - equation-for-standard-deviation
     - equation-for-the-standard-deviation
+    - equation-for-variance
     - equation-of-a-circle
+    - equation-of-a-tangent-line
     - equation-of-sine-curve
+    - equation-of-tangent-line
     - equation-of-tangent-plane
+    - equation-of-the-regression
+    - equation-of-the-tangent-line
     - equation-solver-with-absolute-value
     - equation-tangent-plane
     - equation-to-find-02-percent-offset-yield-strength
     - exponential-equation
+    - exponential-equation-formula
+    - exponential-equations
+    - exponential-function-equation
     - exponential-growth-equation
     - find-an-equation-of-tangent-line
     - flipped-math-calculus
@@ -75,20 +97,31 @@ SITE STATISTICS
     - gravitational-force-equation
     - hard-math-problems
     - hardest-math-problem
+    - harris-benedict-equation-calculator
     - homework-help
     - homework-lesson-11-equations-for-proportional-relationships-answer-key
+    - how-to-find-equation-of-tangent-line
     - how-to-find-the-equation-of-a-tangent-line
     - how-to-solve-a-matrix
+    - how-to-solve-equations
+    - how-to-solve-exponential-equations
     - how-to-solve-for-x
+    - how-to-solve-for-x-with-fractions
     - how-to-solve-multi-step-equations
     - how-to-solve-two-step-equations
+    - integral-solver-with-steps
     - integration-math-formula
     - inverse-matrix-solver
+    - kinematic-equation
     - kinematic-equations
     - kinematics-equations
+    - law-of-cosines-equation
+    - law-of-sines-equation
     - linear-equations
     - linear-regression-equation
+    - mass-percent-equation
     - math-1324-homework-answers
+    - math-definition-for-proportion
     - math-formulas
     - math-problem
     - math-problems
@@ -102,36 +135,54 @@ SITE STATISTICS
     - matrix-math-calculator
     - matrix-multiplication-solver
     - mean-arterial-pressure-equation
+    - mean-definition-in-maths
+    - mean-in-math-definition
     - mean-math-definition
+    - median-math-definition
     - microsoft-math-solver
+    - mode-definition-in-maths
     - mode-definition-math
     - mode-math-definition
     - multi-step-equations
     - multi-step-equations-worksheet
     - mystatlab-homework-answers-statistics
+    - net-force-equation
+    - odds-ratio-equation
     - one-step-equations
     - one-step-equations-worksheet
     - ordinary-differential-equation
     - partial-differential-equations
+    - percent-difference-equation
     - percent-error-equation
     - percent-yield-equation
     - photomath-software
     - physics-equation-sheet
     - physics-equations
     - pre-algebra
+    - probability-equations
+    - projection-vector-equation
     - pythagoras-equation-solver
     - pythagorean-theorem-equation
     - pythagorean-theorem-equation-solver
+    - quad-equation-solver
     - quadratic-equation
     - quadratic-equation-calculator
     - quadratic-equations
     - rational-reasoning-online-homework-answers
     - regression-equation
+    - sample-variance-equation
     - scratch-geometry-dash
     - second-fundamental-theorem-of-calculus
+    - series-math-calculator
+    - sharpe-ratio-equation
+    - sine-equation
+    - solve-by-graphing-calculator
     - solve-differential-equation-calculator
+    - solve-equation
     - solve-for-a-matrix
+    - solve-for-x-equations
     - solve-the-given-exponential-equation
+    - solving-equations
     - solving-equations-with-variables-on-both-sides
     - solving-exponential-equations
     - solving-multi-step-equations
@@ -141,6 +192,7 @@ SITE STATISTICS
     - standard-deviation-equation
     - step-by-step-multi-step-equations
     - step-by-step-two-step-equations
+    - stochastic-differential-equations
     - symbolab
     - system-of-equations
     - system-of-equations-calculator
@@ -153,10 +205,14 @@ SITE STATISTICS
     - texas-instruments-30xiis-scientificmath-calculator-orange
     - the-toughest-math-problem-in-the-world
     - trig-equations
+    - trigonometric-equations
     - two-step-equations
+    - two-step-equations-calculator
     - two-step-equations-worksheet
     - unit-vector-equation
+    - va-math-calculator
     - variance-equation
+    - vector-equation
     - vector-equation-of-a-line
     - what-is-the-hardest-math-problem
     - which-equation-represents-the-proportional-relationship-in-the-table
@@ -164,12 +220,13 @@ SITE STATISTICS
     - wolfram-and-alpha
 
 GOOGLE ANALYTICS (last 7 days)
-  Total sessions:    30
-  Total page views:  38
-  Blog sessions:     1
-  Blog page views:   1
+  Total sessions:    22
+  Total page views:  23
+  Blog sessions:     2
+  Blog page views:   2
   Top blog pages:
-    /blog/ordinary-differential-equation/ — 1 views
+    /blog/ — 1 views
+    /blog/how-to-solve-for-x-with-fractions/ — 1 views
 
 AUDIT RESULTS
   Auto-fixed: 1
