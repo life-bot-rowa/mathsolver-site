@@ -1,39 +1,39 @@
 📊 MathSolver Article Generation Report
-Date: April 28, 2026
+Date: April 29, 2026
 
 ✅ Published today: 8
 ⚠️  Needs review: 0
-📚 Total published: 228
+📚 Total published: 236
 
 --- PUBLISHED TODAY ---
-• How To Solve Inverse Matrix
-  https://mathsolver.cloud/blog/how-to-solve-inverse-matrix
-  Score: 8/9 | Cluster: Matrix & Linear Algebra
+• Algebra Equations
+  https://mathsolver.cloud/blog/algebra-equations
+  Score: 7/9 | Cluster: Algebra
 
-• How To Solve Inverse Of Matrix
-  https://mathsolver.cloud/blog/how-to-solve-inverse-of-matrix
-  Score: 8/9 | Cluster: Matrix & Linear Algebra
-
-• Eigenvalue Equation
-  https://mathsolver.cloud/blog/eigenvalue-equation
-  Score: 7/9 | Cluster: Matrix & Linear Algebra
-
-• Dot Product Equation
-  https://mathsolver.cloud/blog/dot-product-equation
-  Score: 7/9 | Cluster: Matrix & Linear Algebra
-
-• Matrix Definition Math
-  https://mathsolver.cloud/blog/matrix-definition-math
-  Score: 8/9 | Cluster: Matrix & Linear Algebra
-
-• Matrix Math Equations
-  https://mathsolver.cloud/blog/matrix-math-equations
-  Score: 8/9 | Cluster: Matrix & Linear Algebra
-
-• Math Solver
-  https://mathsolver.cloud/blog/math-solver
+• Mathway
+  https://mathsolver.cloud/blog/mathway
   Score: 7/9 | Cluster: AI Tools & Comparison
 
-• Geometry Dash
-  https://mathsolver.cloud/blog/geometry-dash
+• Algebra
+  https://mathsolver.cloud/blog/algebra
+  Score: 8/9 | Cluster: Algebra
+
+• Geometry Dash Lite
+  https://mathsolver.cloud/blog/geometry-dash-lite
   Score: 7/9 | Cluster: Geometry
+
+• Wolfram Alpha
+  https://mathsolver.cloud/blog/wolfram-alpha
+  Score: 7/9 | Cluster: AI Tools & Comparison
+
+• Math Ai
+  https://mathsolver.cloud/blog/math-ai
+  Score: 7/9 | Cluster: AI Tools & Comparison
+
+• Algebra Calculator
+  https://mathsolver.cloud/blog/algebra-calculator
+  Score: 7/9 | Cluster: Algebra
+
+• Math Calculator
+  https://mathsolver.cloud/blog/math-calculator
+  Score: 7/9 | Cluster: Online Calculators

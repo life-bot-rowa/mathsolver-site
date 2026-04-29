@@ -1823,6 +1823,70 @@
       "keyword": "geometry dash",
       "score": 7,
       "published_at": "2026-04-28T10:57:15.581754"
+    },
+    {
+      "url": "/algebra-solver/algebra-equations",
+      "slug": "algebra-equations",
+      "cluster": "Algebra",
+      "keyword": "algebra equations",
+      "score": 7,
+      "published_at": "2026-04-29T10:45:09.029355"
+    },
+    {
+      "url": "/ai-math-solver/mathway",
+      "slug": "mathway",
+      "cluster": "AI Tools & Comparison",
+      "keyword": "mathway",
+      "score": 7,
+      "published_at": "2026-04-29T10:45:44.641340"
+    },
+    {
+      "url": "/algebra-solver/algebra",
+      "slug": "algebra",
+      "cluster": "Algebra",
+      "keyword": "algebra",
+      "score": 8,
+      "published_at": "2026-04-29T10:46:20.146227"
+    },
+    {
+      "url": "/geometry-solver/geometry-dash-lite",
+      "slug": "geometry-dash-lite",
+      "cluster": "Geometry",
+      "keyword": "geometry dash lite",
+      "score": 7,
+      "published_at": "2026-04-29T10:47:06.187257"
+    },
+    {
+      "url": "/ai-math-solver/wolfram-alpha",
+      "slug": "wolfram-alpha",
+      "cluster": "AI Tools & Comparison",
+      "keyword": "wolfram alpha",
+      "score": 7,
+      "published_at": "2026-04-29T10:47:59.400147"
+    },
+    {
+      "url": "/ai-math-solver/math-ai",
+      "slug": "math-ai",
+      "cluster": "AI Tools & Comparison",
+      "keyword": "math ai",
+      "score": 7,
+      "published_at": "2026-04-29T10:48:38.044926"
+    },
+    {
+      "url": "/algebra-solver/algebra-calculator",
+      "slug": "algebra-calculator",
+      "cluster": "Algebra",
+      "keyword": "algebra calculator",
+      "score": 7,
+      "published_at": "2026-04-29T10:49:21.235003"
+    },
+    {
+      "url": "/online-math-calculator/math-calculator",
+      "slug": "math-calculator",
+      "cluster": "Online Calculators",
+      "keyword": "math calculator",
+      "score": 7,
+      "published_at": "2026-04-29T10:50:03.557652"
     }
   ],
   "needs_review": []
